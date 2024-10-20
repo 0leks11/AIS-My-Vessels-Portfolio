@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React from 'react';
+import './components/styles.css'; // Импортируем стили
+import Header from './components/Header';
+import AboutSection from './components/AboutSection';
+import ResumeSection from './components/ResumeSection';
+import CalculatorModal from './components/CalculatorModal';
+import ChatPopup from './components/ChatPopup';
+import Footer from './components/Footer';
+import FallenHearts from './components/FallenHearts';
+import ChatBot from './components/ChatBot';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+    return (
+        <div>
+            <Header />
+            <FallenHearts />
+            <AboutSection />
+            <ResumeSection />
+            <CalculatorModal />
+            <ChatPopup />
+            <Footer />
+            <ChatBot />
+        </div>
+    );
+};
 
 export default App;
