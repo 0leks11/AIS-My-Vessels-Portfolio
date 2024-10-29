@@ -14,11 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+#### Проект ####  your_project_root/backend/chatbot/chatbot/urls.py
+
 # chatbot/chatbot/urls.py
 from django.contrib import admin
-from django.urls import path, include  # Импорт функции include для подключения приложений
+from django.urls import path, include # Импорт функции include для подключения приложений
+from django.views.generic import TemplateView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # Админ панель
     path('api/', include('chat.urls')),  # Включаем все маршруты приложения chat
-]
+    path('', TemplateView.as_view(template_name='index.html'), name='home'),  # Catch-all маршрут для React
+]    ###  !!! ?????
