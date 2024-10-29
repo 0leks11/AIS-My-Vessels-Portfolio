@@ -8,7 +8,7 @@ Key Features
 	4.	Real-Time Chatbot: The chatbot leverages OpenAI and database data to provide responses, enhancing the site with AI-powered interactions.
 
 Project Structure
-
+```
 my-website/
 ├── package-lock.json
 ├── package.json
@@ -53,7 +53,7 @@ my-website/
 ├── tailwind.config.js
 └── tsconfig.json
 
-
+```
 Technology Stack
 
 	•	TypeScript: For robust and maintainable code.
