@@ -1,31 +1,42 @@
 import React, { useEffect, useRef } from 'react';
 import { Engine, Render, Runner, Bodies, Composite, Body, Events } from 'matter-js';
 
-const FallenHearts: React.FC = () => {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);  // Используем реф для привязки к canvas
+interface FallenHeartsProps {
+  footerRef: React.RefObject<HTMLDivElement>;
+  windowSize: { width: number; height: number };
+}
+
+const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) => {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const groundRef = useRef<Body | null>(null);
 
   useEffect(() => {
     // Создаем физический движок
-    const engine: Engine = Engine.create(); 
+    const engine = Engine.create(); 
     const world = engine.world;
 
     // Создаем землю (пол)
     const ground = Bodies.rectangle(
-      window.innerWidth / 2,  // Положение по оси X
+      windowSize.width / 2,  // Положение по оси X
       window.innerHeight,     // Положение по оси Y
-      window.innerWidth,      // Ширина земли
+      windowSize.width,      // Ширина земли
       10,                     // Высота земли
       { isStatic: true }      // Делаем землю статичной
     );
 
     // Добавляем землю в мир
+    groundRef.current = ground;
     Composite.add(world, ground);
 
     // Обновляем позицию пола в зависимости от футера
     const updateGroundPosition = () => {
-      const footerElement = document.getElementById('footer');
-      const groundY = footerElement ? footerElement.offsetTop : window.innerHeight;
-      Body.setPosition(ground, { x: window.innerWidth / 2, y: groundY });
+      if (footerRef.current) {
+        const footerRect = footerRef.current.getBoundingClientRect();
+        const groundY = footerRect.top + window.scrollY;
+        if (groundRef.current) {
+          Body.setPosition(ground, { x: windowSize.width / 2, y: groundY });
+        }
+      }
     };
 
     window.addEventListener('resize', updateGroundPosition);
@@ -38,7 +49,7 @@ const FallenHearts: React.FC = () => {
       canvas: canvasRef.current as HTMLCanvasElement,        // Привязываем рендер к canvas через ref
       engine: engine,
       options: {
-        width: window.innerWidth,
+        width: windowSize.width,
         height: document.documentElement.scrollHeight,
         wireframes: false,
         background: 'transparent',  // Прозрачный фон
@@ -101,19 +112,31 @@ const FallenHearts: React.FC = () => {
       });
     };
 
-    // Периодически добавляем сердца
-    const interval = setInterval(() => {
-      addPixelHeart(Math.random() * window.innerWidth, 0);
+    let interval = setInterval(() => {
+      addPixelHeart(Math.random() * windowSize.width, 0);
     }, 1000);
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        clearInterval(interval);
+      } else {
+        interval = setInterval(() => {
+          addPixelHeart(Math.random() * windowSize.width, 0);
+        }, 1000);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     // Очищаем все при размонтировании компонента
     return () => {
-      clearInterval(interval);
+      window.removeEventListener('resize', updateGroundPosition);
+      window.removeEventListener('scroll', updateGroundPosition);
       Render.stop(render);
       Composite.clear(world, false, true);
-      Engine.clear(engine);    // Останавливаем движок
+      Engine.clear(engine);
     };
-  }, []);
+  }, [footerRef, windowSize]);
 
   return <canvas ref={canvasRef} id="world"></canvas>;
 };

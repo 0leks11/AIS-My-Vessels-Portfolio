@@ -1,14 +1,22 @@
 // src/components/Footer/Footer.tsx
-import React from 'react';
+import React, { forwardRef } from 'react';
 import SocialIcons from './SocialIcons';
 
-const Footer: React.FC = () => {
+interface FooterProps { 
+  isCompact?: boolean;
+  windowSize: { width: number; height: number };
+}
+
+const Footer = forwardRef<HTMLDivElement, FooterProps>(({ windowSize }, ref) => {
   return (
-    <footer className="bg-black text-white py-4 flex flex-col items-center">
+    <footer ref={ref} className="w-full bg-black text-white py-4 flex flex-col items-center">
       <SocialIcons />
       <p className="text-xs mt-2">© 2024 Oleksii Kozyrev. All rights reserved.</p>
     </footer>
   );
-};
+});
+
+// Указываем displayName для лучшей отладки (опционально)
+Footer.displayName = "Footer";
 
 export default Footer;

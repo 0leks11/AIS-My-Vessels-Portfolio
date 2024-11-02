@@ -7,11 +7,13 @@ import ChatButton from './ChatMeButton';
 
 interface HeaderProps {
   isCompact?: boolean;
+  windowSize: { width: number; height: number };
 }
 
-const Header: React.FC<HeaderProps> = ({ isCompact = false }) => {
+const Header: React.FC<HeaderProps> = ({ isCompact = false, windowSize }) => {
   return (
-    <header className={`fixed top-0 w-full bg-gray-900 p-4 flex justify-center items-center shadow-lg z-10 ${isCompact ? "py-2" : "py-4"}`}>
+    <header
+      className={`fixed top-0 w-full bg-gray-900 p-4 flex justify-center items-center shadow-lg z-10 ${isCompact ? "py-2" : "py-4"}`}>
       <nav className="flex space-x-6">
         <AboutButton />
         <ContactButton />
