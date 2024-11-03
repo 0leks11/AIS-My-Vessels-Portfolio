@@ -64,8 +64,12 @@ const App: React.FC = () => {
         <div className="h-[30px] sm:h-[20px] lg:h-[10px] flex-grow transition-all duration-500"></div>
 
         <Footer ref={footerRef} windowSize={windowSize} />
-        <ChatButton onClick={toggleChat} isChatOpen={isChatOpen} />
-        {isChatOpen && <ChatBot />}
+      </div>
+      <div className="absolute inset-30 z-40">
+      {isChatOpen && <ChatBot />}
+      </div>
+      <div className="absolute inset-40 z-50">
+      <ChatButton onClick={toggleChat} isChatOpen={isChatOpen} />
       </div>
     </div>
   );
