@@ -135,6 +135,7 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
       Render.stop(render);
       Composite.clear(world, false, true);
       Engine.clear(engine);
+      clearTimeout(interval)
     };
   }, [footerRef, windowSize]);
 
