@@ -50,25 +50,25 @@ const App: React.FC = () => {
         <Header windowSize={windowSize} />
 
         {/* Отступ с плавным переходом между Header и AboutSection */}
-        <div className="h-[30px] sm:h-[20px] lg:h-[10px] transition-all duration-500"></div>
+        <div className="h-[100px] sm:h-[70px] lg:h-[110px] transition-all duration-500"></div>
 
-        <AboutSection  />
+        <AboutSection />
 
         {/* Отступ с плавным переходом между AboutSection и ResumeSection */}
-        <div className="h-[30px] sm:h-[20px] lg:h-[10px] transition-all duration-500"></div>
+        <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
 
-        <ResumeSection  />
+        <ResumeSection />
         <CalculatorModal />
 
         {/* Отступ между ResumeSection и Footer с гибким ростом и плавным переходом */}
-        <div className="h-[30px] sm:h-[20px] lg:h-[10px] flex-grow transition-all duration-500"></div>
+        <div className="h-[20px] sm:h-[10px] lg:h-[30px] flex-grow transition-all duration-500"></div>
 
         <Footer ref={footerRef} windowSize={windowSize} />
       </div>
       <div className="absolute inset-30 z-40">
       {isChatOpen && <ChatBot />}
       </div>
-      <div className="absolute inset-40 z-50">
+      <div className="absolute bottom-5 right-5 z-50">
       <ChatButton onClick={toggleChat} isChatOpen={isChatOpen} />
       </div>
     </div>

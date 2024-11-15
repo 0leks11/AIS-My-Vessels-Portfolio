@@ -85,7 +85,7 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
               blockSize,
               blockSize,
               {
-                restitution: 0.9,  // Упругость при столкновении
+                restitution: 1.2,  // Упругость при столкновении
                 isStatic: false,   // Блок не статический
                 render: {
                   fillStyle: 'red',  // Цвет блоков
