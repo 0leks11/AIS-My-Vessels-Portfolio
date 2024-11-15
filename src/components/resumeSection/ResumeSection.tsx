@@ -3,14 +3,19 @@ import React from 'react';
 
 const ResumeSection: React.FC = () => {
     return (
-        <section className="resume-section min-w-[320px] max-w-4xl mx-auto p-6 bg-white bg-opacity-40 backdrop-blur-md rounded-lg shadow-md">
-            <h2 className="text-4xl font-bold text-center mb-6">Resume</h2>
+        // 7th Container: Main Wrapper Container
+        <div className="resume-section-wrapper min-w-[320px] max-w-4xl mx-auto p-6 bg-white bg-opacity-40 backdrop-blur-md rounded-lg shadow-md">
+            
+            {/* 1st Container: Resume Header */}
+            <div className="resume-header text-center mb-6">
+                <h2 className="text-4xl font-bold">Resume</h2>
+            </div>
 
-            {/* Основной контейнер с flex аналогично AboutSection */}
-            <div className="flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6">
+            {/* 4th Container: Skills and Experience combined */}
+            <div className="skills-experience-container flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6">
                 
-                {/* Skills Section */}
-                <div className="skills flex-1 mb-6 lg:mb-0">
+                {/* 2nd Container: Skills Section */}
+                <div className="skills-container flex-1 mb-6 lg:mb-0">
                     <h3 className="text-lg font-semibold mb-2">Skills</h3>
                     <ul className="list-disc list-inside space-y-1">
                         <li>JavaScript & TypeScript: Advanced knowledge of JavaScript with type-safe practices in TypeScript for creating scalable and reliable applications.</li>
@@ -23,28 +28,29 @@ const ResumeSection: React.FC = () => {
                     </ul>
                 </div>
 
-                {/* Разделитель между колонками */}
+                {/* Divider between Skills and Experience */}
                 <div className="hidden lg:block w-px h-auto bg-gray-300 mx-6"></div>
 
-                {/* Why Hire Me Section */}
-                <div className="experience flex-1 mb-6 lg:mb-0">
-                    <h3 className="text-lg font-semibold mb-2">Work Experiance</h3>
+                {/* 3rd Container: Experience Section */}
+                <div className="experience-container flex-1 mb-6 lg:mb-0">
+                    <h3 className="text-lg font-semibold mb-2">Work Experience</h3>
                     <ul className="list-disc list-inside space-y-1">
-                        <li>Advanced full-stack capabilities by developing and deploying a personal portfolio application, integrating OpenAI-powered ChatBot with a Django and PostgreSQL backend. Strengthened expertise in Python for backend logic and API design, while consistently implementing security and data integrity best practices.
-
-In this version, the focus is on the progression and refinement of your skills over time, rather than detailing each individual responsibility. This approach highlights your adaptability and growth across both front-end and back-end technologies.</li>
+                        <li>Advanced full-stack capabilities by developing and deploying a personal portfolio application, integrating OpenAI-powered ChatBot with a Django and PostgreSQL backend. Strengthened expertise in Python for backend logic and API design, while consistently implementing security and data integrity best practices. This approach highlights adaptability and growth across both front-end and back-end technologies.</li>
                         <li>Refined front-end skills through hands-on work with JavaScript, TypeScript, React, and Tailwind CSS. Enhanced web applications with responsive, cross-browser compatible design and optimized for performance. Gained collaboration experience, using Git for streamlined teamwork and effective version control.</li>
-                       
                     </ul>
                 </div>
             </div>
 
-            {/* Suggested Hourly Rate Section */}
-            <div className="text-center mt-6">
-                <h3 className="text-lg font-semibold mb-2">Suggested Hourly Rate:</h3>
+            {/* 5th Container: Suggested Hourly Rate Header */}
+            <div className="suggested-rate-header text-center mt-6">
+                <h3 className="text-lg font-semibold">Suggested Hourly Rate:</h3>
+            </div>
+
+            {/* 6th Container: Suggested Hourly Rate Content */}
+            <div className="suggested-rate-content text-center">
                 <p>As a junior developer starting out on Upwork...</p>
             </div>
-        </section>
+        </div>
     );
 };
 

@@ -52,12 +52,15 @@ const App: React.FC = () => {
         {/* Отступ с плавным переходом между Header и AboutSection */}
         <div className="h-[100px] sm:h-[70px] lg:h-[110px] transition-all duration-500"></div>
 
-        <AboutSection />
+        
+        {/* Main container for AboutSection and ResumeSection with 8px margin */}
+        <div className="container mx-2">
+          <AboutSection />
+          {/* Spacer between AboutSection and ResumeSection */}
+          <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
+          <ResumeSection />
+        </div>
 
-        {/* Отступ с плавным переходом между AboutSection и ResumeSection */}
-        <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
-
-        <ResumeSection />
         <CalculatorModal />
 
         {/* Отступ между ResumeSection и Footer с гибким ростом и плавным переходом */}
