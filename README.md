@@ -28,23 +28,41 @@ my-website/
 │   │   │   ├── chat
 │   │   │   ├── chatbot
 │   │   │   ├── manage.py
-│   │   │   └── venv/
+│   │   │   ├── requirements.txt
+│   │   │   └── venv
+│   │   └── venv
+│   │       ├── bin
+│   │       ├── include
+│   │       ├── lib
+│   │       └── pyvenv.cfg
 │   ├── components
-│   │   ├── AboutSection.tsx
-│   │   ├── CalculatorModal.tsx
-│   │   ├── FallenHearts.tsx
-│   │   ├── Footer.tsx
-│   │   ├── ResumeSection.tsx
-│   │   ├── SocialIcons.tsx
-│   │   └── img/
-│   │       ├── myphoto.jpeg
-│   │       └── photo1.jpeg
-│   ├── header
-│   │   ├── AboutButton.tsx
-│   │   ├── ChatMeButton.tsx
-│   │   ├── ContactButton.tsx
-│   │   ├── Header.tsx
-│   │   └── ProjectsButton.tsx
+│   │   ├── aboutSection
+│   │   │   ├── AboutSection.tsx
+│   │   │   └── ProfileAvatar.tsx
+│   │   ├── calculator
+│   │   │   └── CalculatorModal.tsx
+│   │   ├── chatBot
+│   │   │   └── ChatBot.tsx
+│   │   ├── chatButton
+│   │   │   └── ChatButton.tsx
+│   │   ├── fallenHearts
+│   │   │   └── FallenHearts.tsx
+│   │   ├── footer
+│   │   │   ├── Footer.tsx
+│   │   │   └── SocialIcons.tsx
+│   │   ├── header
+│   │   │   ├── AboutButton.tsx
+│   │   │   ├── ChatMeButton.tsx
+│   │   │   ├── ContactButton.tsx
+│   │   │   ├── Header.tsx
+│   │   │   └── ProjectsButton.tsx
+│   │   ├── img
+│   │   │   ├── BackgroundImage.tsx
+│   │   │   ├── myphoto.jpeg
+│   │   │   └── photo1.jpeg
+│   │   └── resumeSection
+│   │       └── ResumeSection.tsx
+│   ├── declarations.d.ts
 │   ├── index.css
 │   ├── index.tsx
 │   ├── logo.svg
