@@ -15,10 +15,28 @@ module.exports = {
         'background-color-button': '#27ae60'
       },
       fontFamily: {
-        sans: ['Helvetica', 'Arial', 'sans-serif'],
+        sans: ['Helvetica', 'Arial', 'sans-serif'], // Общий sans-serif
+        custom: ['Roboto', 'sans-serif'], // Ваш кастомный шрифт
+      },
+      fontWeight: {
+        extralight: 200,
+        light: 300,
+        regular: 400,
+      },
+      fontStyle: {
+        italic: 'italic',
       },
       backgroundImage: {
         'hero-pattern': "url('./img/photo1.jpeg')",
+      },
+      backgroundSize: {
+        'fit': 'contain', // Фон адаптируется полностью
+        'full': '100% 100%', // Заполнение контейнера
+      },
+      backgroundPosition: {
+        'center': 'center',
+        'top': 'top',
+        'bottom': 'bottom',
       },
       boxShadow: {
         custom: '0 4px 6px rgba(0, 0, 0, 0.1)',
@@ -35,4 +53,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

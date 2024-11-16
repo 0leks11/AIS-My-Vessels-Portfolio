@@ -54,7 +54,7 @@ const App: React.FC = () => {
 
         
         {/* Main container for AboutSection and ResumeSection with 8px margin */}
-        <div className="container mx-2">
+        <div className="container m-2">
           <AboutSection />
           {/* Spacer between AboutSection and ResumeSection */}
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
