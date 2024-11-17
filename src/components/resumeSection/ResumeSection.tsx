@@ -1,6 +1,7 @@
 // src/components/ResumeSection.tsx
 import React from 'react';
 import SkillItem from './SkillItem';
+import ExperianceItem from './ExperianceItem';
 
 
 const skills = [
@@ -12,6 +13,21 @@ const skills = [
     { skill: 'Git', description: 'Proficient in Git for managing code changes and collaborating on projects with distributed teams.' },
     { skill: 'Google Cloud & Docker', description: 'Familiar with deploying applications on Google Cloud and using Docker for containerized environments, ensuring consistent and reliable deployments.' },
 ];
+
+const experiances = [
+    { experiance: [
+        'Frontend Developer WebSolo', 
+        'Kyiv (Remote)', 
+        'November 2023 – April 2024'], 
+        description: [
+            'Developed and maintained responsive, dynamic user interfaces using JavaScript, TypeScript, React, and Tailwind CSS, focusing on modular and clean code.',
+            'Collaborated on building new front-end features that enhanced user engagement and improved usability.',
+            'Ensured cross-browser compatibility and performance optimization for web applications, leveraging Tailwind CSS for efficient styling and responsiveness.', 
+            'Utilized Git for version control, effectively collaborating with team members and managing code updates.', 
+            'Conducted code reviews and testing to ensure high-quality deliverables aligned with project requirements.'
+        ] },
+
+    ];
 
 const ResumeSection: React.FC = () => {
     return (
@@ -39,12 +55,16 @@ const ResumeSection: React.FC = () => {
                 <div className="hidden lg:block w-px h-auto bg-gray-300 mx-6"></div>
 
                 {/* Experience Section */}
-                <div className="experience-container flex-1 w-full mb-6 lg:mb-0 lg:w-auto">
+                <div className="experience-container flex-1 flex-col w-full mb-6 lg:mb-0 lg:w-auto">
                     <h3 className="text-lg font-semibold mb-2">Work Experience</h3>
-                    <ul className="list-disc list-inside space-y-1">
-                        <li>Advanced full-stack capabilities by developing and deploying a personal portfolio application...</li>
-                        <li>Refined front-end skills through hands-on work with JavaScript, TypeScript, React, and Tailwind CSS...</li>
-                    </ul>
+                    <div>
+                        {experiances.map((item, index) => (
+                            <ExperianceItem 
+                                key={index} 
+                                experiance={item.experiance} 
+                                description={item.description} />
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -62,3 +82,10 @@ const ResumeSection: React.FC = () => {
 };
 
 export default ResumeSection;
+
+
+
+
+
+
+
