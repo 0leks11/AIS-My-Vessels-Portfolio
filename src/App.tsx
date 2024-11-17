@@ -50,7 +50,7 @@ const App: React.FC = () => {
         <Header windowSize={windowSize} />
 
         {/* Отступ с плавным переходом между Header и AboutSection */}
-        <div className="h-[100px] sm:h-[70px] lg:h-[110px] transition-all duration-500"></div>
+        <div className="h-[70px] sm:h-[50px] lg:h-[80px] transition-all duration-500"></div>
 
         
         {/* Main container for AboutSection and ResumeSection with 8px margin */}

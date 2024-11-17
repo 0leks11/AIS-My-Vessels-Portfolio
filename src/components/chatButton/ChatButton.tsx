@@ -26,7 +26,7 @@ const ChatButton: React.FC<ChatButtonProps> = ({ onClick, isChatOpen }) => {
         text-xl
       `}
     >
-      {isChatOpen ? '✕' : 'Chat me'}
+      {isChatOpen ? '✕' : 'Chat'}
     </button>
   );
 };

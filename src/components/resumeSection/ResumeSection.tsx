@@ -16,7 +16,7 @@ const skills = [
 const ResumeSection: React.FC = () => {
     return (
         // 7th Container: Main Wrapper Container
-        <div className="resume-section-wrapper min-w-[320px] max-w-4xl mx-auto p-6 bg-white bg-opacity-40 backdrop-blur-md rounded-lg shadow-md">
+        <section className="resume-section-wrapper min-w-[320px] max-w-4xl mx-auto p-3 md:p-6 bg-white bg-opacity-40 backdrop-blur-md rounded-lg shadow-md">
             
             {/* 1st Container: Resume Header */}
             <div className="resume-header text-center mb-6">
@@ -57,7 +57,7 @@ const ResumeSection: React.FC = () => {
             <div className="suggested-rate-content text-center">
                 <p>As a junior developer starting out on Upwork...</p>
             </div>
-        </div>
+        </section>
     );
 };
 

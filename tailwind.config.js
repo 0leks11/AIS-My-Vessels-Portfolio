@@ -16,12 +16,13 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Helvetica', 'Arial', 'sans-serif'], // Общий sans-serif
-        custom: ['Roboto', 'sans-serif'], // Ваш кастомный шрифт
+        custom: ['Roboto', 'sans-serif,', '"Open Sans"', 'sans-serif'], // Ваш кастомный шрифт
       },
       fontWeight: {
-        extralight: 200,
-        light: 300,
-        regular: 400,
+        thin: '100',
+        extralight: '200',
+        light: '300',
+        normal: '400',
       },
       fontStyle: {
         italic: 'italic',
