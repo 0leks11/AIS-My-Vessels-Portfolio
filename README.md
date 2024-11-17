@@ -37,8 +37,12 @@ my-website/
 │   │       └── pyvenv.cfg
 │   ├── components
 │   │   ├── aboutSection
+│   │   │   ├── AboutButtons.tsx
+│   │   │   ├── AboutNameplate.tsx
 │   │   │   ├── AboutSection.tsx
-│   │   │   └── ProfileAvatar.tsx
+│   │   │   ├── AboutText.tsx
+│   │   │   ├── ProfileAvatarL.tsx
+│   │   │   └── ProfileAvatarS.tsx
 │   │   ├── calculator
 │   │   │   └── CalculatorModal.tsx
 │   │   ├── chatBot
@@ -58,10 +62,13 @@ my-website/
 │   │   │   └── ProjectsButton.tsx
 │   │   ├── img
 │   │   │   ├── BackgroundImage.tsx
-│   │   │   ├── myphoto.jpeg
-│   │   │   └── photo1.jpeg
+│   │   │   ├── horizontal.jpeg
+│   │   │   ├── myphotoL.jpeg
+│   │   │   ├── myphotoS.jpeg
+│   │   │   └── vertical.jpeg
 │   │   └── resumeSection
-│   │       └── ResumeSection.tsx
+│   │       ├── ResumeSection.tsx
+│   │       └── SkillItem.tsx
 │   ├── declarations.d.ts
 │   ├── index.css
 │   ├── index.tsx
@@ -69,6 +76,7 @@ my-website/
 │   ├── reportWebVitals.js
 │   └── setupTests.js
 ├── tailwind.config.js
+└── tsconfig.json
 └── tsconfig.json
 
 ```
