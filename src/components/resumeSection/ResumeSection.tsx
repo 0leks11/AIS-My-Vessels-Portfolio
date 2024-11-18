@@ -27,6 +27,19 @@ const experiances = [
             'Conducted code reviews and testing to ensure high-quality deliverables aligned with project requirements.'
         ] },
 
+    {experiance: [
+        'Full-Stack Developer (Freelance)', 
+        'UpWork, Remote', 
+        'July 2024 – Present'], 
+        description: [
+            'Developed and deployed a personal web application that functions as a dynamic portfolio, built with JavaScript, TypeScript, React, and Tailwind CSS, showcasing interactive elements and responsive design.',
+            'Integrated a custom ChatBot using OpenAI API, with backend logic written in Python and Django, and managed a PostgreSQL database for storing query-response pairs.',
+            'Designed RESTful APIs in Django, enabling smooth interaction between the chatbot front-end and backend database.', 
+            'Worked with clients on Upwork to develop and enhance various web applications, incorporating JavaScript, React, TypeScript, Django, and PostgreSQL to deliver scalable and high-performing solutions.', 
+            'Ensured data integrity and security in backend applications, implementing best practices in API management and database interactions.'
+        ] },
+        
+    
     ];
 
 const ResumeSection: React.FC = () => {
