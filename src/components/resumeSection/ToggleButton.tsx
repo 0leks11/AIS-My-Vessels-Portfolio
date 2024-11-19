@@ -23,7 +23,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
       <span
         className={`transform transition-transform duration-300 ${
           isOpen ? 'rotate-180' : 'rotate-0'
-        } mr-4`} // Добавлен класс mr-4 для отступа справа
+        } mr-4`}
       >
         ▼
       </span>

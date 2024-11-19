@@ -39,7 +39,7 @@ const VolumeItem: React.FC<VolumeItemProps> = ({ title, description, isSkill = f
 
   useEffect(() => {
     if (isOpen && contentRef.current) {
-        setHeight(contentRef.current.scrollHeight); // Автоматически подстраивает высоту
+        setHeight(contentRef.current.scrollHeight);
     }
   }, [isOpen]);
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/header/Header';
 import AboutSection from './components/aboutSection/AboutSection';
 import ResumeSection from './components/resumeSection/ResumeSection';
+import RepositorySection from './components/repositorySection/RepositorySection';
 import CalculatorModal from './components/calculator/CalculatorModal';
 import Footer from './components/footer/Footer';
 import FallenHearts from './components/fallenHearts/FallenHearts';
@@ -59,6 +60,8 @@ const App: React.FC = () => {
           {/* Spacer between AboutSection and ResumeSection */}
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
           <ResumeSection />
+          <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
+          <RepositorySection />
         </div>
 
         <CalculatorModal />
