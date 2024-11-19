@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+// src/components/ResumeSection/VolumeItem.tsx
+import React, { useState, useRef, useEffect } from 'react';
 import ToggleButton from './ToggleButton';
 
 interface VolumeItemProps {
-  title: string | string[]; // Заголовок (для навыков или опыта)
-  description: string[];    // Описание (массив строк)
-  isSkill?: boolean;        // Флаг для указания типа (Skill или Experience)
+  title: string | string[]; 
+  description: string[];    
+  isSkill?: boolean;        
 }
 
 const VolumeItem: React.FC<VolumeItemProps> = ({ title, description, isSkill = false }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
 
   const isArray = Array.isArray(title);
 
@@ -28,8 +31,17 @@ const VolumeItem: React.FC<VolumeItemProps> = ({ title, description, isSkill = f
   );
 
   const toggleDescription = () => {
+    if (contentRef.current) {
+        setHeight(isOpen ? 0 : contentRef.current.scrollHeight);
+    }
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    if (isOpen && contentRef.current) {
+        setHeight(contentRef.current.scrollHeight); // Автоматически подстраивает высоту
+    }
+  }, [isOpen]);
 
   return (
     <div className="mb-4">
@@ -40,7 +52,12 @@ const VolumeItem: React.FC<VolumeItemProps> = ({ title, description, isSkill = f
         className="w-full flex justify-between items-center py-2"
       />
 
-      {isOpen && (
+      {/* Description Section */}
+      <div
+        ref={contentRef}
+        style={{ height: isOpen ? `${height}px` : '0px' }}
+        className="overflow-hidden transition-all duration-500 ease-in-out"
+      >
         <div className="mt-2 text-gray-600">
           {description.map((desc, index) => (
             <p key={index} className="mb-2">
@@ -48,7 +65,7 @@ const VolumeItem: React.FC<VolumeItemProps> = ({ title, description, isSkill = f
             </p>
           ))}
         </div>
-      )}
+      </div>
     </div>
   );
 };

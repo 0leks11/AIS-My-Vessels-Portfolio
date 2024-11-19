@@ -68,7 +68,8 @@ my-website/
 │   │   │   └── vertical.jpeg
 │   │   └── resumeSection
 │   │       ├── ResumeSection.tsx
-│   │       └── SkillItem.tsx
+│   │       ├── ToggleButton.tsx
+│   │       └── VolumeItem.tsx
 │   ├── declarations.d.ts
 │   ├── index.css
 │   ├── index.tsx
@@ -76,7 +77,6 @@ my-website/
 │   ├── reportWebVitals.js
 │   └── setupTests.js
 ├── tailwind.config.js
-└── tsconfig.json
 └── tsconfig.json
 
 ```

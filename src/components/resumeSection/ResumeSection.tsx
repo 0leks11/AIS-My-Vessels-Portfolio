@@ -1,4 +1,4 @@
-// src/components/ResumeSection.tsx
+// src/components/ResumeSection/ResumeSection.tsx
 import React from 'react';
 import VolumeItem from './VolumeItem';
 
@@ -102,10 +102,3 @@ const ResumeSection: React.FC = () => {
 };
 
 export default ResumeSection;
-
-
-
-
-
-
-
