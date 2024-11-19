@@ -1,21 +1,20 @@
 // src/components/ResumeSection.tsx
 import React from 'react';
-import SkillItem from './SkillItem';
-import ExperianceItem from './ExperianceItem';
+import VolumeItem from './VolumeItem';
 
 
 const skills = [
-    { skill: 'JavaScript & TypeScript', description: 'Advanced knowledge of JavaScript with type-safe practices in TypeScript for creating scalable and reliable applications.' },
-    { skill: 'React', description: 'Skilled in building modular, component-based architectures in React.' },
-    { skill: 'Tailwind CSS', description: 'Proficient in Tailwind CSS for efficient and flexible styling, enabling rapid prototyping and customization in various projects.' },
-    { skill: 'Django & Python', description: 'Experience with Django for backend development, building robust APIs, and managing PostgreSQL databases for data-driven applications.' },
-    { skill: 'API Integration', description: 'Strong experience in integrating and managing APIs, ensuring seamless data flow between front-end interfaces and backend services.' },
-    { skill: 'Git', description: 'Proficient in Git for managing code changes and collaborating on projects with distributed teams.' },
-    { skill: 'Google Cloud & Docker', description: 'Familiar with deploying applications on Google Cloud and using Docker for containerized environments, ensuring consistent and reliable deployments.' },
+    { title: ['JavaScript & TypeScript'], description: ['Advanced knowledge of JavaScript with type-safe practices in TypeScript for creating scalable and reliable applications.'] },
+    { title: ['React'], description: ['Skilled in building modular, component-based architectures in React.'] },
+    { title: ['Tailwind CSS'], description: ['Proficient in Tailwind CSS for efficient and flexible styling, enabling rapid prototyping and customization in various projects.'] },
+    { title: ['Django & Python'], description: ['Experience with Django for backend development, building robust APIs, and managing PostgreSQL databases for data-driven applications.'] },
+    { title: ['API Integration'], description: ['Strong experience in integrating and managing APIs, ensuring seamless data flow between front-end interfaces and backend services.'] },
+    { title: ['Git'], description: ['Proficient in Git for managing code changes and collaborating on projects with distributed teams.'] },
+    { title: ['Google Cloud & Docker'], description: ['Familiar with deploying applications on Google Cloud and using Docker for containerized environments, ensuring consistent and reliable deployments.'] },
 ];
 
 const experiances = [
-    { experiance: [
+    { title: [
         'Frontend Developer WebSolo', 
         'Kyiv (Remote)', 
         'November 2023 – April 2024'], 
@@ -27,7 +26,7 @@ const experiances = [
             'Conducted code reviews and testing to ensure high-quality deliverables aligned with project requirements.'
         ] },
 
-    {experiance: [
+    {title: [
         'Full-Stack Developer (Freelance)', 
         'UpWork, Remote', 
         'July 2024 – Present'], 
@@ -59,7 +58,13 @@ const ResumeSection: React.FC = () => {
                     <h3 className="text-lg font-semibold mb-2">Skills</h3>
                     <div>
                         {skills.map((item, index) => (
-                            <SkillItem key={index} skill={item.skill} description={item.description} />
+                            <VolumeItem 
+                                key={index} 
+                                title={item.title} 
+                                description={item.description} 
+                                isSkill={true} 
+                            />
+                                
                         ))}
                     </div>
                 </div>
@@ -72,10 +77,12 @@ const ResumeSection: React.FC = () => {
                     <h3 className="text-lg font-semibold mb-2">Work Experience</h3>
                     <div>
                         {experiances.map((item, index) => (
-                            <ExperianceItem 
+                            <VolumeItem 
                                 key={index} 
-                                experiance={item.experiance} 
-                                description={item.description} />
+                                title={item.title} 
+                                description={item.description}
+                                isSkill={false} 
+                            />
                         ))}
                     </div>
                 </div>
