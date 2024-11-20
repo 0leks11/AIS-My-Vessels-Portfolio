@@ -1,6 +1,7 @@
 //src/components/RepositorySection/DirectoryContents.tsx
 import React from 'react';
 import { GitHubContent } from '../../types/githubTypes';
+import { FileIcon, FileDirectoryIcon } from '@primer/octicons-react';
 
 interface DirectoryContentsProps {
   contents: GitHubContent[];
@@ -9,18 +10,21 @@ interface DirectoryContentsProps {
 
 const DirectoryContents: React.FC<DirectoryContentsProps> = ({ contents, handleNavigate }) => {
   return (
-    <div className="repository-content">
+    <ul className="Box border-slate-200 list-style-none">
       {contents.map((item) => (
-        <div
+        <li
           key={item.sha}
-          className="flex items-center py-2 cursor-pointer hover:bg-gray-100"
+          className="Box-row border-slate-200 d-flex flex-items-center"
           onClick={() => handleNavigate(item)}
+          style={{ cursor: 'pointer' }}
         >
-          <span className="mr-2">{item.type === 'dir' ? '📁' : '📄'}</span>
-          <span className="text-blue-700">{item.name}</span>
-        </div>
+          <span className="mr-2">
+            {item.type === 'dir' ? <FileDirectoryIcon /> : <FileIcon />}
+          </span>
+          <span className="Link--primary text-bold">{item.name}</span>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

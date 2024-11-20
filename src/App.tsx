@@ -8,7 +8,8 @@ import Footer from './components/footer/Footer';
 import FallenHearts from './components/fallenHearts/FallenHearts';
 import ChatBot from './components/chatBot/ChatBot';
 import ChatButton from './components/chatButton/ChatButton';
-import BackgroundImage from './components/img/BackgroundImage'; 
+
+ {/*import BackgroundImage from './components/img/BackgroundImage'; */}
 
 const App: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
@@ -36,10 +37,10 @@ const App: React.FC = () => {
 
   return (
 
-    <div className="relative min-h-screen flex flex-col overflow-hidden">
+    <div className="relative min-h-screen bg-sky-800 flex flex-col overflow-hidden">
 
 
-      <BackgroundImage />
+      {/*<BackgroundImage /> */}
 
 
       <div className="absolute inset-0 z-10">

@@ -10,6 +10,21 @@ export interface GitHubContent {
     html_url: string;
     download_url: string;
   }
+
+  export interface TreeNode {
+    name: string;
+    path: string;
+    type: 'file' | 'directory';
+    children?: TreeNode[];
+  }
+
+export interface TreeItem {
+    path: string;
+    mode: string;
+    type: 'blob' | 'tree';
+    sha: string;
+    url: string;
+  }
   
   export interface GitHubCommit {
     sha: string;

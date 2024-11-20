@@ -10,11 +10,8 @@ const Navigation: React.FC<NavigationProps> = ({ pathStack, handleBack }) => {
   return (
     <>
       {pathStack.length > 1 && (
-        <button
-          onClick={handleBack}
-          className="mb-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          Назад
+        <button onClick={handleBack} className="btn btn-sm mb-2">
+          ← Back
         </button>
       )}
     </>

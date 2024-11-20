@@ -7,29 +7,29 @@ interface CommitsListProps {
 }
 
 const CommitsList: React.FC<CommitsListProps> = ({ commits }) => {
-  return (
-    <div className="commits mb-6">
-      <h3 className="text-2xl font-semibold mb-4">Recent Commits</h3>
-      <ul>
-        {commits.map((commit) => (
-          <li key={commit.sha} className="mb-4">
-            <a
-              href={commit.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-700 font-medium"
-            >
-              {commit.commit.message}
-            </a>
-            <p className="text-gray-600">
-              Committed on {new Date(commit.commit.author.date).toLocaleDateString()} by{' '}
-              {commit.commit.author.name}
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    return (
+      <div className="Box border-slate-200 mb-4">
+        <h3 className="Box-header border-slate-200 h5">Recent Commits</h3>
+        <ul className="list-style-none">
+          {commits.map((commit) => (
+            <li key={commit.sha} className="Box-row border-slate-200">
+              <a
+                href={commit.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-bold Link--primary"
+              >
+                {commit.commit.message}
+              </a>
+              <p className="text-small text-gray">
+                Committed on {new Date(commit.commit.author.date).toLocaleDateString()} by{' '}
+                {commit.commit.author.name}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
 };
 
 export default CommitsList;

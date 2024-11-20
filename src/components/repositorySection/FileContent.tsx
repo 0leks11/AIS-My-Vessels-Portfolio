@@ -10,20 +10,22 @@ interface FileContentProps {
 }
 
 const FileContent: React.FC<FileContentProps> = ({ fileContent, currentFileName }) => {
-  useEffect(() => {
-    if (fileContent) {
-      hljs.highlightAll();
-    }
-  }, [fileContent]);
-
-  return (
-    <div className="file-content mt-4">
-      <h3 className="text-2xl font-semibold mb-4">{currentFileName}</h3>
-      <pre className="bg-gray-800 text-white p-4 rounded overflow-x-auto text-sm">
-        <code className={getLanguageClass(currentFileName)}>{fileContent}</code>
-      </pre>
-    </div>
-  );
-};
+    useEffect(() => {
+      if (fileContent) {
+        hljs.highlightAll();
+      }
+    }, [fileContent]);
+  
+    return (
+      <div>
+        <h3 className="Box border-slate-200 text-base font-semibold p-2 mb-1">{currentFileName}</h3>
+        <div className="Box border-slate-100">
+          <pre className="Box-body bg-slate-100 overflow-x-auto text-sm border-none">
+            <code className={getLanguageClass(currentFileName)}>{fileContent}</code>
+          </pre>
+        </div>
+      </div>
+    );
+  };
 
 export default FileContent;
