@@ -44,7 +44,7 @@ const experiances = [
 const ResumeSection: React.FC = () => {
     return (
         // 7th Container: Main Wrapper Container
-        <section className="resume-section-wrapper min-w-[320px] max-w-4xl mx-auto p-3 md:p-6 bg-white bg-opacity-40 backdrop-blur-md rounded-lg shadow-md">
+        <section className="resume-section-wrapper min-w-[320px] max-w-4xl mx-auto p-3 md:p-6 bg-white bg-opacity-40 backdrop-blur-xl rounded-lg shadow-md">
             
             {/* 1st Container: Resume Header */}
             <div className="resume-header text-center mb-6">

@@ -22,7 +22,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
         // Здесь вы можете реализовать навигацию или другое действие
     };
     return (
-        <section className={`resume-section min-w-[320px] max-w-4xl mx-auto p-3 md:p-6 bg-white bg-opacity-40 backdrop-blur-md rounded-lg shadow-md ${className}`}>
+        <section className={`resume-section min-w-[320px] max-w-4xl mx-auto p-3 md:p-6 bg-white bg-opacity-40 backdrop-blur-xl rounded-lg shadow-md ${className}`}>
             {/* Основной контейнер */}
             <div className="flex flex-col md:flex-row md:space-x-6">
                 {/* Левый блок для средних и больших экранов */}
@@ -33,21 +33,21 @@ const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
                 {/* Правый блок */}
                 <div className="flex flex-col w-full">
                     {/* Макет для маленьких экранов: PhotoS + Nameplate */}
-                    <div className="flex flex-row items-center mb-4 md:hidden">
+                    <div className="flex flex-row items-center mb-1 md:hidden">
                         <div className="flex-shrink-0">
                             <ProfileAvatarS />
                         </div>
-                        <div className="ml-4">
+                        <div className="ml-2">
                             <AboutNameplate />
                         </div>
                     </div>
                     {/* Макет для средних и больших экранов: Nameplate */}
-                    <div className="hidden md:block mb-4">
+                    <div className="hidden md:block mb-2">
                         <AboutNameplate />
                     </div>
 
                     {/* Текст */}
-                    <div className="mb-4 text-justify">
+                    <div className="mb-2 text-justify">
                         <AboutText />
                     </div>
 

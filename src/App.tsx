@@ -52,10 +52,11 @@ const App: React.FC = () => {
         <Header windowSize={windowSize} />
 
         {/* Отступ с плавным переходом между Header и AboutSection */}
-        <div className="h-[70px] sm:h-[50px] lg:h-[80px] transition-all duration-500"></div>
+        <div className="h-[100px] sm:h-[90px] lg:h-[110px] transition-all duration-500"></div>
 
-        
         {/* Main container for AboutSection and ResumeSection with 8px margin */}
+        
+        <CalculatorModal />
         <div className="container m-2">
           <AboutSection />
           {/* Spacer between AboutSection and ResumeSection */}
@@ -63,14 +64,9 @@ const App: React.FC = () => {
           <ResumeSection />
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
           <RepositorySection />
+          <div className="h-[20px] sm:h-[10px] lg:h-[30px] flex-grow transition-all duration-500"></div>
+          <Footer ref={footerRef} windowSize={windowSize} />
         </div>
-
-        <CalculatorModal />
-
-        {/* Отступ между ResumeSection и Footer с гибким ростом и плавным переходом */}
-        <div className="h-[20px] sm:h-[10px] lg:h-[30px] flex-grow transition-all duration-500"></div>
-
-        <Footer ref={footerRef} windowSize={windowSize} />
       </div>
       <div className="absolute inset-30 z-40">
       {isChatOpen && <ChatBot />}

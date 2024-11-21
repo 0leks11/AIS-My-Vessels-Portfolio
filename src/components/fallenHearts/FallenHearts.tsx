@@ -103,7 +103,7 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
                   // Устанавливаем таймер на удаление
                   setTimeout(() => {
                     Composite.remove(world, block);
-                  }, 2000); // Удаляем блок через 2 секунды после столкновения
+                  }, 3000); // Удаляем блок через 2 секунды после столкновения
                 }
               });
             });
@@ -114,7 +114,7 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
 
     let interval = setInterval(() => {
       addPixelHeart(Math.random() * windowSize.width, 0);
-    }, 1000);
+    }, 2000);
 
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden') {
@@ -122,7 +122,7 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
       } else {
         interval = setInterval(() => {
           addPixelHeart(Math.random() * windowSize.width, 0);
-        }, 1000);
+        }, 3000);
       }
     };
 

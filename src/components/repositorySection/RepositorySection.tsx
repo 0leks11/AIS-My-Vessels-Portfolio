@@ -39,15 +39,18 @@ const RepositorySection: React.FC<RepositorySectionProps> = ({ className }) => {
   const tree = React.useMemo(() => constructTree(treeData), [treeData]);
 
   return (
-    <section className={`reposytory-section min-w-[320px] max-w-4xl mx-auto p-3 md:p-6 bg-slate-300 rounded-lg shadow-md ${className}`}>
+    <section className={`reposytory-section min-w-[320px] max-w-4xl mx-auto p-3 md:p-6 bg-slate-100 rounded-lg shadow-md ${className}`}>
       {/* Верхняя часть с аватаром и информацией о репозитории */}
-      {userProfile && <UserProfile userProfile={userProfile} />}
-
+        {userProfile &&(
+            <div className="mr-2">
+                <UserProfile userProfile={userProfile} />
+            </div>
+        )}
       {/* Основной контент */}
       <div className="flex">
         {/* Боковая панель */}
         {!loading && (
-          <div className="w-1/5 bg-slate-100 border-r border-gray-300" style={{ height: 'calc(100vh - 100px)' }}>
+          <div className="w-1/5 bg-slate-100 border-r border-gray-300 mt-2" style={{ height: 'calc(100vh - 100px)' }}>
             <Sidebar treeData={tree} onSelectFile={handleSelectFile} />
           </div>
         )}

@@ -8,12 +8,12 @@ interface UserProfileProps {
 
 const UserProfile: React.FC<UserProfileProps> = ({ userProfile }) => {
     return (
-      <div className="Box border-slate-200 d-flex flex-items-center mb-1">
+      <div className="Box border-slate-200 bg-white d-flex flex-items-center p-2 mb-1">
         <a href={userProfile.html_url} target="_blank" rel="noopener noreferrer">
           <img
             src={userProfile.avatar_url}
             alt={userProfile.name}
-            className="w-11 h-11 rounded-full mr-3 ml-3"
+            className="w-12 h-12 rounded-full mr-3 ml-3"
           />
         </a>
         <div>
