@@ -1,5 +1,6 @@
 // src/hooks/useRepositoryTree.ts
 import { useState, useEffect } from 'react';
+import { useLoadingError } from './useLoadingError';
 
 interface TreeItem {
   path: string;
@@ -22,28 +23,26 @@ const BRANCH = 'main';
 
 export const useRepositoryTree = () => {
   const [treeData, setTreeData] = useState<TreeItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const { loading, error, execute } = useLoadingError<TreeResponse>();
 
   useEffect(() => {
     const fetchRepositoryTree = async () => {
-      try {
+      const data = await execute(async () => {
         const response = await fetch(
           `https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`
         );
         if (!response.ok) {
           throw new Error('Ошибка при загрузке дерева репозитория');
         }
-        const data: TreeResponse = await response.json();
+        return response.json();
+      });
+      if (data) {
         setTreeData(data.tree);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchRepositoryTree();
-  }, []);
+  }, [execute]);
 
-  return { treeData, loading };
+  return { treeData, loading, error };
 };
