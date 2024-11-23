@@ -17,7 +17,7 @@ interface RepositorySectionProps {
 const RepositorySection: React.FC<RepositorySectionProps> = ({ className }) => {
   const { treeData, loading } = useRepositoryTree();
   const userProfile = useUserProfile();
-  const [currentFileName, setCurrentFileName] = React.useState<string>('');
+  const [currentFileName, setCurrentFileName] = React.useState<string>('README.md');
 
   const handleSelectFile = (path: string) => {
     setCurrentFileName(path);
@@ -40,7 +40,7 @@ const RepositorySection: React.FC<RepositorySectionProps> = ({ className }) => {
         {/* Боковая панель */}
         {!loading && (
           <div
-            className="w-1/5 bg-slate-100 border-r border-gray-300 mt-2"
+            className="w-1/5 bg-slate-100 border-r border-gray-300 mt-1"
             style={{ height: 'calc(100vh - 100px)' }}
           >
             <Sidebar treeData={tree} onSelectFile={handleSelectFile} />

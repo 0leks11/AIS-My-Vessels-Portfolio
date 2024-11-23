@@ -9,8 +9,6 @@ import FallenHearts from './components/fallenHearts/FallenHearts';
 import ChatBot from './components/chatBot/ChatBot';
 import ChatButton from './components/chatButton/ChatButton';
 
- {/*import BackgroundImage from './components/img/BackgroundImage'; */}
-
 const App: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
   const toggleChat = () => setIsChatOpen(!isChatOpen);
@@ -64,9 +62,9 @@ const App: React.FC = () => {
           <ResumeSection />
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
           <RepositorySection />
-          <div className="h-[20px] sm:h-[10px] lg:h-[30px] flex-grow transition-all duration-500"></div>
-          <Footer ref={footerRef} windowSize={windowSize} />
         </div>
+        <div className="h-[20px] sm:h-[10px] lg:h-[30px] flex-grow transition-all duration-500"></div>
+        <Footer ref={footerRef} windowSize={windowSize} />
       </div>
       <div className="absolute inset-30 z-40">
       {isChatOpen && <ChatBot />}
