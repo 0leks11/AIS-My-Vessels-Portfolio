@@ -1,25 +1,24 @@
+// src/components/repositorySection/FileContent.tsx
 import React, { useEffect, useRef } from 'react';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
 import { getLanguageClass } from '../../utils/getLanguageClass';
-import { useRepositoryContents } from '../../hooks/useRepositoryContents';
-import { RepositoryFile } from '../../types/githubTypes';
+import { useFileContent } from '../../hooks/useFileContent';
 
 interface FileContentProps {
-  currentFileName: string; // Имя текущего файла
+  currentFileName: string; // Имя текущего файла (путь к файлу)
 }
 
 const FileContent: React.FC<FileContentProps> = ({ currentFileName }) => {
-  // Используем хук для загрузки содержимого файла
-  const { content, isLoading, error } = useRepositoryContents(currentFileName);
+  const { fileContent, loadingFileContent, errorFileContent } = useFileContent(currentFileName);
   const codeRef = useRef<HTMLElement>(null);
 
   // Подсветка синтаксиса после загрузки содержимого
   useEffect(() => {
-    if (content && codeRef.current) {
+    if (fileContent && codeRef.current) {
       hljs.highlightElement(codeRef.current); // Подсвечиваем содержимое
     }
-  }, [content]);
+  }, [fileContent]);
 
   return (
     <div className="my-4">
@@ -30,20 +29,20 @@ const FileContent: React.FC<FileContentProps> = ({ currentFileName }) => {
 
       {/* Контейнер с содержимым файла */}
       <div className="Box border border-slate-200 rounded-md bg-white">
-        {isLoading ? (
+        {loadingFileContent ? (
           // Индикатор загрузки
           <div className="p-4 text-center text-gray-500">Загрузка файла...</div>
-        ) : error ? (
+        ) : errorFileContent ? (
           // Сообщение об ошибке
-          <div className="p-4 text-center text-red-500">Ошибка загрузки файла</div>
-        ) : (
+          <div className="p-4 text-center text-red-500">{errorFileContent}</div>
+        ) : fileContent ? (
           // Содержимое файла
           <pre className="p-4 overflow-x-auto text-sm">
             <code ref={codeRef} className={getLanguageClass(currentFileName)}>
-              {content}
+              {fileContent}
             </code>
           </pre>
-        )}
+        ) : null}
       </div>
     </div>
   );
