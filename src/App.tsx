@@ -14,13 +14,11 @@ const App: React.FC = () => {
   const toggleChat = () => setIsChatOpen(!isChatOpen);
   const footerRef = useRef<HTMLDivElement | null>(null);
 
-  // Добавляем состояние для хранения размеров окна
   const [windowSize, setWindowSize] = useState<{ width: number; height: number }>({
     width: window.innerWidth,
     height: window.innerHeight,
   });
 
-  // Обработчик изменения размера окна
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -34,36 +32,22 @@ const App: React.FC = () => {
   }, []);
 
   return (
-
     <div className="relative min-h-screen bg-sky-800 flex flex-col overflow-hidden">
-
-
-      {/*<BackgroundImage /> */}
-
-
       <div className="absolute inset-0 z-10">
         <FallenHearts footerRef={footerRef} windowSize={windowSize} />
       </div>
-
-
       <div className="relative min-h-screen flex flex-col items-center z-20">
         <Header windowSize={windowSize} />
-
-        {/* Отступ с плавным переходом между Header и AboutSection */}
         <div className="h-[100px] sm:h-[90px] lg:h-[110px] transition-all duration-500"></div>
-
-        {/* Main container for AboutSection and ResumeSection with 8px margin */}
-        
         <CalculatorModal />
         <div className="container m-2">
           <AboutSection />
-          {/* Spacer between AboutSection and ResumeSection */}
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
           <ResumeSection />
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
           <RepositorySection />
         </div>
-        <div className="h-[20px] sm:h-[10px] lg:h-[30px] flex-grow transition-all duration-500"></div>
+        <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
         <Footer ref={footerRef} windowSize={windowSize} />
       </div>
       <div className="absolute inset-30 z-40">

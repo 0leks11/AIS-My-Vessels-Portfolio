@@ -11,24 +11,20 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
   const groundRef = useRef<Body | null>(null);
 
   useEffect(() => {
-    // Создаем физический движок
     const engine = Engine.create(); 
     const world = engine.world;
 
-    // Создаем землю (пол)
     const ground = Bodies.rectangle(
-      windowSize.width / 2,  // Положение по оси X
-      window.innerHeight,     // Положение по оси Y
-      windowSize.width,      // Ширина земли
-      10,                     // Высота земли
-      { isStatic: true }      // Делаем землю статичной
+      windowSize.width / 2, 
+      window.innerHeight,   
+      windowSize.width,      
+      10,                  
+      { isStatic: true }   
     );
 
-    // Добавляем землю в мир
     groundRef.current = ground;
     Composite.add(world, ground);
 
-    // Обновляем позицию пола в зависимости от футера
     const updateGroundPosition = () => {
       if (footerRef.current) {
         const footerRect = footerRef.current.getBoundingClientRect();
@@ -43,24 +39,22 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
     window.addEventListener('scroll', updateGroundPosition);
     updateGroundPosition();
 
-    // Настройки рендеринга
     const render = Render.create({
-      element: canvasRef.current?.parentNode as HTMLElement, // Привязываем рендер к родителю canvas
-      canvas: canvasRef.current as HTMLCanvasElement,        // Привязываем рендер к canvas через ref
+      element: canvasRef.current?.parentNode as HTMLElement,
+      canvas: canvasRef.current as HTMLCanvasElement,        
       engine: engine,
       options: {
         width: windowSize.width,
         height: document.documentElement.scrollHeight,
         wireframes: false,
-        background: 'transparent',  // Прозрачный фон
+        background: 'transparent',
       },
     });
 
-    Render.run(render);  // Запускаем рендер
+    Render.run(render); 
     const runner = Runner.create();
-    Runner.run(runner, engine);  // Запускаем физический движок
+    Runner.run(runner, engine);
 
-    // Функция для добавления пиксельного сердца
     const addPixelHeart = (x: number, y: number) => {
       const heartPattern: number[][] = [
         [0, 0, 1, 0, 0, 0, 1, 0, 0],
@@ -85,25 +79,21 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
               blockSize,
               blockSize,
               {
-                restitution: 1.2,  // Упругость при столкновении
-                isStatic: false,   // Блок не статический
+                restitution: 1.2, 
+                isStatic: false, 
                 render: {
-                  fillStyle: 'red',  // Цвет блоков
+                  fillStyle: 'red', 
                 },
               }
             );
-            Composite.add(world, heartBlock);  // Добавляем блок в мир
-
-
-            // Добавляем событие столкновения с землей
+            Composite.add(world, heartBlock);
             Events.on(engine, 'collisionStart', (event: Matter.IEventCollision<Engine>) => {
               event.pairs.forEach(({ bodyA, bodyB }) => {
                 const block = bodyA === ground ? bodyB : bodyA;
                 if (block === heartBlock) {
-                  // Устанавливаем таймер на удаление
                   setTimeout(() => {
                     Composite.remove(world, block);
-                  }, 3000); // Удаляем блок через 2 секунды после столкновения
+                  }, 3000);
                 }
               });
             });
@@ -127,8 +117,6 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    // Очищаем все при размонтировании компонента
     return () => {
       window.removeEventListener('resize', updateGroundPosition);
       window.removeEventListener('scroll', updateGroundPosition);

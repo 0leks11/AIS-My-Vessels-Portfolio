@@ -17,7 +17,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent  # Поднимаемся на три уровня вверх: settings.py → chatbot → backend → your_project_root
+BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent 
 
 
 # Quick-start development settings - unsuitable for production
@@ -35,7 +35,7 @@ ALLOWED_HOSTS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',  # Адрес вашего React-приложения
+    'http://localhost:3000',
     'http://127.0.0.1:8000',
     'http://127.0.0.1:3000',
 ]
@@ -65,7 +65,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',  # Должен быть в начале
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -80,7 +80,7 @@ ROOT_URLCONF = 'chatbot.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'public'],  # То, где лежит Index.js Странно, что не App.js,,, путь к шаблонам,
+        'DIRS': [BASE_DIR / 'public'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -101,9 +101,9 @@ WSGI_APPLICATION = 'chatbot.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),       # Имя базы данных
-        'USER': os.getenv('DB_USER'),         # Пользователь PostgreSQL
-        'PASSWORD': os.getenv('DB_PASSWORD'),    # Пароль пользователя PostgreSQL
+        'NAME': os.getenv('DB_NAME'),      
+        'USER': os.getenv('DB_USER'),       
+        'PASSWORD': os.getenv('DB_PASSWORD'),  
         'HOST': os.getenv('DB_HOST'),
         'PORT': os.getenv('DB_PORT'),
     }
@@ -147,8 +147,8 @@ STATIC_URL = '/static/'
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '..', '..', 'public'),     # Путь к публичной папке React
-    os.path.join(BASE_DIR, '..', '..', 'components'), # Путь к компонентам React
+    os.path.join(BASE_DIR, '..', '..', 'public'),    
+    os.path.join(BASE_DIR, '..', '..', 'components'), 
 ]
 
 

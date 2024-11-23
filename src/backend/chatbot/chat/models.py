@@ -1,9 +1,9 @@
 # chat/models.py
-from django.db import models  # Импорт моделей
+from django.db import models
 
 class FAQ(models.Model):
-    question = models.CharField(max_length=255)  # Вопрос пользователя
-    answer = models.TextField()  # Ответ на вопрос
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
 
     def __str__(self):
         return self.question

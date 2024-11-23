@@ -7,8 +7,8 @@ const BackgroundImage: React.FC = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const handleResize = () => {
-    setBgHeight(window.innerHeight); // Высота экрана для фиксации высоты фона
-    setIsMobile(window.innerWidth <= 768); // Проверка мобильного устройства
+    setBgHeight(window.innerHeight);
+    setIsMobile(window.innerWidth <= 768); 
   };
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const BackgroundImage: React.FC = () => {
     <div
       className="fixed top-0 left-0 w-full bg-cover bg-center"
       style={{
-        height: `${bgHeight}px`, // Высота равна высоте окна
+        height: `${bgHeight}px`, 
         backgroundImage: `url(${isMobile ? verticalImage : horizontalImage})`,
       }}
     />

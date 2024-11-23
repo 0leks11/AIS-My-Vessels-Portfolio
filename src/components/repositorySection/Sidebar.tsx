@@ -24,7 +24,6 @@ const Sidebar: React.FC<SidebarProps> = ({ treeData, onSelectFile }) => {
     });
   };
 
-  // Функция для фильтрации дерева по поисковому запросу
   const filterTree = (nodes: TreeNode[]): TreeNode[] => {
     return nodes
       .map((node) => {
@@ -44,12 +43,11 @@ const Sidebar: React.FC<SidebarProps> = ({ treeData, onSelectFile }) => {
       .filter((node): node is TreeNode => node !== null);
   };
 
-  // Получаем отфильтрованное дерево
   const filteredTreeData = searchTerm ? filterTree(treeData) : treeData;
 
   return (
     <div className="Box border-slate-300 bg-slate-200 overflow-y-auto" style={{ height: '100%' }}>
-      {/* Поле поиска */}
+
       <div className="p-2">
         <input
           type="text"

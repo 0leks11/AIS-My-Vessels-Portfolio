@@ -1,8 +1,8 @@
 # chat/serializers.py
-from rest_framework import serializers  # Импорт сериализаторов
-from .models import FAQ  # Импорт модели FAQ
+from rest_framework import serializers 
+from .models import FAQ
 
 class FAQSerializer(serializers.ModelSerializer):
     class Meta:
         model = FAQ
-        fields = ['id', 'question', 'answer']  # Поля, которые нужно сериализовать
+        fields = ['id', 'question', 'answer'] 

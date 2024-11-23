@@ -17,7 +17,6 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(({ windowSize }, ref) => 
   );
 });
 
-// Указываем displayName для лучшей отладки (опционально)
 Footer.displayName = "Footer";
 
 export default Footer;

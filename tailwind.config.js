@@ -15,8 +15,8 @@ module.exports = {
         'background-color-button': '#27ae60'
       },
       fontFamily: {
-        sans: ['Helvetica', 'Arial', 'sans-serif'], // Общий sans-serif
-        custom: ['Roboto', 'sans-serif,', '"Open Sans"', 'sans-serif'], // Ваш кастомный шрифт
+        sans: ['Helvetica', 'Arial', 'sans-serif'], 
+        custom: ['Roboto', 'sans-serif,', '"Open Sans"', 'sans-serif'],
       },
       fontWeight: {
         thin: '100',
@@ -31,8 +31,8 @@ module.exports = {
         'hero-pattern': "url('./img/photo1.jpeg')",
       },
       backgroundSize: {
-        'fit': 'contain', // Фон адаптируется полностью
-        'full': '100% 100%', // Заполнение контейнера
+        'fit': 'contain', 
+        'full': '100% 100%',
       },
       backgroundPosition: {
         'center': 'center',

@@ -51,8 +51,7 @@ const VolumeItem: React.FC<VolumeItemProps> = ({ title, description, isSkill = f
         onClick={toggleDescription}
         className="w-full flex justify-between items-center py-2"
       />
-
-      {/* Description Section */}
+      
       <div
         ref={contentRef}
         style={{ height: isOpen ? `${height}px` : '0px' }}
