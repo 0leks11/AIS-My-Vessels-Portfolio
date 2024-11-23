@@ -28,7 +28,7 @@ const FileContent: React.FC<FileContentProps> = ({ currentFileName }) => {
       </h3>
 
       {/* Контейнер с содержимым файла */}
-      <div className="Box border border-slate-200 rounded-md bg-white">
+      <div className="Box border-slate-200 rounded-md bg-white">
         {loadingFileContent ? (
           // Индикатор загрузки
           <div className="p-3 text-center text-gray-500">Загрузка файла...</div>
