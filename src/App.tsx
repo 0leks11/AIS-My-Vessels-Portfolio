@@ -3,13 +3,12 @@ import Header from './components/header/Header';
 import AboutSection from './components/aboutSection/AboutSection';
 import ResumeSection from './components/resumeSection/ResumeSection';
 import RepositorySection from './components/repositorySection/RepositorySection';
+import GallerySection from './components/gallerySection/GallerySection';
 import CalculatorModal from './components/calculator/CalculatorModal';
 import Footer from './components/footer/Footer';
 import FallenHearts from './components/fallenHearts/FallenHearts';
 import ChatBot from './components/chatBot/ChatBot';
 import ChatButton from './components/chatButton/ChatButton';
-import GallerySection from './components/GallerySection/GallerySection';
-
 
 const App: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);

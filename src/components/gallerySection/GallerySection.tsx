@@ -1,7 +1,7 @@
 // src/components/GallerySection/GallerySection.tsx
 import React from 'react';
 import VesselCard from './VesselCard';
-import vesselList from '../../data/vesselList';
+import { vesselList } from '../../data/vesselList';
 
 const GallerySection: React.FC = () => {
   return (
