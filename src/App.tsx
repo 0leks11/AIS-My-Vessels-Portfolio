@@ -9,6 +9,7 @@ import Footer from './components/footer/Footer';
 import FallenHearts from './components/fallenHearts/FallenHearts';
 import ChatBot from './components/chatBot/ChatBot';
 import ChatButton from './components/chatButton/ChatButton';
+import { WebSocketProvider } from './context/WebSocketContext';
 
 const App: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
@@ -47,8 +48,15 @@ const App: React.FC = () => {
           <ResumeSection />
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
           <RepositorySection />
+          <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
           <div className="min-h-screen bg-gray-100">
-            <GallerySection />
+            <WebSocketProvider>
+              <div className="App">
+                {/* Другие компоненты или секции */}
+                <GallerySection />
+                {/* Другие компоненты или секции */}
+              </div>
+            </WebSocketProvider>
           </div>
         </div>
         <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>

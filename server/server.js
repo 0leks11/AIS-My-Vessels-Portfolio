@@ -27,31 +27,24 @@ const connectAisStream = () => {
     // Отправляем сообщение подписки
     const subscriptionMessage = {
       APIKey: API_KEY,
-      BoundingBoxes: [
-        [[-90, -180], [90, 180]], // Получаем данные со всего мира
-      ],
-      FiltersShipMMSI: [
-        "636020776", // GSL VIOLETTA
-        "477552400", // MAERSK BENGUELA
-        "538005057", // SAFEEN PRIZE
-        "565967000", // MAERSK VIGO
-        "636017197", // IOLAOS
-        "636017781", // APOLLON
-        "636017782", // ORPHEUS
-        "636018051", // PATROKLOS
-        "636015034", // HECTOR
-        "667022000", // ANTARES
-        "255802490", // BREB TIMBER
-      ],
+      BoundingBoxes: [[[-90, -180], [90, 180]]],
+      FiltersShipMMSI: ["636020776", "477552400", "538005057", "565967000", "636017197", "636017781", "636017782", "636018051", "636015034", "667022000", "255802490"],
       FilterMessageTypes: ["PositionReport"],
     };
-
+    console.log(JSON.stringify(subscriptionMessage));
     aisSocket.send(JSON.stringify(subscriptionMessage));
   });
 
   aisSocket.on('message', (data) => {
     const message = data.toString('utf8');
     console.log('Отправляемое сообщение клиенту:', message);
+    try {
+      const parsed = JSON.parse(message);
+      const receivedMMSI = parsed.MetaData?.MMSI;
+      console.log(`Получено сообщение для MMSI: ${receivedMMSI}`);
+    } catch (err) {
+      console.error('Ошибка при парсинге сообщения:', err);
+    }
     // Рассылаем всем подключённым клиентам
     wss.clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {

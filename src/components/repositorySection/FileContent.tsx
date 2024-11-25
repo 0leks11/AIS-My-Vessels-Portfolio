@@ -13,10 +13,9 @@ const FileContent: React.FC<FileContentProps> = ({ currentFileName }) => {
   const { fileContent, loadingFileContent, errorFileContent } = useFileContent(currentFileName);
   const codeRef = useRef<HTMLElement>(null);
 
-  // Подсветка синтаксиса после загрузки содержимого
   useEffect(() => {
     if (fileContent && codeRef.current) {
-      hljs.highlightElement(codeRef.current); // Подсвечиваем содержимое
+      hljs.highlightElement(codeRef.current); 
     }
   }, [fileContent]);
 

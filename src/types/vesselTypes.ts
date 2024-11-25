@@ -7,7 +7,7 @@ export interface Vessel {
     flagCode: string;
     mmsi: string,
     dwt?: number;
-    loa?: number; // Length Overall
+    loa?: number; 
     beam?: number;
     yearBuilt?: number;
     imoNumber: string;

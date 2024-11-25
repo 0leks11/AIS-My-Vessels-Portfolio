@@ -13,7 +13,7 @@ export const vesselList: Vessel[] = [
     beam: 12.52,
     yearBuilt: 2005,
     imoNumber: '9319430',
-    imageUrl: 'https://example.com/images/breb_timber.jpg', // Замените на реальный URL изображения
+    imageUrl: 'https://www.marinetraffic.com/en/photos/of/ships/shipid:205378/shipname:BREB%20TIMBER?order=date_uploaded', // Замените на реальный URL изображения
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9319430',
   },
   {
