@@ -13,6 +13,8 @@ export interface Vessel {
     imoNumber: string;
     imageUrl: string;
     marinetrafficUrl: string;
+    previousPort?: string;
+    destination?: string;
   }
   
   export interface VesselData {

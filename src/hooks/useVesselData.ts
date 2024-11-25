@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { VesselData } from '../types/vesselTypes';
 
 interface UseVesselDataOptions {
-  mmsi: string | string[];
+  mmsi: string;
 }
 
 export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
@@ -40,10 +40,10 @@ export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
                   speed: parseFloat(message.Message.PositionReport.Sog?.toString() || '0'),
                   course: parseFloat(message.Message.PositionReport.Cog?.toString() || '0'),
                   status: message.Message.PositionReport.NavigationalStatus?.toString() || 'Неизвестно',
-                  destination: message.Message.PositionReport.Destination || 'Неизвестно', // Возможно, отсутствует в данных
-                  eta: message.Message.PositionReport.ETA || 'Неизвестно', // Возможно, отсутствует в данных
-                  atd: 'Неизвестно', // ATD обычно недоступен в сообщениях AIS
-                  previousPort: 'Неизвестно', // Требуется дополнительная информация
+                  destination: message.Message.PositionReport.Destination || "Unknown Destination",
+                  eta: message.Message.PositionReport.ETA || 'Неизвестно',
+                  atd: message.Message.PositionReport.ATD || 'Неизвестно', 
+                  previousPort: message.Message.previousPort || "Unknown Port",
                   latitude: message.Message.PositionReport.Latitude,
                   longitude: message.Message.PositionReport.Longitude,
                 };
