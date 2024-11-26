@@ -1,6 +1,7 @@
 // src/hooks/useVesselData.ts
 import { useState, useEffect } from 'react';
 import { VesselData } from '../types/vesselTypes';
+import { AISMessage } from '../types/aisMessageTypes';
 
 interface UseVesselDataOptions {
   mmsi: string;
@@ -30,24 +31,23 @@ export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
         ws.onmessage = (event) => {
           console.log('Получено сообщение от сервера:', event.data);
           try {
-            const message = JSON.parse(event.data);
-
-            if (message && message.MessageType === 'PositionReport') {
+            const message: AISMessage = JSON.parse(event.data); // Используем интерфейс AISMessage
+        
+            if (message.MessageType === 'PositionReport') {
               const vesselMMSI = message.MetaData.MMSI.toString();
-
+        
               if (vesselMMSI === mmsi) {
+                const positionReport = message.Message.PositionReport;
                 const vesselData: VesselData = {
-                  speed: parseFloat(message.Message.PositionReport.Sog?.toString() || '0'),
-                  course: parseFloat(message.Message.PositionReport.Cog?.toString() || '0'),
-                  status: message.Message.PositionReport.NavigationalStatus?.toString() || 'Неизвестно',
-                  destination: message.Message.PositionReport.Destination || "Unknown Destination",
-                  eta: message.Message.PositionReport.ETA || 'Неизвестно',
-                  atd: message.Message.PositionReport.ATD || 'Неизвестно', 
-                  previousPort: message.Message.previousPort || "Unknown Port",
-                  latitude: message.Message.PositionReport.Latitude,
-                  longitude: message.Message.PositionReport.Longitude,
+                  speed: positionReport.Sog,
+                  course: positionReport.Cog,
+                  status: positionReport.NavigationalStatus || 'Неизвестно',
+                  eta: positionReport.ETA || 'Неизвестно',
+                  atd: positionReport.ATD || 'Неизвестно',
+                  latitude: positionReport.Latitude,
+                  longitude: positionReport.Longitude,
                 };
-
+        
                 if (isMounted) {
                   setData(vesselData);
                   setLoading(false);
@@ -58,18 +58,17 @@ export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
             console.error('Ошибка при парсинге сообщения:', err);
           }
         };
-
-        ws.onerror = (err) => {
+  
+        ws.onerror = () => {
           if (isMounted) {
             setError('Ошибка при получении потоковых данных');
             setLoading(false);
           }
-          console.error('WebSocket ошибка:', err);
         };
-
+  
         ws.onclose = () => {
           console.log('WebSocket соединение закрыто');
-          if (isMounted && !error) {
+          if (isMounted) {
             setError('Соединение закрыто');
             setLoading(false);
           }
@@ -79,19 +78,16 @@ export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
           setError(err.message || 'Ошибка при получении данных');
           setLoading(false);
         }
-        console.error('Ошибка при подключении WebSocket:', err);
       }
     };
-
+  
     fetchVesselData();
-
+  
     return () => {
       isMounted = false;
-      if (ws) {
-        ws.close();
-      }
+      if (ws) ws.close();
     };
-  }, [mmsi]);
+  }, [mmsi, error]); // 'error' добавлен в зависимости
 
   return { data, loading, error };
 };
