@@ -39,11 +39,9 @@ export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
               if (vesselMMSI === mmsi) {
                 const positionReport = message.Message.PositionReport;
                 const vesselData: VesselData = {
-                  speed: positionReport.Sog,
-                  course: positionReport.Cog,
+                  speed: positionReport.Sog || 0,
+                  course: positionReport.Cog || 0,
                   status: positionReport.NavigationalStatus || 'Неизвестно',
-                  eta: positionReport.ETA || 'Неизвестно',
-                  atd: positionReport.ATD || 'Неизвестно',
                   latitude: positionReport.Latitude,
                   longitude: positionReport.Longitude,
                 };

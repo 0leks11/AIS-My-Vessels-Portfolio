@@ -27,8 +27,7 @@ const connectAisStream = () => {
     // Отправляем сообщение подписки
     const subscriptionMessage = {
       APIKey: API_KEY,
-      BoundingBoxes: [[[-90, -180], [90, 180]]],
-      FiltersShipMMSI: ["636020776", "477552400", "538005057", "565967000", "636017197", "636017781", "636017782", "636018051", "636015034", "667022000", "255802490"],
+      BoundingBoxes: [[[5.0, -92.0], [20.0, -70.0]]],
       FilterMessageTypes: ["PositionReport"],
     };
     console.log(JSON.stringify(subscriptionMessage));

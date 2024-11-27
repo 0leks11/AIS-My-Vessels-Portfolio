@@ -13,8 +13,6 @@ export interface MetaData {
     Latitude?: number; // Широта
     Longitude?: number; // Долгота
     NavigationalStatus?: string; // Статус судна
-    ETA?: string; // Расчётное время прибытия
-    ATD?: string; // Расчётное время отправления
   }
   
   export interface AISMessage {
