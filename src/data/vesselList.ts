@@ -1,4 +1,16 @@
 // src/data/vesselList.ts
+import VesselMilady from '../components/img/GalerySectionVessels/VesselMilady';
+import VesselAntares from '../components/img/GalerySectionVessels/VesselAntares'
+import VesselHector from '../components/img/GalerySectionVessels/VesselHector'
+import VesselPatroklos from '../components/img/GalerySectionVessels/VesselPatroklos'
+import VesselOrpheus from '../components/img/GalerySectionVessels/VesselOrpheus'
+import VesselApolon from '../components/img/GalerySectionVessels/VesselApolon'
+import VesselIolaos from '../components/img/GalerySectionVessels/VesselIolaos'
+import VesselmaerskVigo from '../components/img/GalerySectionVessels/VesselmaerskVigo'
+import VesselsafinPrize from '../components/img/GalerySectionVessels/VesselsafinPrize'
+import VesselmaerskBenguella from '../components/img/GalerySectionVessels/VesselmaerskBenguella'
+import VesselgslVioletta from '../components/img/GalerySectionVessels/VesselgslVioletta'
+
 import { Vessel } from '../types/vesselTypes';
 
 export const vesselList: Vessel[] = [
@@ -13,7 +25,7 @@ export const vesselList: Vessel[] = [
     beam: 12.52,
     yearBuilt: 2005,
     imoNumber: '9319430',
-    imageUrl: 'https://www.marinetraffic.com/en/photos/of/ships/shipid:205378/shipname:BREB%20TIMBER?order=date_uploaded', // Замените на реальный URL изображения
+    imageComponent: VesselMilady,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9319430',
   },
   {
@@ -27,7 +39,7 @@ export const vesselList: Vessel[] = [
     beam: 15,
     yearBuilt: 1988,
     imoNumber: '8943404',
-    imageUrl: 'https://example.com/images/antares.jpg', // Замените на реальный URL изображения
+    imageComponent: VesselAntares,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:8943404',
   },
   {
@@ -41,7 +53,7 @@ export const vesselList: Vessel[] = [
     beam: 32,
     yearBuilt: 2012,
     imoNumber: '9502635',
-    imageUrl: 'https://example.com/images/hector.jpg', // Замените на реальный URL изображения
+    imageComponent: VesselHector,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9502635',
   },
   {
@@ -55,7 +67,7 @@ export const vesselList: Vessel[] = [
     beam: 32,
     yearBuilt: 2015,
     imoNumber: '9729893',
-    imageUrl: 'https://example.com/images/patroklos.jpg', // Замените на реальный URL изображения
+    imageComponent: VesselPatroklos,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9729893',
   },
   {
@@ -69,7 +81,7 @@ export const vesselList: Vessel[] = [
     beam: 32.25,
     yearBuilt: 2017,
     imoNumber: '9646675',
-    imageUrl: 'https://example.com/images/orpheus.jpg', // Замените на реальный URL изображения
+    imageComponent: VesselOrpheus,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9646675',
   },
   {
@@ -83,7 +95,7 @@ export const vesselList: Vessel[] = [
     beam: 32.25,
     yearBuilt: 2017,
     imoNumber: '9646663',
-    imageUrl: 'https://example.com/images/apollon.jpg', // Замените на реальный URL изображения
+    imageComponent: VesselApolon,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9646663',
   },
   {
@@ -97,7 +109,7 @@ export const vesselList: Vessel[] = [
     beam: 32,
     yearBuilt: 2016,
     imoNumber: '9696450',
-    imageUrl: 'https://example.com/images/iolaos.jpg', // Замените на реальный URL изображения
+    imageComponent: VesselIolaos,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9696450',
   },
   {
@@ -111,7 +123,7 @@ export const vesselList: Vessel[] = [
     beam: 27.71,
     yearBuilt: 2010,
     imoNumber: '9401697',
-    imageUrl: 'https://example.com/images/maersk_vigo.jpg', // Замените на реальный URL изображения
+    imageComponent: VesselmaerskVigo,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9401697',
   },
   {
@@ -125,7 +137,7 @@ export const vesselList: Vessel[] = [
     beam: 29.8,
     yearBuilt: 2013,
     imoNumber: '9603594',
-    imageUrl: 'https://example.com/images/safeen_prize.jpg', // Замените на реальный URL изображения
+    imageComponent: VesselsafinPrize,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9603594',
   },
   {
@@ -139,7 +151,7 @@ export const vesselList: Vessel[] = [
     beam: 32,
     yearBuilt: 2009,
     imoNumber: '9355367',
-    imageUrl: 'https://example.com/images/maersk_benguela.jpg', // Замените на реальный URL изображения
+    imageComponent: VesselmaerskBenguella,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9355367',
   },
   {
@@ -153,7 +165,7 @@ export const vesselList: Vessel[] = [
     beam: 40.35,
     yearBuilt: 2000,
     imoNumber: '9214202',
-    imageUrl: 'https://example.com/images/gsl_violetta.jpg', // Замените на реальный URL изображения
+    imageComponent: VesselgslVioletta,
     marinetrafficUrl: 'https://www.marinetraffic.com/en/ais/details/ships/imo:9214202',
   },
 ];

@@ -11,7 +11,7 @@ export interface Vessel {
     beam?: number;
     yearBuilt?: number;
     imoNumber: string;
-    imageUrl: string;
+    imageComponent?: React.FC;
     marinetrafficUrl: string;
     previousPort?: string;
     destination?: string;
