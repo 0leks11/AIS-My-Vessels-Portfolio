@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
-# chatbot/chatbot/urls.py
+### ///backend/chatbot/chatbot/urls.py
 from django.contrib import admin
 from django.urls import path, include 
 from django.views.generic import TemplateView
