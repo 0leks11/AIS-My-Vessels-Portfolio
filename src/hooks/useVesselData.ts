@@ -1,91 +1,35 @@
 // src/hooks/useVesselData.ts
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { VesselData } from '../types/vesselTypes';
-import { AISMessage } from '../types/aisMessageTypes';
 
-interface UseVesselDataOptions {
-  mmsi: string;
+interface UseVesselsDataOptions {
+  mmsiList: string[];
 }
 
-export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
-  const [data, setData] = useState<VesselData | null>(null);
+export const useVesselsData = ({ mmsiList }: UseVesselsDataOptions) => {
+  const [data, setData] = useState<Record<string, VesselData>>({});
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let isMounted = true;
-    let ws: WebSocket | null = null;
+    setLoading(true);
+    setError(null);
 
-    const fetchVesselData = () => {
-      setLoading(true);
-      setError(null);
-
-      try {
-        // Подключение к локальному серверу WebSocket
-        ws = new WebSocket('ws://localhost:8080');
-
-        ws.onopen = () => {
-          console.log('Подключено к серверу WebSocket');
-        };
-
-        ws.onmessage = (event) => {
-          console.log('Получено сообщение от сервера:', event.data);
-          try {
-            const message: AISMessage = JSON.parse(event.data); // Используем интерфейс AISMessage
-        
-            if (message.MessageType === 'PositionReport') {
-              const vesselMMSI = message.MetaData.MMSI.toString();
-        
-              if (vesselMMSI === mmsi) {
-                const positionReport = message.Message.PositionReport;
-                const vesselData: VesselData = {
-                  speed: positionReport.Sog || 0,
-                  course: positionReport.Cog || 0,
-                  status: positionReport.NavigationalStatus || 'Неизвестно',
-                  latitude: positionReport.Latitude,
-                  longitude: positionReport.Longitude,
-                };
-        
-                if (isMounted) {
-                  setData(vesselData);
-                  setLoading(false);
-                }
-              }
-            }
-          } catch (err) {
-            console.error('Ошибка при парсинге сообщения:', err);
-          }
-        };
-  
-        ws.onerror = () => {
-          if (isMounted) {
-            setError('Ошибка при получении потоковых данных');
-            setLoading(false);
-          }
-        };
-  
-        ws.onclose = () => {
-          console.log('WebSocket соединение закрыто');
-          if (isMounted) {
-            setError('Соединение закрыто');
-            setLoading(false);
-          }
-        };
-      } catch (err: any) {
-        if (isMounted) {
-          setError(err.message || 'Ошибка при получении данных');
-          setLoading(false);
-        }
-      }
-    };
-  
-    fetchVesselData();
-  
-    return () => {
-      isMounted = false;
-      if (ws) ws.close();
-    };
-  }, [mmsi, error]); // 'error' добавлен в зависимости
+    axios.post<VesselData[]>('http://localhost:8000/vessels/list', mmsiList)
+      .then((response) => {
+        const vesselsData: Record<string, VesselData> = {};
+        response.data.forEach((vesselData: VesselData) => {
+          vesselsData[vesselData.mmsi] = vesselData;
+        });
+        setData(vesselsData);
+        setLoading(false);
+      })
+      .catch((err: any) => {
+        setError(err.response?.data?.detail || 'Ошибка при получении данных');
+        setLoading(false);
+      });
+  }, [mmsiList]);
 
   return { data, loading, error };
 };

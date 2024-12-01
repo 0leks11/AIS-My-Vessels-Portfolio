@@ -3,14 +3,17 @@ from typing import Optional
 from datetime import datetime
 
 class VesselData(BaseModel):
-    mmsi: int
+    mmsi: str
     time: datetime
     longitude: float
     latitude: float
-    sog: Optional[float]
-    cog: Optional[float]
-    heading: Optional[float]
-    nav_status: Optional[str]
+    speed: Optional[float] = None
+    course: Optional[float] = None
+    status: Optional[str] = None
+    destination: Optional[str] = None
+    eta: Optional[str] = None
+    atd: Optional[str] = None
+    previousPort: Optional[str] = None
 
     class Config:
         orm_mode = True

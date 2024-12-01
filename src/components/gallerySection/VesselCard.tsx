@@ -29,7 +29,7 @@
             <Flag code={vessel.flagCode} className="w-11 h-8 mr-2" />
             <div className="mb-2">
               <h3 className=" w-30 h-5 font-semibold text-lg">{vessel.name}</h3>
-              <h4 className="w-30 h-3">{vessel.flag}</h4>
+              <h4 className="w-2 h-3">{vessel.flag}</h4>
            </div>
          </div>
 
@@ -48,7 +48,7 @@
        {/* Статические детали судна */}
        <div>
        
-       </div>
+         </div>
          
        </div>
  

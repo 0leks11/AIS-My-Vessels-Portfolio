@@ -18,6 +18,10 @@ export interface Vessel {
   }
   
   export interface VesselData {
+    mmsi: string;
+    time: string;
+    longitude: number;
+    latitude: number;
     speed?: number;
     course?: number;
     status?: string;
@@ -25,8 +29,6 @@ export interface Vessel {
     eta?: string;
     atd?: string;
     previousPort?: string;
-    latitude?: number;
-    longitude?: number;
   }
 
   
