@@ -52,19 +52,17 @@ const VolumeItem: React.FC<VolumeItemProps> = ({ title, description, isSkill = f
         className="w-full flex justify-between items-center py-2"
       />
       
-      <div
-        ref={contentRef}
-        style={{ height: isOpen ? `${height}px` : '0px' }}
-        className="overflow-hidden transition-all duration-500 ease-in-out"
-      >
-        <div className="mt-2 text-gray-600">
-          {description.map((desc, index) => (
-            <p key={index} className="mb-2">
-              {desc}
-            </p>
-          ))}
+      {isOpen && (
+        <div className="overflow-hidden transition-all duration-500 ease-in-out">
+          <div className="mt-2 text-gray-600">
+            {description.map((desc, index) => (
+              <p key={index} className="mb-2">
+                {desc}
+              </p>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
