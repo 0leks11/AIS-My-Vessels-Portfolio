@@ -14,6 +14,8 @@
    const handleClick = () => {
      window.open(vessel.marinetrafficUrl, '_blank');
    };
+
+   // 23123123
  
    return (
      <div
