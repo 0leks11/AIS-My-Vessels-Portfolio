@@ -1,5 +1,7 @@
 // src/components/Footer/Footer.tsx
 import React, { forwardRef } from "react";
+import { IconCard } from './IconCard';
+import { footerList } from './FooterList'
 
 interface FooterProps {
   isCompact?: boolean;
@@ -7,12 +9,10 @@ interface FooterProps {
 }
 
 const Footer = forwardRef<HTMLDivElement, FooterProps>(
-  ({ windowSize }, ref) => {
+  ({ windowSize}, ref) => {
     return (
-      <footer
-        ref={ref}
-        className="w-full bg-black text-white py-4 flex flex-col items-center"
-      >
+      <footer ref={ref} className="w-full bg-black text-white py-4 flex flex-col items-center">
+           {footerList.map((contact)=>{return(<IconCard contact={contact}/>)})}
         <p className="text-xs mt-2">
           © 2024 Oleksii Kozyrev. All rights reserved.
         </p>
@@ -24,7 +24,5 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
     );
   }
 );
-
-Footer.displayName = "Footer";
 
 export default Footer;
