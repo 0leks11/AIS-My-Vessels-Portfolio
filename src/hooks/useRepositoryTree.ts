@@ -1,11 +1,11 @@
 // src/hooks/useRepositoryTree.ts
-import { useState, useEffect } from 'react';
-import { useLoadingError } from './useLoadingError';
+import { useState, useEffect } from "react";
+import { useLoadingError } from "./useLoadingError";
 
 interface TreeItem {
   path: string;
   mode: string;
-  type: 'blob' | 'tree';
+  type: "blob" | "tree";
   sha: string;
   url: string;
 }
@@ -17,9 +17,9 @@ interface TreeResponse {
   truncated: boolean;
 }
 
-const OWNER = '0leks11';
-const REPO = 'ai-chatbot';
-const BRANCH = 'main';
+const OWNER = "0leks11";
+const REPO = "ai-chatbot";
+const BRANCH = "main";
 
 export const useRepositoryTree = () => {
   const [treeData, setTreeData] = useState<TreeItem[]>([]);
@@ -32,7 +32,7 @@ export const useRepositoryTree = () => {
           `https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`
         );
         if (!response.ok) {
-          throw new Error('Ошибка при загрузке дерева репозитория');
+          throw new Error("Ошибка при загрузке дерева репозитория");
         }
         return response.json();
       });

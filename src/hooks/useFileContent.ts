@@ -1,14 +1,18 @@
 // src/hooks/useFileContent.ts
-import { useState, useEffect } from 'react';
-import { useLoadingError } from './useLoadingError';
+import { useState, useEffect } from "react";
+import { useLoadingError } from "./useLoadingError";
 
-const OWNER = '0leks11';
-const REPO = 'ai-chatbot';
-const BRANCH = 'main';
+const OWNER = "0leks11";
+const REPO = "ai-chatbot";
+const BRANCH = "main";
 
 export const useFileContent = (filePath: string) => {
   const [fileContent, setFileContent] = useState<string | null>(null);
-  const { loading: loadingFileContent, error: errorFileContent, execute } = useLoadingError<string>();
+  const {
+    loading: loadingFileContent,
+    error: errorFileContent,
+    execute,
+  } = useLoadingError<string>();
 
   useEffect(() => {
     let isMounted = true;
@@ -19,7 +23,7 @@ export const useFileContent = (filePath: string) => {
           `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${filePath}`
         );
         if (!response.ok) {
-          throw new Error('Ошибка при загрузке файла');
+          throw new Error("Ошибка при загрузке файла");
         }
         return await response.text();
       });
