@@ -1,8 +1,8 @@
 // src/components/GallerySection/GallerySection.tsx
-import React, { useState } from 'react';
-import VesselCard from './VesselCard';
-import { vesselList } from '../../data/vesselList';
-import RefreshableGallerySection from './RefreshableGallerySection'; // Импортируем новый компонент
+import React, { useState } from "react";
+import VesselCard from "./VesselCard";
+import { vesselList } from "../../data/vesselList";
+import RefreshableGallerySection from "./RefreshableGallerySection"; // Импортируем новый компонент
 
 const GallerySection: React.FC = () => {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -12,7 +12,7 @@ const GallerySection: React.FC = () => {
   const handleRefresh = () => {
     setIsRefreshing(true);
     setError(null);
-    setRefreshKey(prevKey => prevKey + 1);
+    setRefreshKey((prevKey) => prevKey + 1);
 
     // Здесь можно добавить реальную логику перезагрузки данных
     // Например, повторный запрос данных с сервера
@@ -27,7 +27,10 @@ const GallerySection: React.FC = () => {
     <section className="gallery-section container mx-auto px-4 py-8 relative">
       {/* Кнопка перезагрузки */}
       <div className="absolute top-4 right-4">
-        <RefreshableGallerySection onRefresh={handleRefresh} isRefreshing={isRefreshing} />
+        <RefreshableGallerySection
+          onRefresh={handleRefresh}
+          isRefreshing={isRefreshing}
+        />
       </div>
 
       {/* Сообщение об ошибке */}
@@ -38,7 +41,10 @@ const GallerySection: React.FC = () => {
       )}
 
       {/* Перезагружаемая секция */}
-      <div key={refreshKey} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div
+        key={refreshKey}
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+      >
         {vesselList.map((vessel) => (
           <VesselCard key={vessel.imoNumber} vessel={vessel} />
         ))}
