@@ -41,17 +41,39 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
         </div>
 
         {/* Статические детали судна */}
-        <div>
+        <div className="relative">
           <Collapsible
-            button={vessel.dwt}
+            button={
+              <p className=" text-sm font-medium px-3 py-1 mt-2">
+                Vessel detiles
+              </p>
+            }
             content={
-              <div className="overflow-hidden transition-all duration-500 ease-in-out mt-2 text-gray-600">
-                {vesselList.map((vessel, index) => (
-                  <p key={index} className="mb-2">
-                    {vessel.dwt}
-                    {vessel.imoNumber}
+              <div className="absolute top-full left-0 w-full bg-white shadow-lg border border-gray-300 p-2 rounded-md z-20">
+                <div className="flex justify-between items-center text-sm font-medium mb-2">
+                  <p className="w-2/4 flex flex-row text-sm font-medium ml-2">
+                    Vessel DWT:
                   </p>
-                ))}
+                  <span className="w-2/4 text-left">{vessel.dwt}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm font-medium mb-2">
+                  <p className="w-2/4 flex flex-row text-sm font-medium ml-2">
+                    imoNumber:
+                  </p>
+                  <span className="w-2/4 text-left">{vessel.imoNumber}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm font-medium mb-2">
+                  <p className="w-2/4 flex text-sm font-medium ml-2">
+                    Year built:
+                  </p>
+                  <span className="w-2/4 text-left">{vessel.yearBuilt}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm font-medium mb-2">
+                  <p className="w-2/4 flex text-sm font-medium ml-2">
+                    Port of registry:
+                  </p>
+                  <span className="w-2/4 text-left">{vessel.registryPort}</span>
+                </div>
               </div>
             }
           />
