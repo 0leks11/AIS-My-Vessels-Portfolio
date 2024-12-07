@@ -1,7 +1,7 @@
 // src/components/Footer/Footer.tsx
 import React, { forwardRef } from "react";
 import { IconCard } from "./IconCard";
-import { footerList } from "./FooterList";
+import { footerList } from "../../data/footerList";
 
 interface FooterProps {
   isCompact?: boolean;

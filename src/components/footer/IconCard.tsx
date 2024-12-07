@@ -1,7 +1,7 @@
 // src/components/Footer/IconCard.tsx
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Contact } from "./FooterList";
+import { Contact } from "../../data/footerList";
 
 interface IconCardProps {
   contact: Contact;
