@@ -15,11 +15,11 @@ import { Vessel } from "../types/vesselTypes";
 
 export const vesselList: Vessel[] = [
   {
-    name: "BREB TIMBER",
-    type: "General Cargo Ship",
+    vessel_name: "BREB TIMBER",
+    ship_type: "General Cargo Ship",
     flag: "Portugal",
     flagCode: "PT",
-    mmsi: "255802490",
+    mmsi: 255802490,
     dwt: 3817,
     loa: 88.6,
     beam: 12.52,
@@ -31,11 +31,11 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9319430",
   },
   {
-    name: "ANTARES",
-    type: "General Cargo Ship",
+    vessel_name: "ANTARES",
+    ship_type: "General Cargo Ship",
     flag: "Sierra Leone",
     flagCode: "SL",
-    mmsi: "667022000",
+    mmsi: 667022000,
     dwt: 3757,
     loa: 108,
     beam: 15,
@@ -47,11 +47,11 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:8943404",
   },
   {
-    name: "HECTOR",
-    type: "Bulk Carrier",
+    vessel_name: "HECTOR",
+    ship_type: "Bulk Carrier",
     flag: "Liberia",
     flagCode: "LR",
-    mmsi: "636015034",
+    mmsi: 636015034,
     dwt: 75200,
     loa: 225,
     beam: 32,
@@ -63,11 +63,11 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9502635",
   },
   {
-    name: "PATROKLOS",
-    type: "Bulk Carrier",
+    vessel_name: "PATROKLOS",
+    ship_type: "Bulk Carrier",
     flag: "Liberia",
     flagCode: "LR",
-    mmsi: "636018051",
+    mmsi: 636018051,
     dwt: 82000,
     loa: 229,
     beam: 32,
@@ -79,11 +79,11 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9729893",
   },
   {
-    name: "ORPHEUS",
-    type: "Bulk Carrier",
+    vessel_name: "ORPHEUS",
+    ship_type: "Bulk Carrier",
     flag: "Liberia",
     flagCode: "LR",
-    mmsi: "636017782",
+    mmsi: 636017782,
     dwt: 75631,
     loa: 224.9,
     beam: 32.25,
@@ -95,11 +95,11 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9646675",
   },
   {
-    name: "APOLLON",
-    type: "Bulk Carrier",
+    vessel_name: "APOLLON",
+    ship_type: "Bulk Carrier",
     flag: "Liberia",
     flagCode: "LR",
-    mmsi: "636017781",
+    mmsi: 636017781,
     dwt: 75614,
     loa: 224.9,
     beam: 32.25,
@@ -111,11 +111,11 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9646663",
   },
   {
-    name: "IOLAOS",
-    type: "Bulk Carrier",
+    vessel_name: "IOLAOS",
+    ship_type: "Bulk Carrier",
     flag: "Liberia",
     flagCode: "LR",
-    mmsi: "636017197",
+    mmsi: 636017197,
     dwt: 63413,
     loa: 200,
     beam: 32,
@@ -127,11 +127,11 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9696450",
   },
   {
-    name: "MAERSK VIGO",
-    type: "Container Ship",
+    vessel_name: "MAERSK VIGO",
+    ship_type: "Container Ship",
     flag: "Singapore",
     flagCode: "SG",
-    mmsi: "565967000",
+    mmsi: 565967000,
     dwt: 23338,
     loa: 175.47,
     beam: 27.71,
@@ -143,11 +143,11 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9401697",
   },
   {
-    name: "SAFEEN PRIZE",
-    type: "Container Ship",
+    vessel_name: "SAFEEN PRIZE",
+    ship_type: "Container Ship",
     flag: "Marshall Islands",
     flagCode: "MH",
-    mmsi: "538005057",
+    mmsi: 538005057,
     dwt: 34366,
     loa: 208.9,
     beam: 29.8,
@@ -159,11 +159,11 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9603594",
   },
   {
-    name: "MAERSK BENGUELA",
-    type: "Container Ship",
+    vessel_name: "MAERSK BENGUELA",
+    ship_type: "Container Ship",
     flag: "Hong Kong",
     flagCode: "HK",
-    mmsi: "477552400",
+    mmsi: 477552400,
     dwt: 43133,
     loa: 223,
     beam: 32,
@@ -175,11 +175,11 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9355367",
   },
   {
-    name: "GSL VIOLETTA",
-    type: "Container Ship",
+    vessel_name: "GSL VIOLETTA",
+    ship_type: "Container Ship",
     flag: "Liberia",
     flagCode: "LR",
-    mmsi: "636020776",
+    mmsi: 636020776,
     dwt: 67566,
     loa: 277,
     beam: 40.35,
@@ -191,15 +191,3 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9214202",
   },
 ];
-
-//GSL VIOLETTA - 636020776
-//MAERSK BENGUELA - 477552400
-//SAFEEN PRIZE - 538005057
-//MAERSK VIGO - 565967000
-//IOLAOS - 636017197
-//APOLLON - 636017781
-//ORPHEUS - 636017782
-//PATROKLOS - 636018051
-//HECTOR - 636015034
-//ANTARES - 667022000
-//BREB TIMBER - 255802490

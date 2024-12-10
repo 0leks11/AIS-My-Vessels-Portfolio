@@ -1,27 +1,99 @@
 // src/components/GallerySection/GallerySection.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import VesselCard from "./VesselCard";
 import { vesselList } from "../../data/vesselList";
-import RefreshableGallerySection from "./RefreshableGallerySection"; // Импортируем новый компонент
+import RefreshableGallerySection from "./RefreshableGallerySection";
 
 const GallerySection: React.FC = () => {
   const [refreshKey, setRefreshKey] = useState(0);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Ссылка на контейнер с карточками
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  // Параметры карусели
+  const cardWidth = 400; // ширина карточки, px
+  const gap = 24; // gap между карточками, px (Tailwind gap-6 = 1.5rem ~ 24px)
+  const autoScrollDelay = 2000; // 3 секунды между переключениями
+  const resumeDelay = 3000; // 5 секунд простоя после пользовательского вмешательства, чтобы возобновить автопрокрутку
+
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+  const autoScrollTimeout = useRef<NodeJS.Timeout | null>(null);
+  const resumeTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  // Индекс текущей карточки
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const handleRefresh = () => {
     setIsRefreshing(true);
     setError(null);
     setRefreshKey((prevKey) => prevKey + 1);
 
-    // Здесь можно добавить реальную логику перезагрузки данных
-    // Например, повторный запрос данных с сервера
-    // Для демонстрации используем таймаут
     setTimeout(() => {
-      // После завершения перезагрузки сбрасываем состояние
       setIsRefreshing(false);
-    }, 1000); // 1 секунда
+    }, 1000);
   };
+
+  // Функция для прокрутки к определённому индексу карточки
+  const scrollToIndex = (index: number) => {
+    if (!scrollContainerRef.current) return;
+    const x = index * (cardWidth + gap);
+    scrollContainerRef.current.scrollTo({
+      left: x,
+      behavior: "smooth",
+    });
+  };
+
+  // Автопрокрутка: каждые 3 секунды переходим к следующей карточке
+  useEffect(() => {
+    function startAutoScroll() {
+      stopAutoScroll();
+      autoScrollTimeout.current = setInterval(() => {
+        if (!scrollContainerRef.current) return;
+        const totalCards = vesselList.length;
+        let nextIndex = currentIndex + 1;
+        // Если дошли до конца, вернёмся в начало
+        if (nextIndex >= totalCards) {
+          nextIndex = 0;
+        }
+        setCurrentIndex(nextIndex);
+        scrollToIndex(nextIndex);
+      }, autoScrollDelay);
+    }
+
+    function stopAutoScroll() {
+      if (autoScrollTimeout.current) {
+        clearInterval(autoScrollTimeout.current);
+        autoScrollTimeout.current = null;
+      }
+    }
+
+    if (isAutoScrolling) {
+      startAutoScroll();
+    } else {
+      stopAutoScroll();
+    }
+
+    return () => {
+      stopAutoScroll();
+    };
+  }, [isAutoScrolling, currentIndex]);
+
+  // Если пользователь взаимодействует - остановить автопрокрутку
+  const handleUserInteraction = () => {
+    setIsAutoScrolling(false);
+    // Если пользователь перестанет взаимодействовать, через 5 сек возобновим
+    if (resumeTimeout.current) {
+      clearTimeout(resumeTimeout.current);
+    }
+    resumeTimeout.current = setTimeout(() => {
+      setIsAutoScrolling(true);
+    }, resumeDelay);
+  };
+
+  // Обновление размера окна или изменение количества карточек может потребовать recalculation
+  // но сейчас предполагается фиксированный размер.
 
   return (
     <section className="gallery-section container mx-auto px-4 py-8 relative">
@@ -40,13 +112,22 @@ const GallerySection: React.FC = () => {
         </div>
       )}
 
-      {/* Перезагружаемая секция */}
       <div
         key={refreshKey}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        className="flex gap-6 overflow-hidden py-4 cursor-grab"
+        ref={scrollContainerRef}
+        onMouseEnter={handleUserInteraction}
+        onMouseLeave={handleUserInteraction}
+        onScroll={handleUserInteraction}
       >
         {vesselList.map((vessel) => (
-          <VesselCard key={vessel.imoNumber} vessel={vessel} />
+          <div
+            key={vessel.imoNumber}
+            className="flex-shrink-0"
+            style={{ width: cardWidth }}
+          >
+            <VesselCard vessel={vessel} />
+          </div>
         ))}
       </div>
     </section>

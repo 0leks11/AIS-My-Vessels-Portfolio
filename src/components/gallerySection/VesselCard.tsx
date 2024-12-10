@@ -4,7 +4,6 @@ import { Vessel } from "../../types/vesselTypes";
 import { useVesselData } from "../../hooks/useVesselData";
 import Flag from "react-world-flags";
 import { Collapsible } from "../resumeSection/Collapsible";
-import { vesselList } from "../../data/vesselList";
 
 interface VesselCardProps {
   vessel: Vessel;
@@ -26,7 +25,9 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
           <div className="flex items-center text-sm text-gray-600 mt-0">
             <Flag code={vessel.flagCode} className="w-11 h-8 mr-2" />
             <div className="mb-2">
-              <h3 className=" w-30 h-5 font-semibold text-lg">{vessel.name}</h3>
+              <h3 className=" w-30 h-5 font-semibold text-lg">
+                {vessel.vessel_name}
+              </h3>
               <h4 className="w-30 h-3">{vessel.flag}</h4>
             </div>
           </div>
@@ -34,7 +35,7 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
           <div className="relative" onClick={handleClick}>
             {vessel.imageComponent && <vessel.imageComponent />}
             <div className="absolute top-2 left-2 bg-white text-xs font-bold py-1 px-2 rounded-md shadow">
-              {vessel.type}
+              {vessel.ship_type}
             </div>
           </div>
           <div className="absolute top-2 left-2 bg-white text-xs font-bold py-1 px-2 rounded-md shadow"></div>
@@ -118,8 +119,8 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
           <>
             <p>Статус: {data?.status}</p>
             <p>
-              Скорость/Курс: {data?.speed?.toFixed(1) || "N/A"} узлов /{" "}
-              {data?.course || "N/A"}°
+              Скорость/Курс: {data?.sog?.toFixed(1) || "N/A"} узлов /{" "}
+              {data?.cog || "N/A"}°
             </p>
           </>
         )}
