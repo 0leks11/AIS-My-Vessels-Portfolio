@@ -4,6 +4,7 @@ import { Vessel } from "../../types/vesselTypes";
 import { useVesselData } from "../../hooks/useVesselData";
 import Flag from "react-world-flags";
 import { Collapsible } from "../resumeSection/Collapsible";
+import NavigationStatus from "./NavigationalStatus";
 
 interface VesselCardProps {
   vessel: Vessel;
@@ -25,9 +26,7 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
           <div className="flex items-center text-sm text-gray-600 mt-0">
             <Flag code={vessel.flagCode} className="w-11 h-8 mr-2" />
             <div className="mb-2">
-              <h3 className=" w-30 h-5 font-semibold text-lg">
-                {vessel.vessel_name}
-              </h3>
+              <h3 className=" w-30 h-5 font-semibold text-lg">{vessel.name}</h3>
               <h4 className="w-30 h-3">{vessel.flag}</h4>
             </div>
           </div>
@@ -35,13 +34,12 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
           <div className="relative" onClick={handleClick}>
             {vessel.imageComponent && <vessel.imageComponent />}
             <div className="absolute top-2 left-2 bg-white text-xs font-bold py-1 px-2 rounded-md shadow">
-              {vessel.ship_type}
+              {vessel.type}
             </div>
           </div>
           <div className="absolute top-2 left-2 bg-white text-xs font-bold py-1 px-2 rounded-md shadow"></div>
         </div>
 
-        {/* Статические детали судна */}
         <div className="relative">
           <Collapsible
             button={
@@ -51,25 +49,31 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
             }
             content={
               <div className="absolute top-full left-0 w-full bg-white shadow-lg border border-gray-300 p-2 rounded-md z-20">
-                <div className="flex justify-between items-center text-sm font-medium mb-2">
+                <div className="flex justify-between items-center text-sm font-medium mb-1">
+                  <p className="w-2/4 flex text-sm font-medium ml-2">
+                    Vessel Type:
+                  </p>
+                  <span className="w-2/4 text-left">{vessel.type}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm font-medium mb-1">
                   <p className="w-2/4 flex flex-row text-sm font-medium ml-2">
                     Vessel DWT:
                   </p>
                   <span className="w-2/4 text-left">{vessel.dwt}</span>
                 </div>
-                <div className="flex justify-between items-center text-sm font-medium mb-2">
+                <div className="flex justify-between items-center text-sm font-medium mb-1">
                   <p className="w-2/4 flex flex-row text-sm font-medium ml-2">
                     imoNumber:
                   </p>
                   <span className="w-2/4 text-left">{vessel.imoNumber}</span>
                 </div>
-                <div className="flex justify-between items-center text-sm font-medium mb-2">
+                <div className="flex justify-between items-center text-sm font-medium mb-1">
                   <p className="w-2/4 flex text-sm font-medium ml-2">
                     Year built:
                   </p>
                   <span className="w-2/4 text-left">{vessel.yearBuilt}</span>
                 </div>
-                <div className="flex justify-between items-center text-sm font-medium mb-2">
+                <div className="flex justify-between items-center text-sm font-medium mb-1">
                   <p className="w-2/4 flex text-sm font-medium ml-2">
                     Port of registry:
                   </p>
@@ -81,49 +85,70 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
         </div>
       </div>
 
-      {/* Динамические данные */}
-      <div className="mt-2 text-sm">
-        <p className="text-sm text-gray-600 mt-2">
-          {vessel.previousPort ? `${vessel.previousPort} → ` : ""}
-          {vessel.destination || "Unknown destination"}
-        </p>
-        {loading ? (
-          <p className="text-gray-500">Загрузка данных...</p>
-        ) : error ? (
-          <p className="text-red-500">Ошибка загрузки данных: {error}</p>
-        ) : (
-          <>
-            <p>ATD: {data?.atd}</p>
-            <p>ETA: {data?.eta}</p>
-          </>
-        )}
-      </div>
-
-      {/* Кнопки */}
-      <div className="flex justify-between mt-4">
-        <button className="bg-gray-200 hover:bg-gray-300 text-sm font-medium px-3 py-1 rounded">
-          Past Track
-        </button>
-        <button className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-3 py-1 rounded">
-          Route Forecast
-        </button>
-      </div>
-
-      {/* Статус и прочая информация */}
       <div className="mt-4 text-sm text-gray-600">
-        {loading ? (
-          <p className="text-gray-500">Загрузка статуса...</p>
-        ) : error ? (
-          <p className="text-red-500">Ошибка загрузки данных: {error}</p>
-        ) : (
-          <>
-            <p>Статус: {data?.status}</p>
-            <p>
-              Скорость/Курс: {data?.sog?.toFixed(1) || "N/A"} узлов /{" "}
-              {data?.cog || "N/A"}°
-            </p>
-          </>
-        )}
+        <div className="flex justify-between items-center text-sm font-medium mb-0">
+          <p className="w-2/5 flex text-sm text-gray-600 font-medium ml-2">
+            Latitude:
+          </p>
+          <span className="w-3/5 text-gray-500 text-left">
+            {loading
+              ? "Status loading..."
+              : error
+                ? "Signal lose"
+                : data?.latitude || "N/A"}
+          </span>
+        </div>
+        <div className="flex justify-between items-center text-sm font-medium mb-2">
+          <p className="w-2/5 flex text-sm text-gray-600 font-medium ml-2">
+            Longitude:
+          </p>
+          <span className="w-3/5 text-gray-500 text-left">
+            {loading
+              ? "Status loading..."
+              : error
+                ? "Signal lose"
+                : data?.longitude || "N/A"}
+          </span>
+        </div>
+        <div className="flex justify-between items-center text-sm font-medium mb-0">
+          <p className="w-2/5 flex text-sm text-gray-600 font-medium ml-2">
+            Speed:
+          </p>
+          <span className="w-3/5 text-gray-500 text-left">
+            {loading
+              ? "Status loading..."
+              : error
+                ? "Signal lose"
+                : (data?.speed?.toFixed(1) && "knot") || "N/A"}
+          </span>
+        </div>
+        <div className="flex justify-between items-center text-sm font-medium mb-0">
+          <p className="w-2/5 flex text-sm text-gray-600 font-medium ml-2">
+            Course:
+          </p>
+          <span className="w-3/5 text-gray-500 text-left">
+            {loading
+              ? "Status loading..."
+              : error
+                ? "Signal lose"
+                : (data?.course && "°") || "N/A"}
+            °
+          </span>
+        </div>
+        <div className="flex justify-between items-center text-sm font-medium mb-2">
+          <p className="w-2/5 flex text-sm text-gray-600 font-medium ml-2">
+            Nav Status:
+          </p>
+          <span className="w-3/5 text-gray-500 text-left">
+            {loading ? (
+              "Status loading..."
+            ) : error ? (
+              "Signal lose"
+            ) : (
+              <NavigationStatus status={data?.status} />
+            )}
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -78,7 +78,7 @@ const GalleryCarousel: React.FC<GalleryCarouselProps> = ({
 
   return (
     <div
-      className="flex gap-6 overflow-hidden py-4"
+      className="flex gap-5 overflow-hidden py-4"
       ref={scrollContainerRef}
       onMouseEnter={handleUserInteraction}
       onMouseLeave={handleUserInteraction}

@@ -1,4 +1,4 @@
-// GallerySection.tsx
+// src/components/GallerySection/GallerySection.tsx
 import React, { useState } from "react";
 import VesselCard from "./VesselCard";
 import { vesselList } from "../../data/vesselList";
@@ -20,6 +20,11 @@ const GallerySection: React.FC = () => {
     }, 1000);
   };
 
+  const cardWidth = 350;
+  const gap = 20;
+  const autoScrollDelay = 2000;
+  const resumeDelay = 3000;
+
   return (
     <section className="gallery-section container mx-auto px-4 py-8 relative">
       <div className="absolute top-4 right-4">
@@ -36,10 +41,10 @@ const GallerySection: React.FC = () => {
       )}
 
       <GalleryCarousel
-        cardWidth={300}
-        gap={24}
-        autoScrollDelay={2000}
-        resumeDelay={3000}
+        cardWidth={cardWidth}
+        gap={gap}
+        autoScrollDelay={autoScrollDelay}
+        resumeDelay={resumeDelay}
         key={refreshKey}
       >
         {vesselList.map((vessel) => (
