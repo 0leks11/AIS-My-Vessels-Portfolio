@@ -21,11 +21,12 @@ export interface Vessel {
 export interface VesselData {
   speed?: number;
   course?: number;
-  status?: string;
+  status?: number;
   destination?: string;
   eta?: string;
   atd?: string;
   previousPort?: string;
   latitude?: number;
   longitude?: number;
+  utcTime: string;
 }

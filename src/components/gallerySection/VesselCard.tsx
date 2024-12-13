@@ -5,6 +5,8 @@ import { useVesselData } from "../../hooks/useVesselData";
 import Flag from "react-world-flags";
 import { Collapsible } from "../resumeSection/Collapsible";
 import NavigationStatus from "./NavigationalStatus";
+import TimeAgo from "./TimeAgo";
+import FormattedDate from "./FormattedDate";
 
 interface VesselCardProps {
   vessel: Vessel;
@@ -37,7 +39,6 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
               {vessel.type}
             </div>
           </div>
-          <div className="absolute top-2 left-2 bg-white text-xs font-bold py-1 px-2 rounded-md shadow"></div>
         </div>
 
         <div className="relative">
@@ -56,6 +57,18 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
                   <span className="w-2/4 text-left">{vessel.type}</span>
                 </div>
                 <div className="flex justify-between items-center text-sm font-medium mb-1">
+                  <p className="w-2/4 flex text-sm font-medium ml-2">
+                    Port of registry:
+                  </p>
+                  <span className="w-2/4 text-left">{vessel.registryPort}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm font-medium mb-1">
+                  <p className="w-2/4 flex text-sm font-medium ml-2">
+                    Year built:
+                  </p>
+                  <span className="w-2/4 text-left">{vessel.yearBuilt}</span>
+                </div>
+                <div className="flex justify-between items-center text-sm font-medium mb-1">
                   <p className="w-2/4 flex flex-row text-sm font-medium ml-2">
                     Vessel DWT:
                   </p>
@@ -66,18 +79,6 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
                     imoNumber:
                   </p>
                   <span className="w-2/4 text-left">{vessel.imoNumber}</span>
-                </div>
-                <div className="flex justify-between items-center text-sm font-medium mb-1">
-                  <p className="w-2/4 flex text-sm font-medium ml-2">
-                    Year built:
-                  </p>
-                  <span className="w-2/4 text-left">{vessel.yearBuilt}</span>
-                </div>
-                <div className="flex justify-between items-center text-sm font-medium mb-1">
-                  <p className="w-2/4 flex text-sm font-medium ml-2">
-                    Port of registry:
-                  </p>
-                  <span className="w-2/4 text-left">{vessel.registryPort}</span>
                 </div>
               </div>
             }
@@ -119,7 +120,7 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
               ? "Status loading..."
               : error
                 ? "Signal lose"
-                : (data?.speed?.toFixed(1) && "knot") || "N/A"}
+                : data?.speed?.toFixed(1) || "N/A"}
           </span>
         </div>
         <div className="flex justify-between items-center text-sm font-medium mb-0">
@@ -131,13 +132,12 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
               ? "Status loading..."
               : error
                 ? "Signal lose"
-                : (data?.course && "°") || "N/A"}
-            °
+                : data?.course || "N/A"}
           </span>
         </div>
         <div className="flex justify-between items-center text-sm font-medium mb-2">
           <p className="w-2/5 flex text-sm text-gray-600 font-medium ml-2">
-            Nav Status:
+            Service status:
           </p>
           <span className="w-3/5 text-gray-500 text-left">
             {loading ? (
@@ -146,6 +146,38 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
               "Signal lose"
             ) : (
               <NavigationStatus status={data?.status} />
+            )}
+          </span>
+        </div>
+        <div className="flex justify-between items-center text-sm font-medium mb-0">
+          <p className="w-2/5 flex text-sm text-gray-600 font-small ml-2">
+            Vessel's local time:
+          </p>
+          <span className="w-3/5 text-gray-500 text-left">
+            {loading ? (
+              "Status loading..."
+            ) : error ? (
+              "Signal lose"
+            ) : (
+              <FormattedDate
+                utcTime={data?.utcTime || ""}
+                latitude={data?.latitude || 0}
+                longitude={data?.longitude || 0}
+              />
+            )}
+          </span>
+        </div>
+        <div className="flex justify-between items-center text-sm font-medium mb-2">
+          <p className="w-2/5 flex text-sm text-gray-600 font-medium ml-2">
+            Received:
+          </p>
+          <span className="w-3/5 text-gray-500 text-left">
+            {loading ? (
+              "Status loading..."
+            ) : error ? (
+              "Signal lose"
+            ) : (
+              <TimeAgo utcTime={data?.utcTime} />
             )}
           </span>
         </div>

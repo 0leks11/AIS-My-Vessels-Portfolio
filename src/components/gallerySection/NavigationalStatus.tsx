@@ -1,36 +1,29 @@
-// // src/components/GallerySection/NavigationStatus.tsx
+// src/components/GallerySection/NavigationStatus.tsx
 import React from "react";
 
 interface NavigationStatusProps {
-  status?: string;
+  status?: number;
 }
-const NavigationStatus: React.FC<NavigationStatusProps> = ({ status }) => {
-  const getStatusDescription = (status?: string): string => {
-    switch (status) {
-      case "0":
-        return "В пути, под двигателем";
-      case "1":
-        return "Стоит на якоре";
-      case "2":
-        return "Не управляется";
-      case "3":
-        return "Ограничено в маневре";
-      case "4":
-        return "Ограничено осадкой";
-      case "5":
-        return "Стоит у причала";
-      case "6":
-        return "Село на мель";
-      case "7":
-        return "Занято рыболовством";
-      case "8":
-        return "В пути, под парусом";
-      default:
-        return "Неизвестный статус"; // Если статус не определён
-    }
-  };
 
-  return <span>{getStatusDescription(status)}</span>;
+const statusDescriptions: Record<number, string> = {
+  0: "В пути под двигателем",
+  1: "На якоре",
+  2: "Не управляется",
+  3: "Ограничено в маневре",
+  4: "Ограничено осадкой",
+  5: "Швартуется",
+  6: "Село на мель",
+  7: "Занято рыболовством",
+  8: "В пути под парусом",
+};
+
+const NavigationStatus: React.FC<NavigationStatusProps> = ({ status }) => {
+  const description =
+    status !== undefined
+      ? statusDescriptions[status] || "Неизвестный статус"
+      : "Нет данных";
+
+  return <span>{description}</span>;
 };
 
 export default NavigationStatus;

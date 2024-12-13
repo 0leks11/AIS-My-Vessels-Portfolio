@@ -21,7 +21,6 @@ export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
       setError(null);
 
       try {
-        // Подключение к локальному серверу WebSocket
         ws = new WebSocket("ws://localhost:8080");
 
         ws.onopen = () => {
@@ -31,19 +30,24 @@ export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
         ws.onmessage = (event) => {
           console.log("Получено сообщение от сервера:", event.data);
           try {
-            const message: AISMessage = JSON.parse(event.data); // Используем интерфейс AISMessage
-
-            if (message.MessageType === "PositionReport") {
+            const message: AISMessage = JSON.parse(event.data);
+            if (message.MessageType === "PositionReport" && message.MetaData) {
               const vesselMMSI = message.MetaData.MMSI.toString();
 
               if (vesselMMSI === mmsi) {
                 const positionReport = message.Message.PositionReport;
+                const metaData = message.MetaData;
+
                 const vesselData: VesselData = {
                   speed: positionReport.Sog || 0,
                   course: positionReport.Cog || 0,
-                  status: positionReport.NavigationalStatus || "Неизвестно",
+                  status:
+                    positionReport.NavigationalStatus !== undefined
+                      ? Number(positionReport.NavigationalStatus)
+                      : undefined,
                   latitude: positionReport.Latitude,
                   longitude: positionReport.Longitude,
+                  utcTime: metaData.time_utc,
                 };
 
                 if (isMounted) {
@@ -85,7 +89,7 @@ export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
       isMounted = false;
       if (ws) ws.close();
     };
-  }, [mmsi, error]); // 'error' добавлен в зависимости
+  }, [mmsi, error]);
 
   return { data, loading, error };
 };
