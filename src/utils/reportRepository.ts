@@ -12,7 +12,7 @@ export const ReportRepository = {
 
   saveReport: (mmsi: string, report: VesselData): void => {
     const reports = ReportRepository.getReports();
-    reports[mmsi] = { ...report, lastUpdated: Date.now() };
+    // reports[mmsi] = { ...report, lastUpdated: Date.now() };
     localStorage.setItem(REPORT_KEY, JSON.stringify(reports));
   },
 };

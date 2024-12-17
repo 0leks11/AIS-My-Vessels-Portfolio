@@ -1,13 +1,24 @@
 // src/hooks/useVesselRepository.ts
-
-import { useCallback } from "react";
-import { ReportRepository } from "../utils/reportRepository";
+import { useReportRepositoryContext } from "../context/ReportRepositoryContext";
 import { VesselData } from "../types/vesselTypes";
 
+/*
+ * This hook provides an interface to update and retrieve
+ * vessel data from the ReportRepository.
+ */
 export const useVesselRepository = () => {
-  const saveReport = useCallback((mmsi: string, data: VesselData) => {
-    ReportRepository.saveReport(mmsi, data);
-  }, []);
+  const { vessels, updateVessel } = useReportRepositoryContext();
 
-  return { saveReport };
+  // updateVesselData: saves incoming data into repository
+  const updateVesselData = (mmsi: string, data: VesselData) => {
+    // Store latest vessel data
+    updateVessel(mmsi, data);
+  };
+
+  // getVesselData: retrieve current data for a specific vessel
+  const getVesselData = (mmsi: string): VesselData | undefined => {
+    return vessels[mmsi];
+  };
+
+  return { getVesselData, updateVesselData };
 };

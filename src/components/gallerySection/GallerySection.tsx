@@ -4,6 +4,7 @@ import VesselCard from "./VesselCard";
 import { vesselList } from "../../data/vesselList";
 import RefreshableGallerySection from "./RefreshableGallerySection";
 import GalleryCarousel from "./GalleryCarousel";
+import { ReportRepositoryProvider } from "../../context/ReportRepositoryContext";
 
 const GallerySection: React.FC = () => {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -40,17 +41,20 @@ const GallerySection: React.FC = () => {
         </div>
       )}
 
-      <GalleryCarousel
-        cardWidth={cardWidth}
-        gap={gap}
-        autoScrollDelay={autoScrollDelay}
-        resumeDelay={resumeDelay}
-        key={refreshKey}
-      >
-        {vesselList.map((vessel) => (
-          <VesselCard key={vessel.imoNumber} vessel={vessel} />
-        ))}
-      </GalleryCarousel>
+      {/* Оборачиваем карусель провайдером */}
+      <ReportRepositoryProvider>
+        <GalleryCarousel
+          cardWidth={cardWidth}
+          gap={gap}
+          autoScrollDelay={autoScrollDelay}
+          resumeDelay={resumeDelay}
+          key={refreshKey}
+        >
+          {vesselList.map((vessel) => (
+            <VesselCard key={vessel.imoNumber} vessel={vessel} />
+          ))}
+        </GalleryCarousel>
+      </ReportRepositoryProvider>
     </section>
   );
 };

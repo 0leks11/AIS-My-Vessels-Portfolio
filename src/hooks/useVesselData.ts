@@ -1,95 +1,76 @@
 // src/hooks/useVesselData.ts
-import { useState, useEffect } from "react";
-import { VesselData } from "../types/vesselTypes";
+import { useEffect } from "react";
 import { AISMessage } from "../types/aisMessageTypes";
+import { VesselData } from "../types/vesselTypes";
+import { useVesselRepository } from "./useVesselRepository";
 
+/*
+ * This hook connects to the WebSocket, listens for updates,
+ * and when data arrives:
+ * 1. It can update the UI (via parent component state).
+ * 2. It stores the data into the ReportRepository using
+ *    useVesselRepository.
+ */
 interface UseVesselDataOptions {
   mmsi: string;
+  onDataUpdate: (data: VesselData) => void;
 }
 
-export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
-  const [data, setData] = useState<VesselData | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+export const useVesselData = ({ mmsi, onDataUpdate }: UseVesselDataOptions) => {
+  const { updateVesselData } = useVesselRepository();
 
   useEffect(() => {
-    let isMounted = true;
-    let ws: WebSocket | null = null;
+    // Establish WebSocket connection
+    const ws = new WebSocket("ws://localhost:8080");
 
-    const fetchVesselData = () => {
-      setLoading(true);
-      setError(null);
+    ws.onopen = () => {
+      console.log("Connected to WebSocket server");
+    };
 
+    ws.onmessage = (event) => {
+      console.log("Message from server:", event.data);
       try {
-        ws = new WebSocket("ws://localhost:8080");
+        const message: AISMessage = JSON.parse(event.data);
+        if (message.MessageType === "PositionReport" && message.MetaData) {
+          const vesselMMSI = message.MetaData.MMSI.toString();
+          if (vesselMMSI === mmsi) {
+            const positionReport = message.Message.PositionReport;
+            const metaData = message.MetaData;
 
-        ws.onopen = () => {
-          console.log("Подключено к серверу WebSocket");
-        };
+            const vesselData: VesselData = {
+              speed: positionReport.Sog || 0,
+              course: positionReport.Cog || 0,
+              status:
+                positionReport.NavigationalStatus !== undefined
+                  ? Number(positionReport.NavigationalStatus)
+                  : undefined,
+              latitude: positionReport.Latitude,
+              longitude: positionReport.Longitude,
+              utcTime: metaData.time_utc,
+            };
 
-        ws.onmessage = (event) => {
-          console.log("Получено сообщение от сервера:", event.data);
-          try {
-            const message: AISMessage = JSON.parse(event.data);
-            if (message.MessageType === "PositionReport" && message.MetaData) {
-              const vesselMMSI = message.MetaData.MMSI.toString();
+            // Update UI with latest data
+            onDataUpdate(vesselData);
 
-              if (vesselMMSI === mmsi) {
-                const positionReport = message.Message.PositionReport;
-                const metaData = message.MetaData;
-
-                const vesselData: VesselData = {
-                  speed: positionReport.Sog || 0,
-                  course: positionReport.Cog || 0,
-                  status:
-                    positionReport.NavigationalStatus !== undefined
-                      ? Number(positionReport.NavigationalStatus)
-                      : undefined,
-                  latitude: positionReport.Latitude,
-                  longitude: positionReport.Longitude,
-                  utcTime: metaData.time_utc,
-                };
-
-                if (isMounted) {
-                  setData(vesselData);
-                  setLoading(false);
-                }
-              }
-            }
-          } catch (err) {
-            console.error("Ошибка при парсинге сообщения:", err);
+            // Also save data to repository
+            updateVesselData(mmsi, vesselData);
           }
-        };
-
-        ws.onerror = () => {
-          if (isMounted) {
-            setError("Ошибка при получении потоковых данных");
-            setLoading(false);
-          }
-        };
-
-        ws.onclose = () => {
-          console.log("WebSocket соединение закрыто");
-          if (isMounted) {
-            setError("Соединение закрыто");
-            setLoading(false);
-          }
-        };
-      } catch (err: any) {
-        if (isMounted) {
-          setError(err.message || "Ошибка при получении данных");
-          setLoading(false);
         }
+      } catch (err) {
+        console.error("Error parsing message:", err);
       }
     };
 
-    fetchVesselData();
+    ws.onerror = () => {
+      console.error("WebSocket error occurred");
+    };
+
+    ws.onclose = () => {
+      console.log("WebSocket connection closed");
+    };
 
     return () => {
-      isMounted = false;
-      if (ws) ws.close();
+      ws.close();
     };
-  }, [mmsi, error]);
-
-  return { data, loading, error };
+  }, [mmsi, onDataUpdate, updateVesselData]);
 };
