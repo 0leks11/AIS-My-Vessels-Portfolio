@@ -15,7 +15,7 @@ export const useCommits = () => {
           `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=2`
         );
         if (!response.ok) {
-          throw new Error("Ошибка при загрузке коммитов");
+          throw new Error("Error loading commits");
         }
         const data = await response.json();
         setCommits(data);

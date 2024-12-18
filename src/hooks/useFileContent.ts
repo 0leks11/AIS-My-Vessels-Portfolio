@@ -23,7 +23,7 @@ export const useFileContent = (filePath: string) => {
           `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/${filePath}`
         );
         if (!response.ok) {
-          throw new Error("Ошибка при загрузке файла");
+          throw new Error("File load error");
         }
         return await response.text();
       });

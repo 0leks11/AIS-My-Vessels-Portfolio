@@ -32,7 +32,7 @@ export const useRepositoryTree = () => {
           `https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`
         );
         if (!response.ok) {
-          throw new Error("Ошибка при загрузке дерева репозитория");
+          throw new Error("Error loading repository tree");
         }
         return response.json();
       });

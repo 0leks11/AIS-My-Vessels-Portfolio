@@ -23,7 +23,7 @@ export const useRepositoryContents = () => {
         `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}`
       );
       if (!response.ok) {
-        throw new Error("Ошибка при загрузке содержимого директории");
+        throw new Error("Error loading directory contents");
       }
       return await response.json();
     },

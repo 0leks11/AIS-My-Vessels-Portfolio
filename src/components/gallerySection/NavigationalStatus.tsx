@@ -1,4 +1,4 @@
-// src/components/GallerySection/NavigationStatus.tsx
+// src/components/GallerySection/NavigationalStatus.tsx
 import React from "react";
 
 interface NavigationStatusProps {
@@ -6,22 +6,22 @@ interface NavigationStatusProps {
 }
 
 const statusDescriptions: Record<number, string> = {
-  0: "В пути под двигателем",
-  1: "На якоре",
-  2: "Не управляется",
-  3: "Ограничено в маневре",
-  4: "Ограничено осадкой",
-  5: "Швартуется",
-  6: "Село на мель",
-  7: "Занято рыболовством",
-  8: "В пути под парусом",
+  0: "Underway using engine",
+  1: "At anchor",
+  2: "Not under command",
+  3: "Restricted maneuverability",
+  4: "Constrained by her draft",
+  5: "Moored",
+  6: "Aground",
+  7: "Engaged in fishing",
+  8: "Underway sailing",
 };
 
 const NavigationStatus: React.FC<NavigationStatusProps> = ({ status }) => {
   const description =
-    status !== undefined
-      ? statusDescriptions[status] || "Неизвестный статус"
-      : "Нет данных";
+    status === undefined
+      ? "No data"
+      : statusDescriptions[status] || "Unknown status";
 
   return <span>{description}</span>;
 };

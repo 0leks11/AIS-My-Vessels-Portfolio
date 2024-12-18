@@ -1,21 +1,22 @@
 // src/components/repositorySection/FileContent.tsx
-import React, { useEffect, useRef } from 'react';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/github.css';
-import { getLanguageClass } from '../../utils/getLanguageClass';
-import { useFileContent } from '../../hooks/useFileContent';
+import React, { useEffect, useRef } from "react";
+import hljs from "highlight.js";
+import "highlight.js/styles/github.css";
+import { getLanguageClass } from "../../utils/getLanguageClass";
+import { useFileContent } from "../../hooks/useFileContent";
 
 interface FileContentProps {
-  currentFileName: string; // Имя текущего файла (путь к файлу)
+  currentFileName: string;
 }
 
 const FileContent: React.FC<FileContentProps> = ({ currentFileName }) => {
-  const { fileContent, loadingFileContent, errorFileContent } = useFileContent(currentFileName);
+  const { fileContent, loadingFileContent, errorFileContent } =
+    useFileContent(currentFileName);
   const codeRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (fileContent && codeRef.current) {
-      hljs.highlightElement(codeRef.current); 
+      hljs.highlightElement(codeRef.current);
     }
   }, [fileContent]);
 

@@ -24,9 +24,6 @@ export const useVesselDB = ({ mmsi }: UseVesselDBOptions) => {
       .then((dbData) => {
         if (!isMounted) return;
 
-        // Предположим, что в БД данные хранятся «как есть», в формате AISMessage.
-        // Нам нужно извлечь нужные поля. Тут мы делаем интерпретацию, которую раньше делали в WebSocket хуке.
-        // Если формат данных отличается, нужно адаптировать код.
         const positionReport = dbData.Message?.PositionReport;
         const metaData = dbData.MetaData;
 

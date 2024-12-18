@@ -15,8 +15,7 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({ children }
   const [messages, setMessages] = useState<string[]>([]);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080'); // Убедитесь, что сервер запущен на этом адресе
-
+    const ws = new WebSocket('ws://localhost:8080'); 
     ws.onopen = () => {
       console.log('WebSocket соединение установлено');
     };

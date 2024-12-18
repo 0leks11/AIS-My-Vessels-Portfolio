@@ -19,7 +19,7 @@ export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
       ws = new WebSocket("ws://localhost:8080");
 
       ws.onopen = () => {
-        console.log("Подключено к серверу WebSocket (обновления данных)");
+        console.log("Connecting to WebSocket (data renew)");
       };
 
       ws.onmessage = (event) => {
@@ -49,22 +49,22 @@ export const useVesselData = ({ mmsi }: UseVesselDataOptions) => {
             }
           }
         } catch (err) {
-          console.error("Ошибка при парсинге сообщения:", err);
+          console.error("Parsing error", err);
         }
       };
 
       ws.onerror = () => {
         if (isMounted) {
-          setError("Ошибка при получении потоковых данных по WebSocket");
+          setError("Error receiving streaming data via WebSocket");
         }
       };
 
       ws.onclose = () => {
-        console.log("WebSocket соединение закрыто (обновления данных)");
+        console.log("WebSocket connection closed (data updates)");
       };
     } catch (err: any) {
       if (isMounted) {
-        setError(err.message || "Ошибка при установлении WS соединения");
+        setError(err.message || "Error establishing WS connection");
       }
     }
 

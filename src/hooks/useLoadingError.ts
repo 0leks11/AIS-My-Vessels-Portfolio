@@ -16,7 +16,7 @@ export const useLoadingError = <T>() => {
         const result = await asyncFunction();
         return result;
       } catch (err) {
-        setError(err instanceof Error ? err.message : "Неизвестная ошибка");
+        setError(err instanceof Error ? err.message : "Unknown error");
         return null;
       } finally {
         setLoading(false);

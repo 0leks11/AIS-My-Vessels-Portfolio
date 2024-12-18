@@ -1,8 +1,8 @@
 // src/components/GallerySection/VesselCard.tsx
 import React, { useMemo } from "react";
 import { Vessel } from "../../types/vesselTypes";
-import { useVesselDB } from "../../hooks/useVesselDB"; // Hook that fetches initial data from DB
-import { useVesselData } from "../../hooks/useVesselData"; // Hook that listens to WebSocket updates
+import { useVesselDB } from "../../hooks/useVesselDB";
+import { useVesselData } from "../../hooks/useVesselData";
 import Flag from "react-world-flags";
 import { Collapsible } from "../resumeSection/Collapsible";
 import NavigationStatus from "./NavigationalStatus";
@@ -14,7 +14,6 @@ interface VesselCardProps {
 }
 
 const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
-  // Initial data from DB (fetches once on mount)
   const {
     data: dbData,
     loading: dbLoading,
@@ -23,20 +22,16 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
     mmsi: vessel.mmsi.toString(),
   });
 
-  // Live updates from WebSocket
   const { data: wsData, error: wsError } = useVesselData({
     mmsi: vessel.mmsi.toString(),
   });
 
-  // currentData: if we have wsData, use it (it's the newest), else fall back to dbData
   const currentData = useMemo(() => {
     return wsData || dbData || null;
   }, [wsData, dbData]);
 
-  // loading: true only if DB is still loading and we have no currentData yet
   const loading = dbLoading && !currentData;
 
-  // error: if we have any error from WS or DB and no currentData, show error state
   const error =
     !currentData && (wsError || dbError) ? wsError || dbError : null;
 

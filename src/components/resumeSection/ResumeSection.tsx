@@ -82,16 +82,12 @@ const experiences = [
 
 const ResumeSection: React.FC = () => {
   return (
-    // 7th Container: Main Wrapper Container
     <section className="resume-section-wrapper min-w-[320px] max-w-4xl mx-auto p-3 md:p-6 bg-white bg-opacity-40 backdrop-blur-xl rounded-lg shadow-md">
-      {/* 1st Container: Resume Header */}
       <div className="resume-header text-center mb-6">
         <h2 className="text-4xl font-bold">Resume</h2>
       </div>
 
-      {/* 4th Container: Skills and Experience combined */}
       <div className="skills-experience-container flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6 w-full">
-        {/* Skills Section */}
         <div className="skills-container flex-1 w-full mb-6 lg:mb-0 lg:w-auto">
           <h3 className="text-lg font-semibold mb-2">Skills</h3>
           <div>
@@ -105,10 +101,8 @@ const ResumeSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="hidden lg:block w-px h-auto bg-gray-300 mx-6"></div>
 
-        {/* Experience Section */}
         <div className="experience-container flex-1 flex-col w-full mb-6 lg:mb-0 lg:w-auto">
           <h3 className="text-lg font-semibold mb-2">Work Experience</h3>
           <div>
@@ -123,12 +117,10 @@ const ResumeSection: React.FC = () => {
         </div>
       </div>
 
-      {/* 5th Container: Suggested Hourly Rate Header */}
       <div className="suggested-rate-header text-center mt-6">
         <h3 className="text-lg font-semibold">Suggested Hourly Rate:</h3>
       </div>
 
-      {/* 6th Container: Suggested Hourly Rate Content */}
       <div className="suggested-rate-content text-center">
         <p>As a junior developer starting out on Upwork...</p>
       </div>

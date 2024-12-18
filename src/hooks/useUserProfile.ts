@@ -12,7 +12,7 @@ export const useUserProfile = () => {
       try {
         const response = await fetch(`https://api.github.com/users/${OWNER}`);
         if (!response.ok) {
-          throw new Error("Ошибка при загрузке профиля пользователя");
+          throw new Error("Error loading user profile");
         }
         const data = await response.json();
         setUserProfile(data);
