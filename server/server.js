@@ -8,34 +8,31 @@ const { initDB, Vessel } = require("./database");
 
 const API_KEY = process.env.AIS_API_KEY;
 
-// Список MMSI, по которым хотим получать и рассылать данные
 const MMSI_LIST = [
-  "636020776",
-  "211482350",
-  "538005057",
-  "565967000",
-  "636017197",
-  "636017781",
-  "636017782",
-  "636018051",
-  "636015034",
-  "667022000",
   "255802490",
+  "211482350",
+  "636015034",
+  "636018051",
+  "636017782",
+  "636017781",
+  "636017197",
+  "565967000",
+  "538005057",
+  "477552400",
+  "255802490",
+  "636020776",
 ];
 
 const app = express();
 app.use(cors());
 const server = http.createServer(app);
 
-// Инициализация базы данных
 initDB().then(() => {
   console.log("Database initialized");
 });
 
-// Создаем WebSocket-сервер для наших клиентов (UI)
 const wss = new WebSocket.Server({ server });
 
-// Функция для трансляции сообщения всем подключенным клиентам
 function broadcastToClients(message) {
   if (wss.clients.size === 0) {
     console.log("No WebSocket clients connected, skipping broadcast");
@@ -51,7 +48,6 @@ function broadcastToClients(message) {
   console.log("Broadcasted message to all connected WebSocket clients");
 }
 
-// Подключение к aisstream.io
 let aisSocket;
 
 function connectAisStream() {
@@ -86,7 +82,6 @@ function connectAisStream() {
 
       broadcastToClients(message);
 
-      // Сохраняем данные для нужных MMSI
       if (
         parsed.MessageType === "PositionReport" &&
         receivedMMSI &&
@@ -95,8 +90,6 @@ function connectAisStream() {
         await Vessel.upsert({ mmsi: receivedMMSI, rawData: message });
         console.log(`Data for MMSI ${receivedMMSI} saved to DB`);
       }
-
-      // Передаем данные всем клиентам по WebSocket
     } catch (err) {
       console.error("Error parsing aisstream.io message:", err);
     }
@@ -117,7 +110,6 @@ function connectAisStream() {
 
 connectAisStream();
 
-// При подключении клиента к нашему WebSocket-серверу
 wss.on("connection", (ws) => {
   console.log("A WebSocket client connected");
   ws.on("close", () => {
@@ -128,7 +120,6 @@ wss.on("connection", (ws) => {
   });
 });
 
-// REST API для получения данных из БД
 app.get("/api/vessels/:mmsi", async (req, res) => {
   const { mmsi } = req.params;
   const vessel = await Vessel.findOne({ where: { mmsi } });
