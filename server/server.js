@@ -3,28 +3,62 @@ require("dotenv").config();
 const express = require("express");
 const WebSocket = require("ws");
 const cors = require("cors");
+const http = require("http");
+const { initDB, Vessel } = require("./database");
 
-const API_KEY = process.env.AIS_API_KEY; // Храним API-ключ в переменной окружения
+const API_KEY = process.env.AIS_API_KEY;
+
+// Список MMSI, по которым хотим получать и рассылать данные
+const MMSI_LIST = [
+  "636020776",
+  "211482350",
+  "538005057",
+  "565967000",
+  "636017197",
+  "636017781",
+  "636017782",
+  "636018051",
+  "636015034",
+  "667022000",
+  "255802490",
+];
 
 const app = express();
 app.use(cors());
+const server = http.createServer(app);
 
-const server = require("http").createServer(app);
+// Инициализация базы данных
+initDB().then(() => {
+  console.log("Database initialized");
+});
 
-// Создаем WebSocket-сервер
+// Создаем WebSocket-сервер для наших клиентов (UI)
 const wss = new WebSocket.Server({ server });
 
-// Глобальное WebSocket-соединение к aisstream.io
+// Функция для трансляции сообщения всем подключенным клиентам
+function broadcastToClients(message) {
+  if (wss.clients.size === 0) {
+    console.log("No WebSocket clients connected, skipping broadcast");
+    return;
+  }
+
+  wss.clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(message);
+    }
+  });
+
+  console.log("Broadcasted message to all connected WebSocket clients");
+}
+
+// Подключение к aisstream.io
 let aisSocket;
 
-// Функция для подключения к aisstream.io
-const connectAisStream = () => {
+function connectAisStream() {
   aisSocket = new WebSocket("wss://stream.aisstream.io/v0/stream");
 
   aisSocket.on("open", () => {
-    console.log("Подключено к aisstream.io");
-
-    // Отправляем сообщение подписки
+    console.log("Connected to aisstream.io");
     const subscriptionMessage = {
       APIKey: API_KEY,
       BoundingBoxes: [
@@ -33,74 +67,85 @@ const connectAisStream = () => {
           [90, 180],
         ],
       ],
-      FiltersShipMMSI: [
-        "636020776",
-        "261182585",
-        "538005057",
-        "565967000",
-        "636017197",
-        "636017781",
-        "636017782",
-        "636018051",
-        "636015034",
-        "667022000",
-        "255802490",
-      ],
+      FiltersShipMMSI: MMSI_LIST,
       FilterMessageTypes: ["PositionReport"],
     };
-    console.log(JSON.stringify(subscriptionMessage));
     aisSocket.send(JSON.stringify(subscriptionMessage));
+    console.log(
+      "Sent subscription message to aisstream.io:",
+      subscriptionMessage
+    );
   });
 
-  aisSocket.on("message", (data) => {
+  aisSocket.on("message", async (data) => {
     const message = data.toString("utf8");
     console.log("Отправляемое сообщение клиенту:", message);
     try {
       const parsed = JSON.parse(message);
-      const receivedMMSI = parsed.MetaData?.MMSI;
-      console.log(`Получено сообщение для MMSI: ${receivedMMSI}`);
-    } catch (err) {
-      console.error("Ошибка при парсинге сообщения:", err);
-    }
-    // Рассылаем всем подключённым клиентам
-    wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(message);
+      const receivedMMSI = parsed.MetaData?.MMSI?.toString();
+
+      broadcastToClients(message);
+
+      // Сохраняем данные для нужных MMSI
+      if (
+        parsed.MessageType === "PositionReport" &&
+        receivedMMSI &&
+        MMSI_LIST.includes(receivedMMSI)
+      ) {
+        await Vessel.upsert({ mmsi: receivedMMSI, rawData: message });
+        console.log(`Data for MMSI ${receivedMMSI} saved to DB`);
       }
-    });
+
+      // Передаем данные всем клиентам по WebSocket
+    } catch (err) {
+      console.error("Error parsing aisstream.io message:", err);
+    }
   });
 
   aisSocket.on("close", () => {
     console.log(
-      "Соединение с aisstream.io закрыто. Попытка переподключения через 5 секунд..."
+      "Connection to aisstream.io closed. Reconnecting in 3 seconds..."
     );
-    setTimeout(connectAisStream, 3000); // Пытаемся переподключиться через 3 секунд
+    setTimeout(connectAisStream, 3000);
   });
 
   aisSocket.on("error", (error) => {
-    console.error("Ошибка aisstream.io:", error);
+    console.error("aisstream.io error:", error);
     aisSocket.close();
   });
-};
+}
 
-// Инициализируем подключение к aisstream.io при запуске сервера
 connectAisStream();
 
-// Подключение клиентов
+// При подключении клиента к нашему WebSocket-серверу
 wss.on("connection", (ws) => {
-  console.log("Клиент подключен");
-
+  console.log("A WebSocket client connected");
   ws.on("close", () => {
-    console.log("Клиент отключен");
+    console.log("A WebSocket client disconnected");
   });
-
   ws.on("error", (error) => {
-    console.error("Ошибка клиента:", error);
+    console.error("WebSocket client error:", error);
   });
 });
 
-// Запуск сервера
+// REST API для получения данных из БД
+app.get("/api/vessels/:mmsi", async (req, res) => {
+  const { mmsi } = req.params;
+  const vessel = await Vessel.findOne({ where: { mmsi } });
+  if (vessel && vessel.rawData) {
+    try {
+      const parsedData = JSON.parse(vessel.rawData);
+      res.json(parsedData);
+    } catch (e) {
+      console.error("Stored data invalid JSON:", e);
+      res.status(500).json({ error: "Stored data is invalid JSON" });
+    }
+  } else {
+    res.status(404).json({ error: "No data found for this MMSI" });
+  }
+});
+
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
-  console.log(`Сервер запущен на порту ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });

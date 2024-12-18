@@ -35,7 +35,7 @@ export const vesselList: Vessel[] = [
     type: "General Cargo Ship",
     flag: "Sierra Leone",
     flagCode: "SL",
-    mmsi: "261182585",
+    mmsi: "211482350",
     dwt: 3757,
     loa: 108,
     beam: 15,

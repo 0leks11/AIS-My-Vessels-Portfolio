@@ -1,47 +1,44 @@
 // src/components/GallerySection/VesselCard.tsx
-import React, { useState, useEffect } from "react";
+import React, { useMemo } from "react";
 import { Vessel } from "../../types/vesselTypes";
-import { useVesselData } from "../../hooks/useVesselData";
-import { useDataBack } from "../../hooks/useDataBack";
+import { useVesselDB } from "../../hooks/useVesselDB"; // Hook that fetches initial data from DB
+import { useVesselData } from "../../hooks/useVesselData"; // Hook that listens to WebSocket updates
 import Flag from "react-world-flags";
 import { Collapsible } from "../resumeSection/Collapsible";
 import NavigationStatus from "./NavigationalStatus";
 import TimeAgo from "./TimeAgo";
 import FormattedDate from "./FormattedDate";
 
-/*
- * VesselCard now:
- * 1. On initial load, it retrieves data from the repository using useDataBack.
- * 2. It sets its state with these initial data.
- * 3. After WebSocket messages arrive via useVesselData, it updates the state with fresh data.
- */
-
 interface VesselCardProps {
   vessel: Vessel;
 }
 
 const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
-  // Get initial data from repository at load
-  const initialData = useDataBack(vessel.mmsi.toString());
-
-  // Local state to hold current vessel data displayed
-  const [vesselData, setVesselData] = useState(initialData || null);
-
-  // Update state with initial data once it's loaded
-  useEffect(() => {
-    if (initialData && !vesselData) {
-      setVesselData(initialData);
-    }
-  }, [initialData, vesselData]);
-
-  // useVesselData will provide new data from WebSocket
-  useVesselData({
+  // Initial data from DB (fetches once on mount)
+  const {
+    data: dbData,
+    loading: dbLoading,
+    error: dbError,
+  } = useVesselDB({
     mmsi: vessel.mmsi.toString(),
-    onDataUpdate: (data) => {
-      // Update local state with fresh data from WebSocket
-      setVesselData(data);
-    },
   });
+
+  // Live updates from WebSocket
+  const { data: wsData, error: wsError } = useVesselData({
+    mmsi: vessel.mmsi.toString(),
+  });
+
+  // currentData: if we have wsData, use it (it's the newest), else fall back to dbData
+  const currentData = useMemo(() => {
+    return wsData || dbData || null;
+  }, [wsData, dbData]);
+
+  // loading: true only if DB is still loading and we have no currentData yet
+  const loading = dbLoading && !currentData;
+
+  // error: if we have any error from WS or DB and no currentData, show error state
+  const error =
+    !currentData && (wsError || dbError) ? wsError || dbError : null;
 
   const handleClick = () => {
     window.open(vessel.marinetrafficUrl, "_blank");
@@ -102,7 +99,7 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
                 </div>
                 <div className="flex justify-between items-center text-sm font-medium mb-1">
                   <p className="w-2/4 flex flex-row text-sm font-medium ml-2">
-                    IMO Number:
+                    imoNumber:
                   </p>
                   <span className="w-2/4 text-left">{vessel.imoNumber}</span>
                 </div>
@@ -118,7 +115,11 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
             Latitude:
           </p>
           <span className="w-3/5 text-gray-500 text-left">
-            {vesselData?.latitude !== undefined ? vesselData.latitude : "N/A"}
+            {loading
+              ? "Loading..."
+              : error
+                ? "Signal lost"
+                : (currentData?.latitude ?? "N/A")}
           </span>
         </div>
         <div className="flex justify-between items-center text-sm font-medium mb-2">
@@ -126,7 +127,11 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
             Longitude:
           </p>
           <span className="w-3/5 text-gray-500 text-left">
-            {vesselData?.longitude !== undefined ? vesselData.longitude : "N/A"}
+            {loading
+              ? "Loading..."
+              : error
+                ? "Signal lost"
+                : (currentData?.longitude ?? "N/A")}
           </span>
         </div>
         <div className="flex justify-between items-center text-sm font-medium mb-0">
@@ -134,9 +139,11 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
             Speed:
           </p>
           <span className="w-3/5 text-gray-500 text-left">
-            {vesselData?.speed !== undefined
-              ? vesselData.speed.toFixed(1)
-              : "N/A"}
+            {loading
+              ? "Loading..."
+              : error
+                ? "Signal lost"
+                : currentData?.speed?.toFixed(1) || "N/A"}
           </span>
         </div>
         <div className="flex justify-between items-center text-sm font-medium mb-0">
@@ -144,7 +151,11 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
             Course:
           </p>
           <span className="w-3/5 text-gray-500 text-left">
-            {vesselData?.course !== undefined ? vesselData.course : "N/A"}
+            {loading
+              ? "Loading..."
+              : error
+                ? "Signal lost"
+                : currentData?.course || "N/A"}
           </span>
         </div>
         <div className="flex justify-between items-center text-sm font-medium mb-2">
@@ -152,7 +163,13 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
             Service status:
           </p>
           <span className="w-3/5 text-gray-500 text-left">
-            <NavigationStatus status={vesselData?.status} />
+            {loading ? (
+              "Loading..."
+            ) : error ? (
+              "Signal lost"
+            ) : (
+              <NavigationStatus status={currentData?.status} />
+            )}
           </span>
         </div>
         <div className="flex justify-between items-center text-sm font-medium mb-0">
@@ -160,16 +177,16 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
             Vessel's local time:
           </p>
           <span className="w-3/5 text-gray-500 text-left">
-            {vesselData &&
-            vesselData.latitude !== undefined &&
-            vesselData.longitude !== undefined ? (
-              <FormattedDate
-                utcTime={vesselData.utcTime}
-                latitude={vesselData.latitude}
-                longitude={vesselData.longitude}
-              />
+            {loading ? (
+              "Loading..."
+            ) : error ? (
+              "Signal lost"
             ) : (
-              "N/A"
+              <FormattedDate
+                utcTime={currentData?.utcTime || ""}
+                latitude={currentData?.latitude || 0}
+                longitude={currentData?.longitude || 0}
+              />
             )}
           </span>
         </div>
@@ -178,7 +195,13 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
             Received:
           </p>
           <span className="w-3/5 text-gray-500 text-left">
-            {vesselData ? <TimeAgo utcTime={vesselData.utcTime} /> : "N/A"}
+            {loading ? (
+              "Loading..."
+            ) : error ? (
+              "Signal lost"
+            ) : (
+              <TimeAgo utcTime={currentData?.utcTime} />
+            )}
           </span>
         </div>
       </div>
