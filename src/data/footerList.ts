@@ -6,9 +6,9 @@ import {
   faGithub,
   faFacebook,
   faTelegram,
-  faGoogle,
   faUpwork,
 } from "@fortawesome/free-brands-svg-icons";
+import { faAt } from "@fortawesome/free-solid-svg-icons";
 
 export interface Contact {
   href: string;
@@ -37,7 +37,7 @@ export const footerList: Contact[] = [
   },
   {
     href: "mailto:ak.kozyrev01@gmail.com",
-    icon: faGoogle,
+    icon: faAt,
   },
   {
     href: "https://www.upwork.com/freelancers/~0148d6dc0e1c6905ee",

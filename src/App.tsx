@@ -55,9 +55,7 @@ const App: React.FC = () => {
           <div className="min-h-screen bg-gray-100">
             <WebSocketProvider>
               <div className="App">
-                {/* Другие компоненты или секции */}
                 <GallerySection />
-                {/* Другие компоненты или секции */}
               </div>
             </WebSocketProvider>
           </div>

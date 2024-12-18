@@ -1,3 +1,4 @@
+// src/components/GallerySection/FormattedDate.tsx
 import React from "react";
 import tzLookup from "tz-lookup";
 import moment from "moment-timezone";
