@@ -1,6 +1,6 @@
 // src/data/vesselList.ts
 import VesselMilady from "../components/img/GalerySectionVessels/VesselMilady";
-import VesselAntares from "../components/img/GalerySectionVessels/VesselAntares";
+import VesselAntares from "../components/img/GalerySectionVessels/VesselEmma";
 import VesselHector from "../components/img/GalerySectionVessels/VesselHector";
 import VesselPatroklos from "../components/img/GalerySectionVessels/VesselPatroklos";
 import VesselOrpheus from "../components/img/GalerySectionVessels/VesselOrpheus";
@@ -12,6 +12,7 @@ import VesselmaerskBenguella from "../components/img/GalerySectionVessels/Vessel
 import VesselgslVioletta from "../components/img/GalerySectionVessels/VesselgslVioletta";
 
 import { Vessel } from "../types/vesselTypes";
+import VesselEmma from "../components/img/GalerySectionVessels/VesselEmma";
 
 export const vesselList: Vessel[] = [
   {
@@ -31,20 +32,20 @@ export const vesselList: Vessel[] = [
       "https://www.marinetraffic.com/en/ais/details/ships/imo:9319430",
   },
   {
-    name: "ANTARES",
-    type: "General Cargo Ship",
-    flag: "Sierra Leone",
-    flagCode: "SL",
+    name: "EMMA",
+    type: "Inland",
+    flag: "Germany",
+    flagCode: "DE",
     mmsi: "211482350",
     dwt: 3757,
-    loa: 108,
-    beam: 15,
+    loa: 80,
+    beam: 9,
     yearBuilt: 1988,
-    registryPort: "FREETOWN",
-    imoNumber: "8943404",
-    imageComponent: VesselAntares,
+    registryPort: "Koln",
+    imoNumber: "0400375",
+    imageComponent: VesselEmma,
     marinetrafficUrl:
-      "https://www.marinetraffic.com/en/ais/details/ships/imo:8943404",
+      "https://www.marinetraffic.com/en/ais/details/ships/shipid:5808149/mmsi:211482350/imo:0/vessel:EMMA",
   },
   {
     name: "HECTOR",
