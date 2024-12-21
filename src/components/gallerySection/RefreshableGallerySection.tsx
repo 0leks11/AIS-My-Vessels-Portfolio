@@ -12,7 +12,7 @@ const RefreshableGallerySection: React.FC<RefreshableGallerySectionProps> = ({
   isRefreshing,
 }) => {
   return (
-    <div className="flex items-center justify-start space-x-4 mb-6">
+    <div className="flex items-center justify-start space-x-4">
       <button
         onClick={onRefresh}
         className={`flex items-center justify-center bg-gray-200 hover:bg-gray-300 text-gray-700 p-2 rounded-2 shadow transition-transform duration-300 ${

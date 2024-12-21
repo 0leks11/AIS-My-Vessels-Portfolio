@@ -58,13 +58,8 @@ const GallerySection: React.FC = () => {
                   Data flows seamlessly through AIS (Automatic Identification
                   System) antennas installed on each vessel. These antennas
                   transmit information either to nearby shore-based AIS stations
-                  along the coastline or directly to satellites. Our service
-                  leverages the shore stations, offering free access by relying
-                  on a 200-kilometer reception zone. This means that while the
-                  system efficiently captures vessel data within this range,
-                  signals may occasionally drop if a vessel moves beyond the
-                  coverage area. Although alternative satellite-based services
-                  are available, they typically come with additional costs.
+                  along the coastline or directly to satellites. Our
+                  service&nbsp;
                   <a
                     href="https://aisstream.io/"
                     target="_blank"
@@ -73,13 +68,20 @@ const GallerySection: React.FC = () => {
                   >
                     aisstream.io
                   </a>
+                  &nbsp; leverages the shore stations, offering free access by
+                  relying on a 200-kilometer reception zone. This means that
+                  while the system efficiently captures vessel data within this
+                  range, signals may occasionally drop if a vessel moves beyond
+                  the coverage area. Although alternative satellite-based
+                  services are available, they typically come with additional
+                  costs.
                 </p>
                 <p className=" py-2">
                   To ensure data persistence and reliability, all incoming
-                  information is stored in a SQLite database hosted on the
-                  same server. When users reload the page, the latest data
-                  remains intact, populating the vessel cards without any loss.
-                  This persistence guarantees that users always see up-to-date
+                  information is stored in a SQLite database hosted on the same
+                  server. When users reload the page, the latest data remains
+                  intact, populating the vessel cards without any loss. This
+                  persistence guarantees that users always see up-to-date
                   information even after refreshing. Each vessel card also
                   features a timestamp at the bottom, indicating how recently a
                   signal was received, providing users with a clear sense of the
@@ -103,7 +105,7 @@ const GallerySection: React.FC = () => {
         </div>
         <div className="relative">
           {error && (
-            <div className="bg-red-200 text-red-800 px-4 py-2 rounded shadow mb-1">
+            <div className="bg-red-200 text-red-800 px-4 py-2 rounded shadow">
               {error}
             </div>
           )}
