@@ -21,7 +21,7 @@ const GallerySection: React.FC = () => {
     }, 1000);
   };
 
-  const cardWidth = 350;
+  const cardWidth = 370;
   const gap = 16;
   const autoScrollDelay = 2000;
   const resumeDelay = 3000;
@@ -37,8 +37,10 @@ const GallerySection: React.FC = () => {
           <Collapsible
             button={
               <p className="text-sm px-3 py-1">
-                This section describes its components and the technologies used,
-                as well as why they are positioned here.
+                This section explains how this component works and the
+                technologies behind it. Here, you will find a list of vessels I
+                worked on as an engineer, along with an overview of data
+                processing principles.
               </p>
             }
             content={

@@ -12,8 +12,8 @@ interface GalleryCarouselProps {
 const GalleryCarousel: React.FC<GalleryCarouselProps> = ({
   cardWidth,
   gap,
-  autoScrollDelay = 3000, 
-  resumeDelay = 5000, 
+  autoScrollDelay,
+  resumeDelay,
   children,
 }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -89,7 +89,6 @@ const GalleryCarousel: React.FC<GalleryCarouselProps> = ({
     }, resumeDelay);
   };
 
-  // Обработчик колесика мыши для горизонтальной прокрутки
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
     if (scrollContainerRef.current) {
@@ -101,7 +100,6 @@ const GalleryCarousel: React.FC<GalleryCarouselProps> = ({
     }
   };
 
-  // Обработчики для перетаскивания (drag)
   const handleMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true;
     startX.current = e.pageX - (scrollContainerRef.current?.offsetLeft || 0);
@@ -113,7 +111,7 @@ const GalleryCarousel: React.FC<GalleryCarouselProps> = ({
     if (!isDragging.current || !scrollContainerRef.current) return;
     e.preventDefault();
     const x = e.pageX - (scrollContainerRef.current.offsetLeft || 0);
-    const walk = (x - startX.current) * 1; // Коэффициент прокрутки
+    const walk = (x - startX.current) * 1;
     scrollContainerRef.current.scrollLeft = scrollLeft.current - walk;
   };
 
@@ -127,7 +125,7 @@ const GalleryCarousel: React.FC<GalleryCarouselProps> = ({
 
   return (
     <div
-      className="flex gap-5 overflow-hidden py-4 cursor-grab"
+      className="flex gap-2 overflow-hidden py-2 cursor-grab"
       ref={scrollContainerRef}
       onMouseEnter={handleUserInteraction}
       onMouseLeave={(e) => {

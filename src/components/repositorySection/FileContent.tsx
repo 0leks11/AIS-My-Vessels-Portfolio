@@ -27,11 +27,11 @@ const FileContent: React.FC<FileContentProps> = ({ currentFileName }) => {
       </h3>
       <div className="Box border-slate-200 rounded-md bg-white">
         {loadingFileContent ? (
-          <div className="p-3 text-center text-gray-500">Загрузка файла...</div>
+          <div className="p-3 text-center text-gray-500">File loading...</div>
         ) : errorFileContent ? (
           <div className="p-2 text-center text-red-500">{errorFileContent}</div>
         ) : fileContent ? (
-          <pre className="p-2 overflow-x-auto text-sm">
+          <pre className="p-2 overflow-x-auto overflow-y-auto max-h-[830px] text-sm">
             <code ref={codeRef} className={getLanguageClass(currentFileName)}>
               {fileContent}
             </code>

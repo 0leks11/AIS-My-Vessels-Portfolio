@@ -82,7 +82,7 @@ const experiences = [
 
 const ResumeSection: React.FC = () => {
   return (
-    <section className="resume-section-wrapper min-w-[320px] max-w-4xl mx-auto p-3 md:p-6 bg-white bg-opacity-40 backdrop-blur-xl rounded-lg shadow-md">
+    <section className="resume-section-wrapper min-w-[320px] max-w-4xl mx-auto p-6 md:p-5 bg-white bg-opacity-40 backdrop-blur-xl rounded-lg shadow-md">
       <div className="resume-header text-center mb-6">
         <h2 className="text-4xl font-bold">Resume</h2>
       </div>
@@ -100,9 +100,7 @@ const ResumeSection: React.FC = () => {
             ))}
           </div>
         </div>
-
         <div className="hidden lg:block w-px h-auto bg-gray-300 mx-6"></div>
-
         <div className="experience-container flex-1 flex-col w-full mb-6 lg:mb-0 lg:w-auto">
           <h3 className="text-lg font-semibold mb-2">Work Experience</h3>
           <div>
@@ -115,14 +113,6 @@ const ResumeSection: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
-
-      <div className="suggested-rate-header text-center mt-6">
-        <h3 className="text-lg font-semibold">Suggested Hourly Rate:</h3>
-      </div>
-
-      <div className="suggested-rate-content text-center">
-        <p>As a junior developer starting out on Upwork...</p>
       </div>
     </section>
   );
