@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, Component } from "react";
 import Header from "./components/header/Header";
 import AboutSection from "./components/aboutSection/AboutSection";
 import ResumeSection from "./components/resumeSection/ResumeSection";
@@ -10,6 +10,7 @@ import FallenHearts from "./components/fallenHearts/FallenHearts";
 import ChatBot from "./components/chatBot/ChatBot";
 import ChatButton from "./components/chatButton/ChatButton";
 import { WebSocketProvider } from "./context/WebSocketContext";
+import WavingGrid from "./components/aboutSection/WavingGrid";
 
 const App: React.FC = () => {
   const [isChatOpen, setIsChatOpen] = useState<boolean>(false);
@@ -37,9 +38,9 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-sky-800 flex flex-col overflow-hidden">
+    <div className="relative min-h-screen bg-black flex flex-col overflow-hidden">
       <div className="absolute inset-0 z-10">
-        <FallenHearts footerRef={footerRef} windowSize={windowSize} />
+        <WavingGrid />
       </div>
       <div className="relative min-h-screen flex flex-col items-center z-20">
         <Header windowSize={windowSize} />
@@ -50,15 +51,13 @@ const App: React.FC = () => {
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
           <ResumeSection />
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
-          <RepositorySection />
+          <WebSocketProvider>
+            <div className="App">
+              <GallerySection />
+            </div>
+          </WebSocketProvider>
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
-          <div className="min-h-screen bg-gray-100">
-            <WebSocketProvider>
-              <div className="App">
-                <GallerySection />
-              </div>
-            </WebSocketProvider>
-          </div>
+          <RepositorySection />
         </div>
         <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
         <Footer ref={footerRef} windowSize={windowSize} />

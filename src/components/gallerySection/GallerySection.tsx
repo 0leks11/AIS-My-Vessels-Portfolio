@@ -34,76 +34,78 @@ const GallerySection: React.FC = () => {
             onRefresh={handleRefresh}
             isRefreshing={isRefreshing}
           />
-          <Collapsible
-            button={
-              <p className="text-sm px-3 py-1">
-                This section explains how this component works and the
-                technologies behind it. Here, you will find a list of vessels I
-                worked on as an engineer, along with an overview of data
-                processing principles.
-              </p>
-            }
-            content={
-              <div className="text-base font-medium px-3 py-1">
-                <p className=" py-2">
-                  In this section, I developed a reusable component that
-                  elegantly handles and displays data for each vessel within a
-                  gallery. Each card in the gallery showcases both static and
-                  dynamic information about the vessels. Static details include
-                  the vessel’s name, owner, port of registry, flag, and type,
-                  providing essential background. Meanwhile, dynamic data offers
-                  real-time updates on the vessel’s course, speed, and current
-                  position, ensuring that users have access to the most recent
-                  information.
+          <div className="relative">
+            <Collapsible
+              button={
+                <p className="text-sm text-neutral-100 px-3 py-1">
+                  This section explains how this component works and the
+                  technologies behind it. Here, you will find a list of vessels
+                  I worked on as an engineer, along with an overview of data
+                  processing principles.
                 </p>
-                <p className=" py-2">
-                  Data flows seamlessly through AIS (Automatic Identification
-                  System) antennas installed on each vessel. These antennas
-                  transmit information either to nearby shore-based AIS stations
-                  along the coastline or directly to satellites. Our
-                  service&nbsp;
-                  <a
-                    href="https://aisstream.io/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-indigo-600 font-semibold hover:text-indigo-800 no-underline"
-                  >
-                    aisstream.io
-                  </a>
-                  &nbsp; leverages the shore stations, offering free access by
-                  relying on a 200-kilometer reception zone. This means that
-                  while the system efficiently captures vessel data within this
-                  range, signals may occasionally drop if a vessel moves beyond
-                  the coverage area. Although alternative satellite-based
-                  services are available, they typically come with additional
-                  costs.
-                </p>
-                <p className=" py-2">
-                  To ensure data persistence and reliability, all incoming
-                  information is stored in a SQLite database hosted on the same
-                  server. When users reload the page, the latest data remains
-                  intact, populating the vessel cards without any loss. This
-                  persistence guarantees that users always see up-to-date
-                  information even after refreshing. Each vessel card also
-                  features a timestamp at the bottom, indicating how recently a
-                  signal was received, providing users with a clear sense of the
-                  data’s freshness.
-                </p>
-                <p className=" py-2">
-                  Real-time updates are a cornerstone of this system. When new,
-                  relevant information arrives, it is instantly pushed to the
-                  interface via web sockets, replacing outdated data on the
-                  vessel cards in real time. Simultaneously, the database is
-                  updated with the latest information, maintaining consistency
-                  and accuracy across the platform. This dynamic interaction
-                  between data acquisition, storage, and real-time updates
-                  ensures that users receive a reliable and comprehensive
-                  overview of vessel movements without incurring extra costs
-                  associated with satellite data services.
-                </p>
-              </div>
-            }
-          />
+              }
+              content={
+                <div className="text-base text-neutral-100 font-medium bg-neutral-900 rounded px-3 py-1">
+                  <p className=" py-2">
+                    In this section, I developed a reusable component that
+                    elegantly handles and displays data for each vessel within a
+                    gallery. Each card in the gallery showcases both static and
+                    dynamic information about the vessels. Static details
+                    include the vessel’s name, owner, port of registry, flag,
+                    and type, providing essential background. Meanwhile, dynamic
+                    data offers real-time updates on the vessel’s course, speed,
+                    and current position, ensuring that users have access to the
+                    most recent information.
+                  </p>
+                  <p className=" py-2">
+                    Data flows seamlessly through AIS (Automatic Identification
+                    System) antennas installed on each vessel. These antennas
+                    transmit information either to nearby shore-based AIS
+                    stations along the coastline or directly to satellites. Our
+                    service&nbsp;
+                    <a
+                      href="https://aisstream.io/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-indigo-600 font-semibold hover:text-indigo-800 no-underline"
+                    >
+                      aisstream.io
+                    </a>
+                    &nbsp; leverages the shore stations, offering free access by
+                    relying on a 200-kilometer reception zone. This means that
+                    while the system efficiently captures vessel data within
+                    this range, signals may occasionally drop if a vessel moves
+                    beyond the coverage area. Although alternative
+                    satellite-based services are available, they typically come
+                    with additional costs.
+                  </p>
+                  <p className=" py-2">
+                    To ensure data persistence and reliability, all incoming
+                    information is stored in a SQLite database hosted on the
+                    same server. When users reload the page, the latest data
+                    remains intact, populating the vessel cards without any
+                    loss. This persistence guarantees that users always see
+                    up-to-date information even after refreshing. Each vessel
+                    card also features a timestamp at the bottom, indicating how
+                    recently a signal was received, providing users with a clear
+                    sense of the data’s freshness.
+                  </p>
+                  <p className=" py-2">
+                    Real-time updates are a cornerstone of this system. When
+                    new, relevant information arrives, it is instantly pushed to
+                    the interface via web sockets, replacing outdated data on
+                    the vessel cards in real time. Simultaneously, the database
+                    is updated with the latest information, maintaining
+                    consistency and accuracy across the platform. This dynamic
+                    interaction between data acquisition, storage, and real-time
+                    updates ensures that users receive a reliable and
+                    comprehensive overview of vessel movements without incurring
+                    extra costs associated with satellite data services.
+                  </p>
+                </div>
+              }
+            />
+          </div>
         </div>
         <div className="relative">
           {error && (

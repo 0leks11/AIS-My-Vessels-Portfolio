@@ -82,11 +82,10 @@ const experiences = [
 
 const ResumeSection: React.FC = () => {
   return (
-    <section className="resume-section-wrapper min-w-[320px] max-w-4xl mx-auto p-6 md:p-5 bg-white bg-opacity-40 backdrop-blur-xl rounded-lg shadow-md">
+    <section className="resume-section-wrapper min-w-[320px] max-w-4xl mx-auto p-6 md:p-5 bg-zinc-900 backdrop-blur-sm rounded-lg shadow-md">
       <div className="resume-header text-center mb-6">
         <h2 className="text-4xl font-bold">Resume</h2>
       </div>
-
       <div className="skills-experience-container flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6 w-full">
         <div className="skills-container flex-1 w-full mb-6 lg:mb-0 lg:w-auto">
           <h3 className="text-lg font-semibold mb-2">Skills</h3>

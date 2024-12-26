@@ -30,7 +30,7 @@ export const ExperienceItem: FC<ExperienceItemProps> = ({
     <Collapsible
       button={label}
       content={
-        <div className="overflow-hidden transition-all duration-500 ease-in-out mt-2 text-gray-600">
+        <div className="overflow-hidden transition-all duration-500 ease-in-out mt-2 text-slate-50">
           {description.map((desc, index) => (
             <p key={index} className="mb-2">
               {desc}

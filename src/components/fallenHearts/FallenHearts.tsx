@@ -1,25 +1,36 @@
-import React, { useEffect, useRef } from 'react';
-import { Engine, Render, Runner, Bodies, Composite, Body, Events } from 'matter-js';
+import React, { useEffect, useRef } from "react";
+import {
+  Engine,
+  Render,
+  Runner,
+  Bodies,
+  Composite,
+  Body,
+  Events,
+} from "matter-js";
 
 interface FallenHeartsProps {
   footerRef: React.RefObject<HTMLDivElement>;
   windowSize: { width: number; height: number };
 }
 
-const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) => {
+const FallenHearts: React.FC<FallenHeartsProps> = ({
+  footerRef,
+  windowSize,
+}) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const groundRef = useRef<Body | null>(null);
 
   useEffect(() => {
-    const engine = Engine.create(); 
+    const engine = Engine.create();
     const world = engine.world;
 
     const ground = Bodies.rectangle(
-      windowSize.width / 2, 
-      window.innerHeight,   
-      windowSize.width,      
-      10,                  
-      { isStatic: true }   
+      windowSize.width / 2,
+      window.innerHeight,
+      windowSize.width,
+      10,
+      { isStatic: true }
     );
 
     groundRef.current = ground;
@@ -35,23 +46,23 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
       }
     };
 
-    window.addEventListener('resize', updateGroundPosition);
-    window.addEventListener('scroll', updateGroundPosition);
+    window.addEventListener("resize", updateGroundPosition);
+    window.addEventListener("scroll", updateGroundPosition);
     updateGroundPosition();
 
     const render = Render.create({
       element: canvasRef.current?.parentNode as HTMLElement,
-      canvas: canvasRef.current as HTMLCanvasElement,        
+      canvas: canvasRef.current as HTMLCanvasElement,
       engine: engine,
       options: {
         width: windowSize.width,
         height: document.documentElement.scrollHeight,
         wireframes: false,
-        background: 'transparent',
+        background: "transparent",
       },
     });
 
-    Render.run(render); 
+    Render.run(render);
     const runner = Runner.create();
     Runner.run(runner, engine);
 
@@ -79,24 +90,28 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
               blockSize,
               blockSize,
               {
-                restitution: 1.2, 
-                isStatic: false, 
+                restitution: 1.2,
+                isStatic: false,
                 render: {
-                  fillStyle: 'red', 
+                  fillStyle: "white",
                 },
               }
             );
             Composite.add(world, heartBlock);
-            Events.on(engine, 'collisionStart', (event: Matter.IEventCollision<Engine>) => {
-              event.pairs.forEach(({ bodyA, bodyB }) => {
-                const block = bodyA === ground ? bodyB : bodyA;
-                if (block === heartBlock) {
-                  setTimeout(() => {
-                    Composite.remove(world, block);
-                  }, 3000);
-                }
-              });
-            });
+            Events.on(
+              engine,
+              "collisionStart",
+              (event: Matter.IEventCollision<Engine>) => {
+                event.pairs.forEach(({ bodyA, bodyB }) => {
+                  const block = bodyA === ground ? bodyB : bodyA;
+                  if (block === heartBlock) {
+                    setTimeout(() => {
+                      Composite.remove(world, block);
+                    }, 3000);
+                  }
+                });
+              }
+            );
           }
         });
       });
@@ -107,7 +122,7 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
     }, 2000);
 
     const handleVisibilityChange = () => {
-      if (document.visibilityState === 'hidden') {
+      if (document.visibilityState === "hidden") {
         clearInterval(interval);
       } else {
         interval = setInterval(() => {
@@ -116,14 +131,14 @@ const FallenHearts: React.FC<FallenHeartsProps> = ({ footerRef, windowSize }) =>
       }
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => {
-      window.removeEventListener('resize', updateGroundPosition);
-      window.removeEventListener('scroll', updateGroundPosition);
+      window.removeEventListener("resize", updateGroundPosition);
+      window.removeEventListener("scroll", updateGroundPosition);
       Render.stop(render);
       Composite.clear(world, false, true);
       Engine.clear(engine);
-      clearTimeout(interval)
+      clearTimeout(interval);
     };
   }, [footerRef, windowSize]);
 

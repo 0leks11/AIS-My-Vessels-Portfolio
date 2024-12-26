@@ -13,7 +13,7 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>(
     return (
       <footer
         ref={ref}
-        className="w-full bg-black text-white py-4 flex flex-col items-center"
+        className="w-full bg-gray-950 text-white py-4 flex flex-col items-center"
       >
         <div className="flex gap-4">
           {footerList.map((contact) => {
