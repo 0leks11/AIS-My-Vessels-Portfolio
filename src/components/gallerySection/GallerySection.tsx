@@ -5,6 +5,7 @@ import { vesselList } from "../../data/vesselList";
 import RefreshableGallerySection from "./RefreshableGallerySection";
 import GalleryCarousel from "./GalleryCarousel";
 import { Collapsible } from "../resumeSection/Collapsible";
+import { StarIcon } from "@heroicons/react/24/solid";
 
 const GallerySection: React.FC = () => {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -29,7 +30,7 @@ const GallerySection: React.FC = () => {
   return (
     <section className="gallery-section container mx-auto px-4 py-8">
       <div className="flex flex-col space-y-0">
-        <div className="flex flex-row items-start space-x-4">
+        <div className="flex flex-row justify-between space-x-4">
           <RefreshableGallerySection
             onRefresh={handleRefresh}
             isRefreshing={isRefreshing}
@@ -37,11 +38,8 @@ const GallerySection: React.FC = () => {
           <div className="relative">
             <Collapsible
               button={
-                <p className="text-sm text-neutral-100 px-3 py-1">
-                  This section explains how this component works and the
-                  technologies behind it. Here, you will find a list of vessels
-                  I worked on as an engineer, along with an overview of data
-                  processing principles.
+                <p className="w-full text-sm text-white text-right hover:text-yellow-600 hover:scale-107 px-3 py-1">
+                  Info.
                 </p>
               }
               content={
@@ -104,6 +102,7 @@ const GallerySection: React.FC = () => {
                   </p>
                 </div>
               }
+              icon={<StarIcon className="w-5 h-5 text-yellow-500" />}
             />
           </div>
         </div>

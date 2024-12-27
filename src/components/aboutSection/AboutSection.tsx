@@ -4,7 +4,9 @@ import ProfileAvatarL from "./ProfileAvatarL";
 import ProfileAvatarS from "./ProfileAvatarS";
 import AboutNameplate from "./AboutNameplate";
 import AboutText from "./AboutText";
-import CirclesAnimation from "./CirclesAnimation";
+import { IconCard } from "../footer/IconCard";
+import { footerList } from "../../data/footerList";
+import ActiveButton from "./ActiveButton";
 
 interface AboutSectionProps {
   className?: string;
@@ -13,65 +15,34 @@ interface AboutSectionProps {
 const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
   return (
     <section
-      className={`bg-black text-white min-w-[320px] max-w-4xl mx-auto p-6 ${className}`}
+      className={`bg-black text-white min-w-[320px] max-w-5xl mx-auto p-6 ${className}`}
     >
-      {/* Top part with name, location, color circles and large avatar */}
-      <div className="flex flex-col md:flex-row items-start md:items-center">
-        {/* Large avatar hidden on small screens */}
-        <div className="hidden md:block mr-4">
-          <ProfileAvatarL />
+      <div className="flex flex-col items-start">
+        <div className="mb-4">
+          <AboutNameplate />
         </div>
-
-        {/* Name, location, color circles */}
-        <div className="flex-1">
-          <div className="flex flex-col">
-            {/* This part visible on small screens: avatar + name */}
-            <div className="flex items-center mb-2 md:hidden">
-              <div className="mr-2">
-                <ProfileAvatarS />
-              </div>
-              <AboutNameplate />
-            </div>
-
-            {/* This part visible on medium+ screens: just name */}
-            <div className="hidden md:block mb-2">
-              <AboutNameplate />
-            </div>
-          </div>
+        <div className="flex gap-6">
+          {footerList.map((contact, index) => {
+            return <IconCard key={index} contact={contact} />;
+          })}
         </div>
       </div>
 
-      {/* Divider spacing */}
       <div className="my-6 border-b border-gray-700" />
-
-      {/* Main content: two-column text + decorative shape + CTA button */}
+      <div className="item-start">
+        <h2 className="text-3xl font-bold mb-4">About</h2>
+      </div>
       <div className="flex flex-col md:flex-row">
-        {/* Left column */}
-        <div className="md:w-1/2 md:pr-8 mb-6 md:mb-0">
-          <h2 className="text-lg font-semibold mb-4">About</h2>
-          <p className="leading-relaxed mb-4">
-            I'm a software engineer who loves designing, collaborating, and
-            creating new tech on the web.
-          </p>
-          <CirclesAnimation />
-          <div className="mt-6"></div>
+        <div className="md:w-1/2 md:pr-8 ml-4 mb-2 md:mb-0">
+          <AboutText />
         </div>
-
-        {/* Right column */}
-        <div className="md:w-1/2">
-          <div className="mb-4">
-            {/* AboutText – если внутри у вас несколько абзацев, 
-               можно добавить нужные стили в AboutText 
-            */}
-            <AboutText />
-          </div>
-          <div className="mt-6">
-            <button
-              className="bg-gray-800 hover:bg-gray-700 text-white font-medium
-                         px-5 py-3 rounded-md transition-colors"
-            >
-              Let's Build Together →
-            </button>
+        <div className="ml-3 md:w-1/2">
+          <p className="leading-relaxed text-3xl font-semibold mb-3">
+            I am a front-end engineer specializing in creating web products for
+            companies of various scales.
+          </p>
+          <div className="mt-3">
+            <ActiveButton />
           </div>
         </div>
       </div>

@@ -16,10 +16,6 @@ export interface Contact {
 }
 export const footerList: Contact[] = [
   {
-    href: "https://www.instagram.com/leorjini",
-    icon: faInstagram,
-  },
-  {
     href: "https://www.linkedin.com/in/oleksii-kozyrev-106b37261",
     icon: faLinkedin,
   },
@@ -28,16 +24,20 @@ export const footerList: Contact[] = [
     icon: faGithub,
   },
   {
-    href: "https://www.facebook.com/faa.hfvptc",
-    icon: faFacebook,
+    href: "mailto:ak.kozyrev01@gmail.com",
+    icon: faAt,
   },
   {
     href: "https://t.me/Leorjini",
     icon: faTelegram,
   },
   {
-    href: "mailto:ak.kozyrev01@gmail.com",
-    icon: faAt,
+    href: "https://www.facebook.com/faa.hfvptc",
+    icon: faFacebook,
+  },
+  {
+    href: "https://www.instagram.com/leorjini",
+    icon: faInstagram,
   },
   {
     href: "https://www.upwork.com/freelancers/~0148d6dc0e1c6905ee",

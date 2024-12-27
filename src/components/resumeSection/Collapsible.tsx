@@ -4,9 +4,14 @@ import Arrow from "./Arrow";
 type CollapsibleProps = {
   content: ReactNode;
   button: ReactNode;
+  icon?: ReactNode;
 };
 
-export const Collapsible: FC<CollapsibleProps> = ({ content, button }) => {
+export const Collapsible: FC<CollapsibleProps> = ({
+  content,
+  button,
+  icon,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -16,7 +21,7 @@ export const Collapsible: FC<CollapsibleProps> = ({ content, button }) => {
         className="flex items-center justify-between w-full"
       >
         {button}
-        <Arrow isOpen={isOpen} />
+        <Arrow isOpen={isOpen} icon={icon} />
       </button>
 
       {isOpen && content}

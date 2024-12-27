@@ -12,7 +12,7 @@ export const IconCard: React.FC<IconCardProps> = ({ contact }) => {
     <a href={contact.href} target="_blank" rel="noopener noreferrer">
       <FontAwesomeIcon
         icon={contact.icon}
-        className="text-white text-xl hover:text-blue-500 transition duration-300"
+        className="text-white text-xl hover:text-zinc-500 transition duration-300"
       />
     </a>
   );

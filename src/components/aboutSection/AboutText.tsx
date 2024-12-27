@@ -7,17 +7,22 @@ interface AboutTextProps {
 
 const AboutText: React.FC<AboutTextProps> = ({ className }) => {
   return (
-    <p
-      className={`text-base sm:text-sx md:text-lg lg:text-xl xl:text-xl font-light sm:font-normal md:font-normal lg:font-normal leading-tight text-slate-50 ${className}`}
+    <div
+      className={`text-base sm:text-sx md:text-lg lg:text-xl xl:text-xl font-thin leading-tight text-inherit ${className}`}
     >
-      Junior Front-End Developer with a foundation in React, TypeScript, and
-      TailwindCSS. My journey, previously marked by a decade of work as an
-      engineer on container vessels, has become a valuable experience that I now
-      leverage in creating interactive and visually appealing solutions. Closing
-      the chapter of my maritime career, I enthusiastically step into a world
-      where my ideas can take shape and inspire others. I strive for creative
-      projects that spark interest and help me grow as a professional.
-    </p>
+      <p className="mb-2">
+        I enjoy exploring new tools, finding creative solutions, and
+        collaborating with teams to make projects intuitive and user-friendly
+        for everyone. I am open to collaboration and always welcome new ideas.
+      </p>
+      <p>
+        I draw inspiration from traveling, instrumental music, learning about
+        different cultures, and connecting with people who share my interests
+        and values. I love discovering new things and strive to stay mindful of
+        the environment. I also care deeply about animals and value the
+        opportunity to learn kindness and spontaneity from them.
+      </p>
+    </div>
   );
 };
 

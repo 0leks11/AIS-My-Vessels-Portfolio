@@ -39,12 +39,11 @@ const App: React.FC = () => {
 
   return (
     <div className="relative min-h-screen bg-black flex flex-col overflow-hidden">
-      <div className="absolute inset-0 z-10">
+      <div className="fixed inset-0 z-10">
         <WavingGrid />
       </div>
       <div className="relative min-h-screen flex flex-col items-center z-20">
-        <Header windowSize={windowSize} />
-        <div className="h-[100px] sm:h-[90px] lg:h-[110px] transition-all duration-500"></div>
+        <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
         <CalculatorModal />
         <div className="container m-2">
           <AboutSection />

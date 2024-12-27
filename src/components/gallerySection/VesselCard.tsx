@@ -8,6 +8,7 @@ import { Collapsible } from "../resumeSection/Collapsible";
 import NavigationStatus from "./NavigationalStatus";
 import TimeAgo from "./TimeAgo";
 import FormattedDate from "./FormattedDate";
+import { ArrowDownLeftIcon } from "@heroicons/react/24/solid";
 
 interface VesselCardProps {
   vessel: Vessel;
@@ -99,6 +100,9 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
                   <span className="w-2/4 text-left">{vessel.imoNumber}</span>
                 </div>
               </div>
+            }
+            icon={
+              <ArrowDownLeftIcon className="w-5 h-5 text-white bg-neutral-300" />
             }
           />
         </div>

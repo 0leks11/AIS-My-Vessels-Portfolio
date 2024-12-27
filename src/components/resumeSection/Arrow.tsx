@@ -1,16 +1,21 @@
-// src/components/ToggleButton.tsx
+// src/components/Arrow.tsx
 import React from "react";
 
-interface ToggleButtonProps {
+interface ArrowProps {
   isOpen: boolean;
+  icon?: React.ReactNode;
 }
 
-const Arrow: React.FC<ToggleButtonProps> = ({ isOpen }) => {
+const Arrow: React.FC<ArrowProps> = ({ isOpen, icon }) => {
   return (
     <span
       className={`transform transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"} mr-4`}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+      }}
     >
-      ▼
+      {icon || "▼"}
     </span>
   );
 };

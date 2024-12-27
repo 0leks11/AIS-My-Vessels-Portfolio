@@ -8,6 +8,7 @@ import { useRepositoryTree } from "../../hooks/useRepositoryTree";
 import { useUserProfile } from "../../hooks/useUserProfile";
 import "tailwindcss/tailwind.css";
 import "@primer/css/dist/primer.css";
+import { StarIcon } from "@heroicons/react/24/solid";
 
 import { constructTree } from "../../utils/constructTree";
 
@@ -29,15 +30,13 @@ const RepositorySection: React.FC<RepositorySectionProps> = ({ className }) => {
 
   return (
     <section
-      className={`repository-section min-w-[320px] max-w-4xl mx-auto p-3 md:p-6 bg-slate-100 rounded-lg shadow-md ${className}`}
+      className={`repository-section min-w-[320px] max-w-5xl mx-auto p-3 md:p-6 bg-slate-100 rounded-lg shadow-md ${className}`}
     >
       <div>
         <Collapsible
           button={
-            <p className="text-sm px-3 py-1">
-              This section explains how this component works and the
-              technologies behind it. Here, you will find a my GitHub
-              repository.
+            <p className="w-full text-sm text-right hover:text-blue-700 hover:scale-107 px-3 py-1">
+              Info.
             </p>
           }
           content={
@@ -64,6 +63,7 @@ const RepositorySection: React.FC<RepositorySectionProps> = ({ className }) => {
               </p>
             </div>
           }
+          icon={<StarIcon className="w-5 h-5 text-yellow-500" />}
         />
         {userProfile && (
           <div className="mr-2">
