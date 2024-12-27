@@ -30,7 +30,7 @@ const GallerySection: React.FC = () => {
   return (
     <section className="gallery-section container mx-auto px-4 py-8">
       <div className="flex flex-col space-y-0">
-        <div className="flex flex-row justify-between space-x-4">
+        <div className="flex flex-row item-start space-x-4">
           <RefreshableGallerySection
             onRefresh={handleRefresh}
             isRefreshing={isRefreshing}
@@ -38,7 +38,7 @@ const GallerySection: React.FC = () => {
           <div className="relative">
             <Collapsible
               button={
-                <p className="w-full text-sm text-white text-right hover:text-yellow-600 hover:scale-107 px-3 py-1">
+                <p className="w-full items-center justify-center text-sm text-white text-right hover:text-yellow-600 hover:scale-107 px-3 py-1">
                   Info.
                 </p>
               }

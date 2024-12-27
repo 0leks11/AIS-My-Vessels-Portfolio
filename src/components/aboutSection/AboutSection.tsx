@@ -6,7 +6,8 @@ import AboutNameplate from "./AboutNameplate";
 import AboutText from "./AboutText";
 import { IconCard } from "../footer/IconCard";
 import { footerList } from "../../data/footerList";
-import ActiveButton from "./ActiveButton";
+import { ActiveButton } from "./ActiveButton";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 interface AboutSectionProps {
   className?: string;
@@ -42,7 +43,20 @@ const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
             companies of various scales.
           </p>
           <div className="mt-3">
-            <ActiveButton />
+            <ActiveButton
+              href="mailto:ak.kozyrev01@gmail.com"
+              icon={
+                // Та же иконка ArrowRightIcon (или любая другая)
+                <ArrowRightIcon className="self-end h-10 w-10 ml-2" />
+              }
+              button={
+                <div className="text-white items-start font-semibold text-3xl flex flex-col">
+                  <p className="mb-1">Let's</p>
+                  <p className="mb-1">Build</p>
+                  <p className="mb-1">Together</p>
+                </div>
+              }
+            />
           </div>
         </div>
       </div>

@@ -2,14 +2,18 @@
 import React from "react";
 
 interface ArrowProps {
-  isOpen: boolean;
+  isOpen?: boolean;
   icon?: React.ReactNode;
 }
 
 const Arrow: React.FC<ArrowProps> = ({ isOpen, icon }) => {
+  let rotateClass = "";
+  if (typeof isOpen === "boolean") {
+    rotateClass = isOpen ? "rotate-180" : "rotate-0";
+  }
   return (
     <span
-      className={`transform transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"} mr-4`}
+      className={`transform transition-transform duration-300 mr-4 ${rotateClass}`}
       style={{
         display: "inline-flex",
         alignItems: "center",

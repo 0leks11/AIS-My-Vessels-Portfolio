@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, Component } from "react";
-import Header from "./components/header/Header";
+import ProfileAvatarL from "./components/aboutSection/ProfileAvatarL";
 import AboutSection from "./components/aboutSection/AboutSection";
 import ResumeSection from "./components/resumeSection/ResumeSection";
 import RepositorySection from "./components/repositorySection/RepositorySection";
@@ -41,6 +41,9 @@ const App: React.FC = () => {
     <div className="relative min-h-screen bg-black flex flex-col overflow-hidden">
       <div className="fixed inset-0 z-10">
         <WavingGrid />
+      </div>
+      <div className="absolute top-20 right-20 z-50">
+        <ProfileAvatarL />
       </div>
       <div className="relative min-h-screen flex flex-col items-center z-20">
         <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
