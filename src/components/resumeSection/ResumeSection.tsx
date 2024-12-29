@@ -84,7 +84,7 @@ const experiences = [
 
 const ResumeSection: React.FC = () => {
   return (
-    <section className="resume-section-wrapper min-w-[320px] max-w-5xl mx-auto p-6 md:p-5 bg-black ">
+    <section className="resume-section-wrapper min-w-[320px] max-w-5xl mx-auto p-8 bg-black ">
       <h2 className="text-white text-3xl font-bold mb-4">Resume</h2>
       <div className="skills-experience-container text-white flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6 w-full ml-4">
         <div className="skills-container flex-1 w-full mb-6 lg:mb-0 lg:w-auto">
@@ -113,12 +113,14 @@ const ResumeSection: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="w-full ml-4 mr-4 mt-3">
+      <div className="mb-4 ml-4 mr-10 mt-3">
         <ActiveButton
           href="mailto:ak.kozyrev01@gmail.com"
-          icon={<ArrowRightIcon className="self-end text-white h-10 w-10" />}
+          icon={
+            <ArrowRightIcon className="self-end text-white stroke-[2] h-10 w-10 ml-3" />
+          }
           button={
-            <div className="text-white items-start font-semibold text-3xl flex flex-col">
+            <div className="text-white items-start font-normal text-4xl flex flex-col ml-2">
               <p className="mb-2">View</p>
               <p className="mb-1">Full Resume</p>
             </div>

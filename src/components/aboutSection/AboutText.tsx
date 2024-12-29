@@ -8,7 +8,7 @@ interface AboutTextProps {
 const AboutText: React.FC<AboutTextProps> = ({ className }) => {
   return (
     <div
-      className={`text-base sm:text-sx md:text-lg lg:text-xl xl:text-xl font-thin leading-tight text-inherit ${className}`}
+      className={`text-base sm:text-sx md:text-lg lg:text-xl xl:text-xl font-thin leading-tight text-slate-50 ${className}`}
     >
       <p className="mb-3">
         I enjoy exploring new tools, finding creative solutions, and

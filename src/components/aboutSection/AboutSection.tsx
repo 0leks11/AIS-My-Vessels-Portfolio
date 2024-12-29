@@ -14,7 +14,7 @@ interface AboutSectionProps {
 const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
   return (
     <section
-      className={`bg-black text-white min-w-[320px] max-w-5xl mx-auto p-6 ${className}`}
+      className={`bg-black text-white min-w-[320px] max-w-5xl mx-auto p-8 ${className}`}
     >
       <div className="flex flex-col items-start">
         <div className="mb-4">
@@ -37,17 +37,17 @@ const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
         </div>
         <div className="ml-3 md:w-1/2">
           <p className="leading-relaxed text-3xl font-semibold mb-4">
-            I am a front-end engineer specializing in creating web products for
+            I'm a front-end engineer specializing in creating web products for
             companies of various scales.
           </p>
-          <div className="mt-4 mr-4">
+          <div className="mt-4 mr-6">
             <ActiveButton
               href="mailto:ak.kozyrev01@gmail.com"
               icon={
-                <ArrowRightIcon className="self-end text-lg h-10 w-10 ml-2" />
+                <ArrowRightIcon className="self-end stroke-[2] h-10 w-10 ml-2" />
               }
               button={
-                <div className="text-white items-start font-medium text-4xl flex flex-col mr-2">
+                <div className="text-white items-start font-normal text-4xl flex flex-col ml-3">
                   <p className="mb-1">Let's</p>
                   <p className="mb-1">Build</p>
                   <p className="mb-1">Together</p>

@@ -20,7 +20,7 @@ export const ActiveButton: FC<ActiveButtonProps> = ({
       target="_blank"
       rel="noopener noreferrer"
       onClick={onClick}
-      className="flex justify-between border-2 bg-neutral-900 hover:bg-neutral-800 border-zinc-600 h-55 w-full p-4 transition-colors "
+      className="flex justify-between border-2 bg-neutral-900 hover:bg-neutral-800 border-zinc-600 h-55 w-full p-4 transition-colors no-underline"
     >
       {button}
       <Arrow icon={icon} />
