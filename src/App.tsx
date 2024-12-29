@@ -42,7 +42,7 @@ const App: React.FC = () => {
       <div className="fixed inset-0 z-10">
         <WavingGrid />
       </div>
-      <div className="absolute top-20 right-20 z-50">
+      <div className="absolute top-20 right-60 z-50">
         <ProfileAvatarL />
       </div>
       <div className="relative min-h-screen flex flex-col items-center z-20">

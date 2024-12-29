@@ -15,14 +15,15 @@ export const ActiveButton: FC<ActiveButtonProps> = ({
   href,
 }) => {
   return (
-    <button
-      onClick={onClick} 
-      className="flex flex-row justify-between border-2 bg-gray-800 hover:bg-gray-700 border-white h-55 w-80 p-4 transition-colors"
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={onClick}
+      className="flex justify-between border-2 bg-neutral-900 hover:bg-neutral-800 border-zinc-600 h-55 w-full p-4 transition-colors "
     >
-      <a href={href} target="_blank" rel="noopener noreferrer">
-        {button}
-      </a>
+      {button}
       <Arrow icon={icon} />
-    </button>
+    </a>
   );
 };

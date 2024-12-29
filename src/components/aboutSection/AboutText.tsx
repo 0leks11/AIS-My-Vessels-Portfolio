@@ -10,7 +10,7 @@ const AboutText: React.FC<AboutTextProps> = ({ className }) => {
     <div
       className={`text-base sm:text-sx md:text-lg lg:text-xl xl:text-xl font-thin leading-tight text-inherit ${className}`}
     >
-      <p className="mb-2">
+      <p className="mb-3">
         I enjoy exploring new tools, finding creative solutions, and
         collaborating with teams to make projects intuitive and user-friendly
         for everyone. I am open to collaboration and always welcome new ideas.

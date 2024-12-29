@@ -2,6 +2,8 @@
 import React from "react";
 import { SkillItem } from "./SkillItem";
 import { ExperienceItem } from "./ExperienceItem";
+import { ActiveButton } from "../aboutSection/ActiveButton";
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 const skills = [
   {
@@ -83,10 +85,8 @@ const experiences = [
 const ResumeSection: React.FC = () => {
   return (
     <section className="resume-section-wrapper min-w-[320px] max-w-5xl mx-auto p-6 md:p-5 bg-black ">
-      <div className="resume-header text-center mb-6">
-        <h2 className="text-4xl font-bold">Resume</h2>
-      </div>
-      <div className="skills-experience-container text-white flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6 w-full">
+      <h2 className="text-white text-3xl font-bold mb-4">Resume</h2>
+      <div className="skills-experience-container text-white flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6 w-full ml-4">
         <div className="skills-container flex-1 w-full mb-6 lg:mb-0 lg:w-auto">
           <h3 className="text-lg font-semibold mb-2">Skills</h3>
           <div>
@@ -112,6 +112,18 @@ const ResumeSection: React.FC = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div className="w-full ml-4 mr-4 mt-3">
+        <ActiveButton
+          href="mailto:ak.kozyrev01@gmail.com"
+          icon={<ArrowRightIcon className="self-end text-white h-10 w-10" />}
+          button={
+            <div className="text-white items-start font-semibold text-3xl flex flex-col">
+              <p className="mb-2">View</p>
+              <p className="mb-1">Full Resume</p>
+            </div>
+          }
+        />
       </div>
     </section>
   );

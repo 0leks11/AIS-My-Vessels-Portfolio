@@ -1,7 +1,5 @@
 // src/components/AboutSection/AboutSection.tsx
 import React from "react";
-import ProfileAvatarL from "./ProfileAvatarL";
-import ProfileAvatarS from "./ProfileAvatarS";
 import AboutNameplate from "./AboutNameplate";
 import AboutText from "./AboutText";
 import { IconCard } from "../footer/IconCard";
@@ -38,19 +36,18 @@ const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
           <AboutText />
         </div>
         <div className="ml-3 md:w-1/2">
-          <p className="leading-relaxed text-3xl font-semibold mb-3">
+          <p className="leading-relaxed text-3xl font-semibold mb-4">
             I am a front-end engineer specializing in creating web products for
             companies of various scales.
           </p>
-          <div className="mt-3">
+          <div className="mt-4 mr-4">
             <ActiveButton
               href="mailto:ak.kozyrev01@gmail.com"
               icon={
-                // Та же иконка ArrowRightIcon (или любая другая)
-                <ArrowRightIcon className="self-end h-10 w-10 ml-2" />
+                <ArrowRightIcon className="self-end text-lg h-10 w-10 ml-2" />
               }
               button={
-                <div className="text-white items-start font-semibold text-3xl flex flex-col">
+                <div className="text-white items-start font-medium text-4xl flex flex-col mr-2">
                   <p className="mb-1">Let's</p>
                   <p className="mb-1">Build</p>
                   <p className="mb-1">Together</p>
