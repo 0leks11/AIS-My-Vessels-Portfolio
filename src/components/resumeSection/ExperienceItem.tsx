@@ -1,3 +1,4 @@
+// src/components/ResumeSection/
 import React, { FC } from "react";
 import { Collapsible } from "./Collapsible";
 

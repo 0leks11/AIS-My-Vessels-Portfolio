@@ -5,6 +5,7 @@ import { ExperienceItem } from "./ExperienceItem";
 import { ActiveButton } from "../aboutSection/ActiveButton";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import AnimatedLine from "./AnimatedLine";
 
 const skills = [
   {
@@ -114,13 +115,13 @@ const ResumeSection: React.FC = () => {
       <div className="bg-black ml-4 mb-10 mr-4 w-full max-w-4xl ">
         <div className="w-full flex justify-between items-center mb-2 gap-2 text-gray-300">
           <span className="text-xl ">2023</span>
-          <div className="h-px justify-self-stretch w-full bg-zinc-600 sm:w-132 md:w-148 lg:w-156 ml-2 mr-2"></div>
+          <AnimatedLine className="h-px justify-self-stretch w-full bg-black sm:w-132 md:w-148 lg:w-156 ml-2 mr-2" />
           <span className="text-xl ">2024</span>
         </div>
 
         <div className="flex w-full justify-between items-center gap-2 text-white font-bold">
           <span className="text-white font-bold text-3xl sm:text-3xl flex items-center gap-1">
-            Software Engineer
+            Front-End Engineer
             <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6" />
           </span>
           <span className="text-white font-bold text-2xl sm:text-2xl">
@@ -128,7 +129,7 @@ const ResumeSection: React.FC = () => {
           </span>
         </div>
 
-        <p className="w-full mt-4 text-base sm:text-sx md:text-base lg:text-lg xl:text-xl font-thin leading-tight text-slate-50">
+        <p className="w-full mt-4 text-base sm:text-sx md:text-base lg:text-base xl:text-lg font-thin leading-tight text-slate-50">
           Developed and maintained responsive, dynamic user interfaces using
           JavaScript, TypeScript, React, and Tailwind CSS, focusing on modular
           and clean code. Collaborated on building new front-end features that
@@ -144,19 +145,19 @@ const ResumeSection: React.FC = () => {
           <div className="w-full flex flex-row justify-start">
             <div className="flex w-full flex-col mr-2 items-start">
               <span>React</span>
-              <div className="w-full mt-0 h-px w-16 bg-gray-600"></div>
+              <AnimatedLine className="w-full h-px w-16 bg-black" />
             </div>
             <div className="flex w-full flex-col mr-2 items-start">
               <span>Matters.js</span>
-              <div className="w-full mt-0 h-px w-16 bg-gray-600"></div>
+              <AnimatedLine className="w-full h-px w-16 bg-black" />
             </div>
             <div className="flex w-full flex-col mr-2 items-start">
               <span>TypeScript</span>
-              <div className="w-full mt-0 h-px w-16 bg-gray-600"></div>
+              <AnimatedLine className="w-full h-px w-16 bg-black" />
             </div>
             <div className="flex w-full flex-col mr-2 items-start">
               <span>Google Serwer</span>
-              <div className="w-full mt-0 h-px w-16 bg-gray-600"></div>
+              <AnimatedLine className="w-full h-px w-16 bg-black" />
             </div>
           </div>
         </div>
