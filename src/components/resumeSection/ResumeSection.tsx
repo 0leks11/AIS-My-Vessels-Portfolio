@@ -103,35 +103,29 @@ const ResumeSection: React.FC = () => {
       </div>
 
       <div className="bg-black text-gray-300 ml-4 mb-10 mr-4 w-full max-w-4xl ">
-        {/* Верхняя строка: год, линия, Present, компания (Dirac) справа */}
-        <div className="flex items-center justify-between mb-6">
-          {/* Левая часть: "2024" + горизонтальная линия, + "Present" */}
-
-          <div className="flex items-center gap-2">
-            <span className="text-sm sm:text-base">2023</span>
-            <div className="h-px w-full bg-gray-600 sm:w-32 md:w-48 lg:w-56"></div>
-            <span className="text-sm sm:text-base">2024</span>
-          </div>
-
-          {/* Правая часть: название компании */}
+        <div className="w-full flex justify-between items-center mb-2 gap-2">
+          <span className="text-4xl sm:text-base">2023</span>
+          <div className="h-px justify-self-stretch w-full bg-gray-600 sm:w-132 md:w-148 lg:w-156"></div>
+          <span className="text-4xl sm:text-base">2024</span>
         </div>
 
-        {/* Большой заголовок с ссылкой + "↗" */}
         <a
           href="https://www.websolo.ca"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div className=" inline-flex items-center gap-2 text-white font-bold text-2xl sm:text-3xl">
-            <span className="text-white font-bold text-3xl sm:text-2xl">
-              Software Engineer
-            </span>
-            <span className="text-xl sm:text-3xl">↗</span>
-            <span className="text-white font-bold text-3xl sm:text-2xl">
-              WebSolo
-            </span>
-          </div>
+          #
         </a>
+
+        <div className="flex items-center gap-2 text-white font-bold ">
+          <span className="text-white item-start font-bold text-3xl sm:text-3xl">
+            Software Engineer
+          </span>
+          <span className="text-xl ml-1 item-start sm:text-2xl">↗</span>
+          <span className="text-white justify-item-end font-bold text-2xl sm:text-2xl">
+            WebSolo
+          </span>
+        </div>
 
         <p className="w-full mt-3 text-gray-400 leading-relaxed text-sm sm:text-base">
           Developed and maintained responsive, dynamic user interfaces using
@@ -145,24 +139,23 @@ const ResumeSection: React.FC = () => {
           to ensure high-quality deliverables aligned with project requirements.
         </p>
 
-        {/* Список технологий внизу: React, Redux, TypeScript, AWS */}
         <div className="mt-6 flex flex-wrap gap-6 text-sm sm:text-base text-gray-300">
           <div className="w-full flex flex-row justify-start">
             <div className="flex w-full flex-col mr-2 items-start">
               <span>React</span>
-              <div className="w-full mt-1 h-px w-16 bg-gray-600"></div>
+              <div className="w-full mt-0 h-px w-16 bg-gray-600"></div>
             </div>
             <div className="flex w-full flex-col mr-2 items-start">
               <span>Matters.js</span>
-              <div className="w-full mt-1 h-px w-16 bg-gray-600"></div>
+              <div className="w-full mt-0 h-px w-16 bg-gray-600"></div>
             </div>
             <div className="flex w-full flex-col mr-2 items-start">
               <span>TypeScript</span>
-              <div className="w-full mt-1 h-px w-16 bg-gray-600"></div>
+              <div className="w-full mt-0 h-px w-16 bg-gray-600"></div>
             </div>
             <div className="flex w-full flex-col mr-2 items-start">
               <span>Google Serwer</span>
-              <div className="w-full mt-1 h-px w-16 bg-gray-600"></div>
+              <div className="w-full mt-0 h-px w-16 bg-gray-600"></div>
             </div>
           </div>
         </div>
