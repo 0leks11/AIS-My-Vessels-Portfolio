@@ -4,6 +4,7 @@ import { SkillItem } from "./SkillItem";
 import { ExperienceItem } from "./ExperienceItem";
 import { ActiveButton } from "../aboutSection/ActiveButton";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
 const skills = [
   {
@@ -102,32 +103,32 @@ const ResumeSection: React.FC = () => {
         </div>
       </div>
 
+      <a
+        href="https://www.websolo.ca"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @#
+      </a>
+
       <div className="bg-black text-gray-300 ml-4 mb-10 mr-4 w-full max-w-4xl ">
         <div className="w-full flex justify-between items-center mb-2 gap-2">
-          <span className="text-4xl sm:text-base">2023</span>
-          <div className="h-px justify-self-stretch w-full bg-gray-600 sm:w-132 md:w-148 lg:w-156"></div>
-          <span className="text-4xl sm:text-base">2024</span>
+          <span className="text-xl ">2023</span>
+          <div className="h-px justify-self-stretch w-full bg-zinc-600 sm:w-132 md:w-148 lg:w-156 ml-2 mr-2"></div>
+          <span className="text-xl ">2024</span>
         </div>
 
-        <a
-          href="https://www.websolo.ca"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          #
-        </a>
-
-        <div className="flex items-center gap-2 text-white font-bold ">
-          <span className="text-white item-start font-bold text-3xl sm:text-3xl">
+        <div className="flex w-full justify-between items-center gap-2 text-white font-bold">
+          <span className="text-white font-bold text-3xl sm:text-3xl flex items-center gap-1">
             Software Engineer
+            <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6" />
           </span>
-          <span className="text-xl ml-1 item-start sm:text-2xl">↗</span>
-          <span className="text-white justify-item-end font-bold text-2xl sm:text-2xl">
+          <span className="text-white font-bold text-2xl sm:text-2xl">
             WebSolo
           </span>
         </div>
 
-        <p className="w-full mt-3 text-gray-400 leading-relaxed text-sm sm:text-base">
+        <p className="w-full mt-4 text-slate-50 leading-relaxed text-sm sm:text-base">
           Developed and maintained responsive, dynamic user interfaces using
           JavaScript, TypeScript, React, and Tailwind CSS, focusing on modular
           and clean code. Collaborated on building new front-end features that
@@ -139,7 +140,7 @@ const ResumeSection: React.FC = () => {
           to ensure high-quality deliverables aligned with project requirements.
         </p>
 
-        <div className="mt-6 flex flex-wrap gap-6 text-sm sm:text-base text-gray-300">
+        <div className="mt-4 flex flex-wrap gap-6 text-sm sm:text-base text-gray-300">
           <div className="w-full flex flex-row justify-start">
             <div className="flex w-full flex-col mr-2 items-start">
               <span>React</span>
