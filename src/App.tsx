@@ -4,7 +4,6 @@ import AboutSection from "./components/aboutSection/AboutSection";
 import ResumeSection from "./components/resumeSection/ResumeSection";
 import RepositorySection from "./components/repositorySection/RepositorySection";
 import GallerySection from "./components/gallerySection/GallerySection";
-import CalculatorModal from "./components/calculator/CalculatorModal";
 import Footer from "./components/footer/Footer";
 import FallenHearts from "./components/fallenHearts/FallenHearts";
 import ChatBot from "./components/chatBot/ChatBot";
@@ -47,7 +46,6 @@ const App: React.FC = () => {
       </div>
       <div className="relative min-h-screen flex flex-col items-center z-20">
         <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>
-        <CalculatorModal />
         <div className="container m-2">
           <AboutSection />
           <div className="h-[20px] sm:h-[10px] lg:h-[30px] transition-all duration-500"></div>

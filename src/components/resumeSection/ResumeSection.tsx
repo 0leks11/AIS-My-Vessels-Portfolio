@@ -111,8 +111,8 @@ const ResumeSection: React.FC = () => {
         @#
       </a>
 
-      <div className="bg-black text-gray-300 ml-4 mb-10 mr-4 w-full max-w-4xl ">
-        <div className="w-full flex justify-between items-center mb-2 gap-2">
+      <div className="bg-black ml-4 mb-10 mr-4 w-full max-w-4xl ">
+        <div className="w-full flex justify-between items-center mb-2 gap-2 text-gray-300">
           <span className="text-xl ">2023</span>
           <div className="h-px justify-self-stretch w-full bg-zinc-600 sm:w-132 md:w-148 lg:w-156 ml-2 mr-2"></div>
           <span className="text-xl ">2024</span>
@@ -128,7 +128,7 @@ const ResumeSection: React.FC = () => {
           </span>
         </div>
 
-        <p className="w-full mt-4 text-slate-50 leading-relaxed text-sm sm:text-base">
+        <p className="w-full mt-4 text-base sm:text-sx md:text-base lg:text-lg xl:text-xl font-thin leading-tight text-slate-50">
           Developed and maintained responsive, dynamic user interfaces using
           JavaScript, TypeScript, React, and Tailwind CSS, focusing on modular
           and clean code. Collaborated on building new front-end features that
@@ -169,9 +169,9 @@ const ResumeSection: React.FC = () => {
             <ArrowRightIcon className="self-end text-white stroke-[2] h-10 w-10 ml-3" />
           }
           button={
-            <div className="text-white items-start font-normal text-4xl flex flex-col ml-2">
+            <div className="text-white items-start font-normal text-4xl flex flex-col ml-3">
               <p className="mb-2">View</p>
-              <p className="mb-1">Full Resume</p>
+              <p className="mb-1">Full Resumé</p>
             </div>
           }
         />
