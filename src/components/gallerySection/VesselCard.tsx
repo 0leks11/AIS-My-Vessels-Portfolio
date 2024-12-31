@@ -41,7 +41,7 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
   };
 
   return (
-    <div className="bg-neutral-300 shadow-md rounded-md w-full border border-gray-300 cursor-pointer hover:shadow-lg transition-shadow duration-200">
+    <div className="bg-neutral-300 shadow-md w-full border border-gray-300 cursor-pointer hover:shadow-lg transition-shadow duration-200">
       <div>
         <div>
           <div className="flex items-center text-sm text-gray-600 mt-0 p-2">
@@ -54,7 +54,7 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
 
           <div className="relative" onClick={handleClick}>
             {vessel.imageComponent && <vessel.imageComponent />}
-            <div className="absolute top-2 left-2 bg-white text-xs font-bold py-1 px-2 rounded-md shadow">
+            <div className="absolute top-2 left-2 bg-white text-xs font-bold py-1 px-2 shadow">
               {vessel.type}
             </div>
           </div>

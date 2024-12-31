@@ -44,13 +44,31 @@ const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
             <ActiveButton
               href="mailto:ak.kozyrev01@gmail.com"
               icon={
-                <ArrowRightIcon className="self-end stroke-[2] h-10 w-10 ml-2" />
+                <ArrowRightIcon className="self-end text-white stroke-[2] h-10 w-10 ml-3 transition-transform duration-500 ease-in-out group-hover:translate-x-4" />
               }
               button={
-                <div className="text-white items-start font-normal text-4xl flex flex-col ml-3">
-                  <p className="mb-1">Let's</p>
-                  <p className="mb-1">Build</p>
-                  <p className="mb-1">Together</p>
+                <div className="transition-transform transform text-white items-start font-normal sm:text-xl  md:text-2xl lg:text-4xl xl:text-4xl flex flex-col ml-3">
+                  <div className="relative overflow-hidden w-full sm:h-6 md:h-7 lg:h-10 xl:h-10">
+                    <p className=" duration-500 ease-in-out  sm:group-hover:-translate-y-6 md:group-hover:-translate-y-7 lg:group-hover:-translate-y-10 xl:group-hover:-translate-y-10 flex flex-col">
+                      <span>Let's</span>
+                      <span>Let's</span>
+                    </p>
+                  </div>
+                  <div className="h-2"></div>
+                  <div className="relative overflow-hidden w-full sm:h-6 md:h-7 lg:h-10 xl:h-10">
+                    <p className="duration-500 delay-150 ease-in-out  sm:group-hover:-translate-y-6 md:group-hover:-translate-y-7 lg:group-hover:-translate-y-10 xl:group-hover:-translate-y-10 flex flex-col">
+                      <span>Build</span>
+                      <span>Build</span>
+                    </p>
+                  </div>
+                  <div className="h-2"></div>
+                  <div className="relative overflow-hidden w-full sm:h-6 md:h-7 lg:h-10 xl:h-10">
+                    <p className="duration-500 delay-200 ease-in-out  sm:group-hover:-translate-y-6 md:group-hover:-translate-y-7 lg:group-hover:-translate-y-10 xl:group-hover:-translate-y-10 flex flex-col">
+                      <span>Full Together</span>
+                      <span>Full Together</span>
+                    </p>
+                  </div>
+                  <div className="h-2"></div>
                 </div>
               }
             />

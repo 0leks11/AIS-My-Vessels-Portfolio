@@ -39,7 +39,7 @@ export const WavingGrid: React.FC<WavingGridProps> = ({
         >
           {rowArray.map((rowIndex) => {
             const delaySec = rowIndex * 0.3;
-            
+
             return (
               <div
                 key={`row-${rowIndex}`}

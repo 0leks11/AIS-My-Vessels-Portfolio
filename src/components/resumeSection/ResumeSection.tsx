@@ -88,21 +88,6 @@ const ResumeSection: React.FC = () => {
   return (
     <section className="resume-section-wrapper min-w-[320px] max-w-5xl mx-auto p-8 bg-black ">
       <h2 className="text-white text-3xl font-bold mb-4">Resume</h2>
-      <div className="skills-experience-container text-white flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6 w-full ml-4">
-        <div className="hidden lg:block w-px h-auto bg-gray-300 mx-6"></div>
-        <div className="experience-container flex-1 flex-col w-full mb-6 lg:mb-0 lg:w-auto">
-          <h3 className="text-lg font-semibold mb-2">Work Experience</h3>
-          <div>
-            {experiences.map((item, index) => (
-              <ExperienceItem
-                key={index}
-                title={item.title}
-                description={item.description}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
 
       <a
         href="https://www.websolo.ca"
@@ -129,7 +114,7 @@ const ResumeSection: React.FC = () => {
           </span>
         </div>
 
-        <p className="w-full mt-4 text-base sm:text-sx md:text-base lg:text-base xl:text-lg font-thin leading-tight text-slate-50">
+        <p className="w-full mt-4 text-base sm:text-xs md:text-base lg:text-base xl:text-lg font-thin leading-tight text-slate-50">
           Developed and maintained responsive, dynamic user interfaces using
           JavaScript, TypeScript, React, and Tailwind CSS, focusing on modular
           and clean code. Collaborated on building new front-end features that
@@ -167,12 +152,24 @@ const ResumeSection: React.FC = () => {
         <ActiveButton
           href="mailto:ak.kozyrev01@gmail.com"
           icon={
-            <ArrowRightIcon className="self-end text-white stroke-[2] h-10 w-10 ml-3" />
+            <ArrowRightIcon className="self-end text-white stroke-[2] h-10 w-10 ml-3 transition-transform duration-500 ease-in-out group-hover:translate-x-4" />
           }
           button={
-            <div className="text-white items-start font-normal text-4xl flex flex-col ml-3">
-              <p className="mb-2">View</p>
-              <p className="mb-1">Full Resumé</p>
+            <div className="transition-transform transform text-white items-start font-normal sm:text-xl  md:text-2xl lg:text-4xl xl:text-4xl flex flex-col ml-3">
+              <div className="relative overflow-hidden w-full sm:h-5 md:h-6 lg:h-9 xl:h-9">
+                <p className=" duration-500 ease-in-out  sm:group-hover:-translate-y-6 md:group-hover:-translate-y-7 lg:group-hover:-translate-y-10 xl:group-hover:-translate-y-10 flex flex-col">
+                  <span>View</span>
+                  <span>View</span>
+                </p>
+              </div>
+              <div className="h-2"></div>
+              <div className="relative overflow-hidden w-full sm:h-5 md:h-6 lg:h-9 xl:h-9">
+                <p className="duration-500 delay-150 ease-in-out  sm:group-hover:-translate-y-6 md:group-hover:-translate-y-7 lg:group-hover:-translate-y-10 xl:group-hover:-translate-y-10 flex flex-col">
+                  <span>Full Resumé</span>
+                  <span>Full Resumé</span>
+                </p>
+              </div>
+              <div className="h-2"></div>
             </div>
           }
         />

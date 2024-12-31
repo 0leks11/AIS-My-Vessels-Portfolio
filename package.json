@@ -23,6 +23,7 @@
     "react-icons": "^5.4.0",
     "react-scripts": "5.0.1",
     "react-world-flags": "^1.6.0",
+    "tailwindcss-3d": "^1.0.7",
     "tz-lookup": "^6.1.25",
     "web-vitals": "^2.1.4"
   },
