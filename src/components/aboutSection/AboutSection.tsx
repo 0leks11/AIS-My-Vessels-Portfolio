@@ -29,10 +29,12 @@ const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
 
       <div className="my-6 border-b border-gray-700" />
       <div className="item-start">
-        <h2 className="text-3xl font-bold mb-4">About</h2>
+        <h2 className="sm:text-xl  md:text-xl lg:text-3xl xl:text-3xl  font-bold mb-4">
+          About
+        </h2>
       </div>
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-1/2 md:pr-8 ml-4 mb-2 md:mb-0">
+        <div className="mt-3 md:w-1/2 md:pr-8 ml-4 mb-2 md:mb-0">
           <AboutText />
         </div>
         <div className="ml-3 md:w-1/2">
@@ -64,8 +66,8 @@ const AboutSection: React.FC<AboutSectionProps> = ({ className }) => {
                   <div className="h-2"></div>
                   <div className="relative overflow-hidden w-full sm:h-6 md:h-7 lg:h-10 xl:h-10">
                     <p className="duration-500 delay-200 ease-in-out  sm:group-hover:-translate-y-6 md:group-hover:-translate-y-7 lg:group-hover:-translate-y-10 xl:group-hover:-translate-y-10 flex flex-col">
-                      <span>Full Together</span>
-                      <span>Full Together</span>
+                      <span>Together</span>
+                      <span>Together</span>
                     </p>
                   </div>
                   <div className="h-2"></div>

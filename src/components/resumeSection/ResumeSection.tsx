@@ -86,11 +86,70 @@ const experiences = [
 
 const ResumeSection: React.FC = () => {
   return (
-    <section className="resume-section-wrapper min-w-[320px] max-w-5xl mx-auto p-8 bg-black ">
+    <section className="resume-section-wrapper min-w-xs max-w-5xl mx-auto p-8 bg-black ">
       <h2 className="text-white text-3xl font-bold mb-4">Resume</h2>
 
       <a
-        href="https://www.websolo.ca"
+        href="https://www.upwork.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        @#
+      </a>
+
+      <div className="bg-black ml-4 mb-10 mr-4 w-full max-w-4xl ">
+        <div className="w-full flex justify-between items-center mb-2 gap-2 text-gray-300">
+          <span className="text-xl ">2024</span>
+          <AnimatedLine className="h-px justify-self-stretch w-full bg-black sm:w-132 md:w-148 lg:w-156 ml-2 mr-2" />
+          <span className="text-xl ">Present</span>
+        </div>
+
+        <div className="flex w-full justify-between items-center gap-2 text-white font-bold">
+          <span className="text-white font-bold text-3xl sm:text-3xl flex items-center gap-1">
+            Front-End Engineer
+            <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6 duration-500 hover:translate-x-2 hover:-translate-y-2" />
+          </span>
+          <span className="text-white font-bold text-2xl sm:text-2xl">
+            WebSolo
+          </span>
+        </div>
+
+        <p className="w-full mt-4 text-base sm:text-xs md:text-base lg:text-base xl:text-lg font-thin leading-tight text-slate-50">
+          As a freelancer on Upwork, I develop and maintain responsive user
+          interfaces using JavaScript, TypeScript, React, and Tailwind CSS,
+          emphasizing modular and clean code. I undertake small contracts to
+          build front-end features that enhance user engagement and improve
+          usability. I ensure cross-browser compatibility and optimize web
+          application performance through efficient Tailwind CSS styling.
+          Utilizing Git for version control, I manage code updates and conduct
+          thorough testing to deliver high-quality solutions that meet client
+          requirements
+        </p>
+
+        <div className="mt-4 flex flex-wrap gap-6 text-sm sm:text-base text-gray-300">
+          <div className="w-full flex flex-row justify-start">
+            <div className="flex w-full flex-col mr-2 items-start">
+              <span>React</span>
+              <AnimatedLine className="w-full h-px w-16 bg-black" />
+            </div>
+            <div className="flex w-full flex-col mr-2 items-start">
+              <span>TypeScript</span>
+              <AnimatedLine className="w-full h-px w-16 bg-black" />
+            </div>
+            <div className="flex w-full flex-col mr-2 items-start">
+              <span>Django</span>
+              <AnimatedLine className="w-full h-px w-16 bg-black" />
+            </div>
+            <div className="flex w-full flex-col mr-2 items-start">
+              <span>WebSocket</span>
+              <AnimatedLine className="w-full h-px w-16 bg-black" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a
+        href="https://www.upwork.com/"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -107,10 +166,10 @@ const ResumeSection: React.FC = () => {
         <div className="flex w-full justify-between items-center gap-2 text-white font-bold">
           <span className="text-white font-bold text-3xl sm:text-3xl flex items-center gap-1">
             Front-End Engineer
-            <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6" />
+            <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6 duration-500 hover:translate-x-2 hover:-translate-y-2" />
           </span>
           <span className="text-white font-bold text-2xl sm:text-2xl">
-            WebSolo
+            UpWork
           </span>
         </div>
 
@@ -137,7 +196,7 @@ const ResumeSection: React.FC = () => {
               <AnimatedLine className="w-full h-px w-16 bg-black" />
             </div>
             <div className="flex w-full flex-col mr-2 items-start">
-              <span>TypeScript</span>
+              <span>JavaScript</span>
               <AnimatedLine className="w-full h-px w-16 bg-black" />
             </div>
             <div className="flex w-full flex-col mr-2 items-start">
@@ -156,14 +215,14 @@ const ResumeSection: React.FC = () => {
           }
           button={
             <div className="transition-transform transform text-white items-start font-normal sm:text-xl  md:text-2xl lg:text-4xl xl:text-4xl flex flex-col ml-3">
-              <div className="relative overflow-hidden w-full sm:h-5 md:h-6 lg:h-9 xl:h-9">
+              <div className="relative overflow-hidden w-full sm:h-6 md:h-7 lg:h-10 xl:h-10">
                 <p className=" duration-500 ease-in-out  sm:group-hover:-translate-y-6 md:group-hover:-translate-y-7 lg:group-hover:-translate-y-10 xl:group-hover:-translate-y-10 flex flex-col">
                   <span>View</span>
                   <span>View</span>
                 </p>
               </div>
               <div className="h-2"></div>
-              <div className="relative overflow-hidden w-full sm:h-5 md:h-6 lg:h-9 xl:h-9">
+              <div className="relative overflow-hidden w-full sm:h-6 md:h-7 lg:h-10 xl:h-10">
                 <p className="duration-500 delay-150 ease-in-out  sm:group-hover:-translate-y-6 md:group-hover:-translate-y-7 lg:group-hover:-translate-y-10 xl:group-hover:-translate-y-10 flex flex-col">
                   <span>Full Resumé</span>
                   <span>Full Resumé</span>
