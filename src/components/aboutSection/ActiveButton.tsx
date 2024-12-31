@@ -24,13 +24,10 @@ export const ActiveButton: FC<ActiveButtonProps> = ({
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="flex justify-between border-2 bg-neutral-900 hover:bg-neutral-800 border-zinc-600 h-55 w-full p-4 transition-colors no-underline"
+      className={`group flex justify-between border-2 bg-neutral-900 ${isHovered ? "hover:bg-neutral-800" : "bg-neutral-900"} border-zinc-600 h-55 w-full p-4 transition-colors no-underline `}
     >
       {button}
       <Arrow icon={icon} />
-      {React.cloneElement(button as React.ReactElement, {
-        isParentHovered: isHovered,
-      })}
     </a>
   );
 };
