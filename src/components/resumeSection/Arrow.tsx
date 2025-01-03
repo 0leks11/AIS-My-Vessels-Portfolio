@@ -7,6 +7,8 @@ interface ArrowProps {
 }
 
 const Arrow: React.FC<ArrowProps> = ({ isOpen, icon }) => {
+  if (!icon) return null;
+
   let rotateClass = "";
   if (typeof isOpen === "boolean") {
     rotateClass = isOpen ? "rotate-180" : "rotate-0";
@@ -19,7 +21,7 @@ const Arrow: React.FC<ArrowProps> = ({ isOpen, icon }) => {
         alignItems: "center",
       }}
     >
-      {icon || "▼"}
+      {icon}
     </span>
   );
 };
