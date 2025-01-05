@@ -108,9 +108,10 @@ function connectAisStream() {
   });
 }
 
-connectAisStream();
-
 wss.on("connection", (ws) => {
+  if (!aisSocket) {
+    connectAisStream();
+  }
   console.log("A WebSocket client connected");
   ws.on("close", () => {
     console.log("A WebSocket client disconnected");

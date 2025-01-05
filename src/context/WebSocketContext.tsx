@@ -1,36 +1,64 @@
 // src/context/WebSocketContext.tsx
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
+
+interface VesselDataMap {
+  [mmsi: string]: any;
+}
 
 interface WebSocketContextProps {
-  messages: string[];
+  vesselDataMap: VesselDataMap;
+  error: string | null;
 }
 
-interface WebSocketProviderProps {
-  children: React.ReactNode;
-}
+const WebSocketContext = createContext<WebSocketContextProps>({
+  vesselDataMap: {},
+  error: null,
+});
 
-const WebSocketContext = createContext<WebSocketContextProps>({ messages: [] });
-
-export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({ children }) => {
-  const [messages, setMessages] = useState<string[]>([]);
+export const WebSocketProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
+  const [vesselDataMap, setVesselDataMap] = useState<VesselDataMap>({});
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080'); 
+    const ws = new WebSocket("ws://localhost:8080");
+
     ws.onopen = () => {
-      console.log('WebSocket соединение установлено');
+      console.log("WebSocket connection established");
     };
 
     ws.onmessage = (event) => {
-      console.log('Получено сообщение:', event.data);
-      setMessages((prev) => [...prev, event.data]);
+      try {
+        const message = JSON.parse(event.data);
+
+        if (message.MessageType === "PositionReport" && message.MetaData) {
+          const mmsi = message.MetaData.MMSI?.toString();
+          if (mmsi) {
+            setVesselDataMap((prev) => ({
+              ...prev,
+              [mmsi]: message,
+            }));
+          }
+        }
+      } catch (err) {
+        console.error("Error parsing WebSocket message:", err);
+      }
     };
 
-    ws.onerror = (error) => {
-      console.error('WebSocket ошибка:', error);
+    ws.onerror = (ev) => {
+      console.error("WebSocket error:", ev);
+      setError("WebSocket connection error");
     };
 
     ws.onclose = () => {
-      console.log('WebSocket соединение закрыто');
+      console.log("WebSocket connection closed");
     };
 
     return () => {
@@ -39,10 +67,10 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({ children }
   }, []);
 
   return (
-    <WebSocketContext.Provider value={{ messages }}>
+    <WebSocketContext.Provider value={{ vesselDataMap, error }}>
       {children}
     </WebSocketContext.Provider>
   );
 };
 
-export const useWebSocket = () => useContext(WebSocketContext);
+export const useWebSocketContext = () => useContext(WebSocketContext);
