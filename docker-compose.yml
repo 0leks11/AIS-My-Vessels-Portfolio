@@ -1,0 +1,63 @@
+version: "3.9"
+
+services:
+  # 1) Frontend + Nginx
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    # Порт 80 на хосте → порт 80 внутри контейнера
+    ports:
+      - "80:80"
+    depends_on:
+      - django
+      - websocket
+    # Внутри docker-сети сможем обращаться по имени "django", "websocket"
+    # и т.д.
+
+  # 2) Django
+  django:
+    build:
+      context: ./django
+      dockerfile: Dockerfile
+    container_name: django
+    expose:
+      - "8000"
+    environment:
+      - DB_HOST=postgres
+      - DB_NAME=yourdbname
+      - DB_USER=yourdbuser
+      - DB_PASSWORD=yourdbpass
+    depends_on:
+      - postgres
+
+  # 3) Postgres
+  postgres:
+    image: postgres:14
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=yourdbname
+      - POSTGRES_USER=yourdbuser
+      - POSTGRES_PASSWORD=yourdbpass
+    # Пробрасывать ли порт наружу - не обязательно
+    expose:
+      - "5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # 4) WebSocket
+  websocket:
+    build:
+      context: ./websocket
+      dockerfile: Dockerfile
+    container_name: websocket
+    expose:
+      - "8080"
+    # Если хотим сохранять файл БД (sqlite.db), можно подключить volume:
+    # volumes:
+    #   - ws_data:/usr/src/app/data
+
+volumes:
+  postgres_data:
+  # ws_data:
