@@ -16,7 +16,7 @@ export const Collapsible: FC<CollapsibleProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="mb-4">
+    <div className="mb-2">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full"

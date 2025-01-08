@@ -86,15 +86,15 @@ const ResumeSection: React.FC = () => {
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                   <div className="flex w-full flex-col mr-2 items-start">
-                    <span>Matters.js</span>
+                    <span>TypeScript</span>
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                   <div className="flex w-full flex-col mr-2 items-start">
-                    <span>JavaScript</span>
+                    <span>Docker</span>
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                   <div className="flex w-full flex-col mr-2 items-start">
-                    <span>Google Serwer</span>
+                    <span>Nginx</span>
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                 </div>
