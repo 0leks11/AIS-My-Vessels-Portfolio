@@ -66,17 +66,12 @@ const ResumeSection: React.FC = () => {
               </div>
 
               <p className="w-full mt-4 text-base sm:text-xs md:text-base lg:text-base xl:text-lg font-thin leading-tight text-slate-50">
-                Developed and maintained responsive, dynamic user interfaces
-                using JavaScript, TypeScript, React, and Tailwind CSS, focusing
-                on modular and clean code. Collaborated on building new
-                front-end features that enhanced user engagement and improved
-                usability. Ensured cross-browser compatibility and performance
-                optimization for web applications, leveraging Tailwind CSS for
-                efficient styling and responsiveness. Utilized Git for version
-                control, effectively collaborating with team members and
-                managing code updates. Conducted code reviews and testing to
-                ensure high-quality deliverables aligned with project
-                requirements.
+                Freelancer on Upwork. I build responsive interfaces from scratch
+                using React, TypeScript, and Tailwind CSS, and I use Nginx to
+                deploy them. I also work on other people’s code, add new
+                features, and improve apps while sticking to what the client
+                wants. I communicate clearly with clients, focus on clean and
+                fast code, and make sure everything is user-friendly.
               </p>
 
               <div className="mt-4 flex flex-wrap gap-6 text-sm sm:text-base text-gray-300">
@@ -126,17 +121,17 @@ const ResumeSection: React.FC = () => {
               </div>
 
               <p className="w-full mt-4 text-base sm:text-xs md:text-base lg:text-base xl:text-lg font-thin leading-tight text-slate-50">
-                Developed and maintained responsive, dynamic user interfaces
-                using JavaScript, TypeScript, React, and Tailwind CSS, focusing
-                on modular and clean code. Collaborated on building new
-                front-end features that enhanced user engagement and improved
-                usability. Ensured cross-browser compatibility and performance
-                optimization for web applications, leveraging Tailwind CSS for
-                efficient styling and responsiveness. Utilized Git for version
-                control, effectively collaborating with team members and
-                managing code updates. Conducted code reviews and testing to
-                ensure high-quality deliverables aligned with project
-                requirements.
+                Created and maintained user-friendly web interfaces for
+                book-selling websites, working in a small company and a
+                tight-knit team. I used JavaScript, TypeScript, React, and
+                Tailwind CSS, always aiming to write clear and clean code.
+                Together with my colleagues, I developed new features to make
+                the websites more convenient and engaging for customers. I made
+                sure that the projects worked well in all browsers and loaded
+                quickly. Tailwind CSS helped me create stylish and responsive
+                designs. I used Git to track changes and collaborate effectively
+                with the team. I also reviewed and tested the code to ensure it
+                was of high quality and met project requirements.
               </p>
 
               <div className="mt-4 flex flex-wrap gap-6 text-sm sm:text-base text-gray-300">
