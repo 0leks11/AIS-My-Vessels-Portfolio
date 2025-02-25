@@ -28,7 +28,7 @@ export const WebSocketProvider: React.FC<{ children: ReactNode }> = ({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8080");
+    const ws = new WebSocket("wss://ais-server.onrender.com");
 
     ws.onopen = () => {
       console.log("WebSocket connection established");
