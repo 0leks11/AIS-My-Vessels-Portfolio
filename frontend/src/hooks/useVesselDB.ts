@@ -16,9 +16,7 @@ export const useVesselDB = ({ mmsi }: UseVesselDBOptions) => {
     setLoading(true);
     setError(null);
 
-    const BACKEND_API_URL = "https://ais-server.onrender.com/api";
-
-    fetch(`${BACKEND_API_URL}/vessels/${mmsi}`)
+    fetch(`https://ais-server.onrender.com/api/vessels/${mmsi}`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
         return res.json();
