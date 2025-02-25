@@ -5,9 +5,7 @@ import ResumeSection from "./components/resumeSection/ResumeSection";
 import RepositorySection from "./components/repositorySection/RepositorySection";
 import GallerySection from "./components/gallerySection/GallerySection";
 import Footer from "./components/footer/Footer";
-import FallenHearts from "./components/fallenHearts/FallenHearts";
 import ChatBot from "./components/chatBot/ChatBot";
-import ChatButton from "./components/chatButton/ChatButton";
 import { WebSocketProvider } from "./context/WebSocketContext";
 import WavingGrid from "./components/aboutSection/WavingGrid";
 
@@ -63,9 +61,6 @@ const App: React.FC = () => {
         <Footer ref={footerRef} windowSize={windowSize} />
       </div>
       <div className="absolute inset-30 z-40">{isChatOpen && <ChatBot />}</div>
-      <div className="absolute bottom-5 right-5 z-50">
-        <ChatButton onClick={toggleChat} isChatOpen={isChatOpen} />
-      </div>
     </div>
   );
 };

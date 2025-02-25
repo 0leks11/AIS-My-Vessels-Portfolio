@@ -46,13 +46,13 @@ const ResumeSection: React.FC = () => {
 
       <div className="resume-section-wrapper min-w-xs max-w-5xl mx-auto p-8 bg-black ">
         <ActiveButton
-          href="https://www.upwork.com"
+          href="https://www.delab.com.my/about-us/"
           button={
             <div className="bg-black ml-4 mb-10 mr-4 w-full max-w-4xl ">
               <div className="w-full flex justify-between items-center mb-2 gap-2 text-gray-300">
                 <span className="text-xl ">2024</span>
                 <AnimatedLine className="h-px justify-self-stretch w-full bg-black sm:w-132 md:w-148 lg:w-156 ml-2 mr-2" />
-                <span className="text-xl ">Present</span>
+                <span className="text-xl ">2025</span>
               </div>
 
               <div className="flex w-full justify-between items-center gap-2 text-white font-bold">
@@ -61,17 +61,26 @@ const ResumeSection: React.FC = () => {
                   <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6 duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </span>
                 <span className="text-white font-bold text-2xl sm:text-2xl">
-                  UpWork
+                  DELAB SCIENTIFIC Sdn Bhd
                 </span>
               </div>
 
               <p className="w-full mt-4 text-base sm:text-xs md:text-base lg:text-base xl:text-lg font-thin leading-tight text-slate-50">
-                Freelancer on Upwork. I build responsive interfaces from scratch
-                using React, TypeScript, and Tailwind CSS, and I use Nginx to
-                deploy them. I also work on other people’s code, add new
-                features, and improve apps while sticking to what the client
-                wants. I communicate clearly with clients, focus on clean and
-                fast code, and make sure everything is user-friendly.
+                Working at a company that develops advanced solutions for
+                electrical protection systems has allowed me to combine my
+                engineering background with modern frontend development skills.
+                Developed and maintained a web interface for monitoring
+                electrical parameters and relay protection systems. Created
+                user-friendly dashboards for visualizing data from measuring
+                instruments (power analyzers, protection relays, earth fault
+                indicators, etc.). Implemented a dynamic reporting system that
+                enables engineers to analyze historical data and assess
+                equipment performance. Optimized UI rendering performance for
+                charts and tables handling large datasets. Collaborated with
+                backend developers to integrate APIs for real-time data
+                transmission. Contributed to UI/UX improvements, designing
+                adaptive interfaces that simplify workflows for power system
+                engineers.
               </p>
 
               <div className="mt-4 flex flex-wrap gap-6 text-sm sm:text-base text-gray-300">
@@ -81,11 +90,11 @@ const ResumeSection: React.FC = () => {
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                   <div className="flex w-full flex-col mr-2 items-start">
-                    <span>TypeScript</span>
+                    <span>JavaScript</span>
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                   <div className="flex w-full flex-col mr-2 items-start">
-                    <span>Docker</span>
+                    <span>Chart.js</span>
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                   <div className="flex w-full flex-col mr-2 items-start">
@@ -101,7 +110,7 @@ const ResumeSection: React.FC = () => {
 
       <div className="group transition-colors resume-section-wrapper min-w-xs max-w-5xl mx-auto p-8 bg-black ">
         <ActiveButton
-          href="https://www.websolo.ca"
+          href="https://evercity.io/"
           button={
             <div className="bg-black ml-4 mb-10 mr-4 w-full max-w-4xl ">
               <div className="w-full flex justify-between items-center mb-2 gap-2 text-gray-300">
@@ -116,22 +125,21 @@ const ResumeSection: React.FC = () => {
                   <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6 duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </span>
                 <span className="text-white font-bold text-2xl sm:text-2xl">
-                  WebSolo
+                  Evercity
                 </span>
               </div>
 
               <p className="w-full mt-4 text-base sm:text-xs md:text-base lg:text-base xl:text-lg font-thin leading-tight text-slate-50">
-                Created and maintained user-friendly web interfaces for
-                book-selling websites, working in a small company and a
-                tight-knit team. I used JavaScript, TypeScript, React, and
-                Tailwind CSS, always aiming to write clear and clean code.
-                Together with my colleagues, I developed new features to make
-                the websites more convenient and engaging for customers. I made
-                sure that the projects worked well in all browsers and loaded
-                quickly. Tailwind CSS helped me create stylish and responsive
-                designs. I used Git to track changes and collaborate effectively
-                with the team. I also reviewed and tested the code to ensure it
-                was of high quality and met project requirements.
+                Developed a UI Kit with ready-to-use components to standardize
+                interfaces across multiple projects. Built a discussion system
+                to facilitate communication between companies within the
+                platform. Implemented a report generation system fully compliant
+                with EU regulations. Integrated automatic EU Taxonomy
+                eligibility and alignment calculations using a webhook-based
+                approach. Designed and implemented an administration panel and
+                knowledge base to optimize internal processes. Developed
+                analytical dashboards to visualize key performance metrics,
+                enabling data-driven decision-making.
               </p>
 
               <div className="mt-4 flex flex-wrap gap-6 text-sm sm:text-base text-gray-300">
@@ -141,7 +149,7 @@ const ResumeSection: React.FC = () => {
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                   <div className="flex w-full flex-col mr-2 items-start">
-                    <span>Matters.js</span>
+                    <span>Rest API</span>
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                   <div className="flex w-full flex-col mr-2 items-start">
@@ -149,7 +157,7 @@ const ResumeSection: React.FC = () => {
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                   <div className="flex w-full flex-col mr-2 items-start">
-                    <span>Google Serwer</span>
+                    <span>WebSockets</span>
                     <AnimatedLine className="w-full h-px w-16 bg-black" />
                   </div>
                 </div>
