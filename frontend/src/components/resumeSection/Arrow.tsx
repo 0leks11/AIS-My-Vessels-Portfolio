@@ -15,7 +15,7 @@ const Arrow: React.FC<ArrowProps> = ({ isOpen, icon }) => {
   }
   return (
     <span
-      className={`transform transition-transform duration-300 mr-4 ${rotateClass}`}
+      className={`transform transition-transform duration-300 mr-4 group ${rotateClass}`}
       style={{
         display: "inline-flex",
         alignItems: "center",

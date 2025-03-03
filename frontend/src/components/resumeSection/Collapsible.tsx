@@ -16,10 +16,10 @@ export const Collapsible: FC<CollapsibleProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="mb-2">
+    <div className="mb-2 group">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full"
+        className="flex items-center justify-between w-full transition-colors"
       >
         {button}
         <Arrow isOpen={isOpen} icon={icon} />

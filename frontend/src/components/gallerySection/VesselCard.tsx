@@ -60,51 +60,58 @@ const VesselCard: React.FC<VesselCardProps> = ({ vessel }) => {
           </div>
         </div>
 
-        <div className="relative">
-          <Collapsible
-            button={
-              <button className="flex items-center justify-between w-full px-3 py-2 font-medium text-base bg-neutral-300 hover:bg-neutral-100 text-gray-600 transition duration-300">
-                Vessel Details
-              </button>
-            }
-            content={
-              <div className="absolute top-full left-0 w-full bg-white shadow-lg border border-gray-300 p-2 rounded-md z-20">
-                <div className="flex justify-between items-center text-sm font-medium mb-1">
-                  <p className="w-2/4 flex text-sm font-medium ml-2">
-                    Vessel Type:
-                  </p>
-                  <span className="w-2/4 text-left">{vessel.type}</span>
+        <div className="relative group">
+          {/* Абсолютный блок, который будет менять цвет при hover */}
+          <div className="absolute inset-0 bg-neutral-300 group-hover:bg-neutral-100 transition-colors duration-300 pointer-events-none"></div>
+          {/* Относительный контейнер для Collapsible, чтобы абсолютный блок располагался относительно него */}
+          <div className="relative">
+            <Collapsible
+              button={
+                <p className="flex items-center justify-between w-full px-3 py-2 font-medium text-base text-gray-600 transition duration-300">
+                  Vessel Details
+                </p>
+              }
+              content={
+                <div className="absolute top-full left-0 w-full bg-white shadow-lg border border-gray-300 p-2 rounded-md z-20">
+                  <div className="flex justify-between items-center text-sm font-medium mb-1">
+                    <p className="w-2/4 flex text-sm font-medium ml-2">
+                      Vessel Type:
+                    </p>
+                    <span className="w-2/4 text-left">{vessel.type}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm font-medium mb-1">
+                    <p className="w-2/4 flex text-sm font-medium ml-2">
+                      Port of registry:
+                    </p>
+                    <span className="w-2/4 text-left">
+                      {vessel.registryPort}
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm font-medium mb-1">
+                    <p className="w-2/4 flex text-sm font-medium ml-2">
+                      Year built:
+                    </p>
+                    <span className="w-2/4 text-left">{vessel.yearBuilt}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm font-medium mb-1">
+                    <p className="w-2/4 flex text-sm font-medium ml-2">
+                      Vessel DWT:
+                    </p>
+                    <span className="w-2/4 text-left">{vessel.dwt}</span>
+                  </div>
+                  <div className="flex justify-between items-center text-sm font-medium mb-1">
+                    <p className="w-2/4 flex text-sm font-medium ml-2">
+                      imoNumber:
+                    </p>
+                    <span className="w-2/4 text-left">{vessel.imoNumber}</span>
+                  </div>
                 </div>
-                <div className="flex justify-between items-center text-sm font-medium mb-1">
-                  <p className="w-2/4 flex text-sm font-medium ml-2">
-                    Port of registry:
-                  </p>
-                  <span className="w-2/4 text-left">{vessel.registryPort}</span>
-                </div>
-                <div className="flex justify-between items-center text-sm font-medium mb-1">
-                  <p className="w-2/4 flex text-sm font-medium ml-2">
-                    Year built:
-                  </p>
-                  <span className="w-2/4 text-left">{vessel.yearBuilt}</span>
-                </div>
-                <div className="flex justify-between items-center text-sm font-medium mb-1">
-                  <p className="w-2/4 flex flex-row text-sm font-medium ml-2">
-                    Vessel DWT:
-                  </p>
-                  <span className="w-2/4 text-left">{vessel.dwt}</span>
-                </div>
-                <div className="flex justify-between items-center text-sm font-medium mb-1">
-                  <p className="w-2/4 flex flex-row text-sm font-medium ml-2">
-                    imoNumber:
-                  </p>
-                  <span className="w-2/4 text-left">{vessel.imoNumber}</span>
-                </div>
-              </div>
-            }
-            icon={
-              <ArrowDownLeftIcon className="w-5 h-5 text-white bg-neutral-300" />
-            }
-          />
+              }
+              icon={
+                <ArrowDownLeftIcon className="w-5 h-5 bg-transparent pointer-events-none" />
+              }
+            />
+          </div>
         </div>
       </div>
 

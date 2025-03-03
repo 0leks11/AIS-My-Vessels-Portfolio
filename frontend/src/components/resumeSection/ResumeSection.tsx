@@ -1,7 +1,5 @@
 // src/components/ResumeSection/ResumeSection.tsx
 import React from "react";
-import { SkillItem } from "./SkillItem";
-import { ExperienceItem } from "./ExperienceItem";
 import { ActiveButton } from "../aboutSection/ActiveButton";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
@@ -61,7 +59,7 @@ const ResumeSection: React.FC = () => {
                   <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6 duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </span>
                 <span className="text-white font-bold text-2xl sm:text-2xl">
-                  DELAB SCIENTIFIC Sdn Bhd
+                  Delab Scientific
                 </span>
               </div>
 
