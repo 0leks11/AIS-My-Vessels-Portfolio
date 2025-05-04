@@ -55,7 +55,7 @@ const ResumeSection: React.FC = () => {
 
               <div className="flex w-full justify-between items-center gap-2 text-white font-bold">
                 <span className="group-hover:underline duration-500 text-white font-bold text-3xl sm:text-3xl flex items-center gap-1">
-                  Front-End Engineer
+                  Front-End Developer
                   <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6 duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </span>
                 <span className="text-white font-bold text-2xl sm:text-2xl">
@@ -64,21 +64,30 @@ const ResumeSection: React.FC = () => {
               </div>
 
               <p className="w-full mt-4 text-base sm:text-xs md:text-base lg:text-base xl:text-lg font-thin leading-tight text-slate-50">
-                Working at a company that develops advanced solutions for
-                electrical protection systems has allowed me to combine my
-                engineering background with modern frontend development skills.
-                Developed and maintained a web interface for monitoring
-                electrical parameters and relay protection systems. Created
-                user-friendly dashboards for visualizing data from measuring
-                instruments (power analyzers, protection relays, earth fault
-                indicators, etc.). Implemented a dynamic reporting system that
-                enables engineers to analyze historical data and assess
-                equipment performance. Optimized UI rendering performance for
-                charts and tables handling large datasets. Collaborated with
-                backend developers to integrate APIs for real-time data
-                transmission. Contributed to UI/UX improvements, designing
-                adaptive interfaces that simplify workflows for power system
-                engineers.
+                Tackled a high 23% drop-off rate on the old jQuery medical
+                survey by rebuilding the entirefrontend with React & TypeScript,
+                aiming to bring the rate below 12% and modernize thetech
+                stackAddressed slow updates and collaboration hurdles caused by
+                the monolithic frontend byimplementing a Micro-Frontend
+                architecture using Module Federation Vite, allowing teamsto
+                release features independently and more quicklyImproved
+                application reliability and caught integration bugs earlier by
+                setting up a fulltesting suite, including Jest for components,
+                Pact for API contracts, and Cypress for userjourney
+                testingOptimized the survey's loading performance to meet the
+                &lt3s TTI target on slow 3Gconnections through code splitting
+                and lazy loading (React.lazy, Vite), making the userexperience
+                much smootherEnhanced accessibility for screen reader users by
+                fixing over 20 linting issues and usingcorrect semantic HTML,
+                achieving WCAG 2.2 complianceEnabled safe A/B testing between
+                different survey versions using feature flags (Unleash),
+                discovering a layout that increased user completion rates by 7
+                percentage pointsImplemented client-side tracing with
+                OpenTelemetry JS to better diagnose performanceissues, helping
+                pinpoint and fix slow GraphQL queries that impacted usersWorked
+                closely with backend developers, medical staff, and legal
+                experts to ensure allfrontend features strictly followed Swiss
+                healthcare regulations (MDR, ePDK, GDPR)
               </p>
 
               <div className="mt-4 flex flex-wrap gap-6 text-sm sm:text-base text-gray-300">
@@ -119,7 +128,7 @@ const ResumeSection: React.FC = () => {
 
               <div className="flex w-full justify-between items-center gap-2 text-white font-bold">
                 <span className="group-hover:underline text-white font-bold text-3xl sm:text-3xl flex items-center gap-1">
-                  Front-End Engineer
+                  Front-End Developer
                   <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6 duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </span>
                 <span className="text-white font-bold text-2xl sm:text-2xl">
