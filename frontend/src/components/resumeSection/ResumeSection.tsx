@@ -44,7 +44,7 @@ const ResumeSection: React.FC = () => {
 
       <div className="resume-section-wrapper min-w-xs max-w-5xl mx-auto p-8 bg-black ">
         <ActiveButton
-          href="https://www.delab.com.my/about-us/"
+          href="https://www.scalosoft.com/"
           button={
             <div className="bg-black ml-4 mb-10 mr-4 w-full max-w-4xl ">
               <div className="w-full flex justify-between items-center mb-2 gap-2 text-gray-300">
@@ -59,7 +59,7 @@ const ResumeSection: React.FC = () => {
                   <ArrowUpRightIcon className="text-white stroke-[1] h-6 w-6 duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </span>
                 <span className="text-white font-bold text-2xl sm:text-2xl">
-                  Delab Scientific
+                  Scalosoft
                 </span>
               </div>
 
